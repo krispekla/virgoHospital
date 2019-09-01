@@ -13,6 +13,7 @@ public class Main {
             @Override
             public void run() {
                 final OutpatientModule outModule = new OutpatientModule();
+                outModule.setLocationRelativeTo(null);
                 outModule.setVisible(true);
             }
         });

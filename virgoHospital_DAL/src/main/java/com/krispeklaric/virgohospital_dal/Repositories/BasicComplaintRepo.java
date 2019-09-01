@@ -25,13 +25,14 @@ public class BasicComplaintRepo extends BaseRepo implements IBasicComplaintRepo,
         return emf.createEntityManager();
     }
 
-    public void create(BasicComplaint basicComplaint) {
+    public BasicComplaint create(BasicComplaint basicComplaint) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(basicComplaint);
             em.getTransaction().commit();
+            return basicComplaint;
         } finally {
             if (em != null) {
                 em.close();
@@ -39,13 +40,14 @@ public class BasicComplaintRepo extends BaseRepo implements IBasicComplaintRepo,
         }
     }
 
-    public void edit(BasicComplaint basicComplaint) throws NonexistentEntityException, Exception {
+    public BasicComplaint edit(BasicComplaint basicComplaint) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             basicComplaint = em.merge(basicComplaint);
             em.getTransaction().commit();
+            return basicComplaint;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

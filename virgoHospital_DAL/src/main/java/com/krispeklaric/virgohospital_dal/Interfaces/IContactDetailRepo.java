@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IContactDetailRepo {
 
-    public void create(ContactDetail contactDetail);
+    public ContactDetail create(ContactDetail contactDetail);
 
-    public void edit(ContactDetail contactDetail) throws NonexistentEntityException, Exception;
+    public ContactDetail edit(ContactDetail contactDetail) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IPhoneNumberRepo {
 
-    public void create(PhoneNumber phoneNumber);
+    public PhoneNumber create(PhoneNumber phoneNumber);
 
-    public void edit(PhoneNumber phoneNumber) throws NonexistentEntityException, Exception;
+    public PhoneNumber edit(PhoneNumber phoneNumber) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

@@ -26,7 +26,7 @@ public class PhoneNumberRepo extends BaseRepo implements IPhoneNumberRepo, Seria
         return emf.createEntityManager();
     }
 
-    public void create(PhoneNumber phoneNumber) {
+    public PhoneNumber create(PhoneNumber phoneNumber) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -42,6 +42,7 @@ public class PhoneNumberRepo extends BaseRepo implements IPhoneNumberRepo, Seria
                 contact = em.merge(contact);
             }
             em.getTransaction().commit();
+            return phoneNumber;
         } finally {
             if (em != null) {
                 em.close();
@@ -49,7 +50,7 @@ public class PhoneNumberRepo extends BaseRepo implements IPhoneNumberRepo, Seria
         }
     }
 
-    public void edit(PhoneNumber phoneNumber) throws NonexistentEntityException, Exception {
+    public PhoneNumber edit(PhoneNumber phoneNumber) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -71,6 +72,7 @@ public class PhoneNumberRepo extends BaseRepo implements IPhoneNumberRepo, Seria
                 contactNew = em.merge(contactNew);
             }
             em.getTransaction().commit();
+            return phoneNumber;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

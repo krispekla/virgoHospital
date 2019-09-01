@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface INextOfKinRepo {
 
-    public void create(NextOfKin nextOfKin);
+    public NextOfKin create(NextOfKin nextOfKin);
 
-    public void edit(NextOfKin nextOfKin) throws NonexistentEntityException, Exception;
+    public NextOfKin edit(NextOfKin nextOfKin) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

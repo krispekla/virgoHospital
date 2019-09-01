@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IAddressRepo {
 
-    public void create(Address address);
+    public Address create(Address address);
 
-    public void edit(Address address) throws NonexistentEntityException, Exception;
+    public Address edit(Address address) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

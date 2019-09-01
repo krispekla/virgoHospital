@@ -30,7 +30,7 @@ public class ContactDetailRepo extends BaseRepo implements IContactDetailRepo, S
         return emf.createEntityManager();
     }
 
-    public void create(ContactDetail contactDetail) {
+    public ContactDetail create(ContactDetail contactDetail) {
         if (contactDetail.getPhones() == null) {
             contactDetail.setPhones(new ArrayList<PhoneNumber>());
         }
@@ -111,6 +111,7 @@ public class ContactDetailRepo extends BaseRepo implements IContactDetailRepo, S
                 }
             }
             em.getTransaction().commit();
+            return contactDetail;
         } finally {
             if (em != null) {
                 em.close();
@@ -118,7 +119,7 @@ public class ContactDetailRepo extends BaseRepo implements IContactDetailRepo, S
         }
     }
 
-    public void edit(ContactDetail contactDetail) throws NonexistentEntityException, Exception {
+    public ContactDetail edit(ContactDetail contactDetail) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -228,6 +229,7 @@ public class ContactDetailRepo extends BaseRepo implements IContactDetailRepo, S
                 }
             }
             em.getTransaction().commit();
+            return contactDetail;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

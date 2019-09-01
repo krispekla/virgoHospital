@@ -26,7 +26,7 @@ public class NextOfKinRepo extends BaseRepo implements INextOfKinRepo, Serializa
         return emf.createEntityManager();
     }
 
-    public void create(NextOfKin nextOfKin) {
+    public NextOfKin create(NextOfKin nextOfKin) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -47,6 +47,7 @@ public class NextOfKinRepo extends BaseRepo implements INextOfKinRepo, Serializa
                 contactDetailNextOf = em.merge(contactDetailNextOf);
             }
             em.getTransaction().commit();
+            return nextOfKin;
         } finally {
             if (em != null) {
                 em.close();
@@ -54,7 +55,7 @@ public class NextOfKinRepo extends BaseRepo implements INextOfKinRepo, Serializa
         }
     }
 
-    public void edit(NextOfKin nextOfKin) throws NonexistentEntityException, Exception {
+    public NextOfKin edit(NextOfKin nextOfKin) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,6 +82,7 @@ public class NextOfKinRepo extends BaseRepo implements INextOfKinRepo, Serializa
                 contactDetailNextOfNew = em.merge(contactDetailNextOfNew);
             }
             em.getTransaction().commit();
+            return nextOfKin;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

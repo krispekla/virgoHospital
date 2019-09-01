@@ -1,4 +1,4 @@
-package com.krispeklaric.virgohospital_bl.Patients;
+package com.krispeklaric.virgohospital_bl;
 
 import com.krispeklaric.virgohospital_bl.Messages.*;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
@@ -22,7 +22,7 @@ public class PatientsBL {
     public InsertPatientResult insertPatient(Patient p) {
         InsertPatientResult result = new InsertPatientResult();
         try {
-            repo.create(p);
+            result.patient = repo.create(p);
         } catch (Exception ex) {
             result.isOK = false;
             result.msg = ex.getMessage();
@@ -35,7 +35,7 @@ public class PatientsBL {
         InsertPatientResult result = new InsertPatientResult();
 
         try {
-            repo.edit(p);
+            result.patient = repo.edit(p);
         } catch (Exception ex) {
             result.isOK = false;
             result.msg = ex.getMessage();
@@ -59,7 +59,7 @@ public class PatientsBL {
         GetPatientsResult result = new GetPatientsResult();
         try {
             List<Patient> patients = repo.findPatientEntities();
-            result.patients = (ArrayList<Patient>) patients;
+            result.patients = patients;
         } catch (Exception ex) {
             result.isOK = false;
             result.msg = ex.getMessage();

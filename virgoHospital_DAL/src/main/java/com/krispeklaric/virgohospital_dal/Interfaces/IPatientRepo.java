@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IPatientRepo {
 
-    public void create(Patient patient);
+    public Patient create(Patient patient);
 
-    public void edit(Patient patient) throws NonexistentEntityException, Exception;
+    public Patient edit(Patient patient) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

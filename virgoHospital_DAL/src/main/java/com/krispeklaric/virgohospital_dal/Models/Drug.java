@@ -2,6 +2,7 @@ package com.krispeklaric.virgohospital_dal.Models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -23,9 +24,8 @@ public class Drug implements Serializable {
     @Column(columnDefinition = "Money default '0'", nullable = false)
     private BigDecimal price;
 
-    @ManyToOne
-    @JoinColumn
-    private Prescription prescription;
+    @OneToMany(mappedBy = "drug")
+    private List<DrugPrescriptions> prescriptions;
 
     public Long getId() {
         return id;
@@ -51,14 +51,6 @@ public class Drug implements Serializable {
         this.price = price;
     }
 
-    public Prescription getPrescription() {
-        return prescription;
-    }
-
-    public void setPrescription(Prescription prescription) {
-        this.prescription = prescription;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -77,6 +69,14 @@ public class Drug implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public List<DrugPrescriptions> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<DrugPrescriptions> prescriptions) {
+        this.prescriptions = prescriptions;
     }
 
     @Override

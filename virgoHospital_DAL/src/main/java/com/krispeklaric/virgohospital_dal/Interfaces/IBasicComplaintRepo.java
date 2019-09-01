@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IBasicComplaintRepo {
 
-    public void create(BasicComplaint basicComplaint);
+    public BasicComplaint create(BasicComplaint basicComplaint);
 
-    public void edit(BasicComplaint basicComplaint) throws NonexistentEntityException, Exception;
+    public BasicComplaint edit(BasicComplaint basicComplaint) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

@@ -19,7 +19,7 @@ public class Prescription implements Serializable {
     private Long id;
 
     @Column(nullable = false)
-    private Drug name;
+    private String name;
 
     private int quantity;
 
@@ -30,8 +30,8 @@ public class Prescription implements Serializable {
     @JoinColumn
     private Appointment appointment;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prescription")
-    private List<Drug> drugs;
+    @OneToMany(mappedBy = "prescription")
+    private List<DrugPrescriptions> drugs;
 
     public Long getId() {
         return id;
@@ -41,12 +41,20 @@ public class Prescription implements Serializable {
         this.id = id;
     }
 
-    public Drug getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Drug name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public List<DrugPrescriptions> getPhones() {
+        return drugs;
+    }
+
+    public void setPhones(List<DrugPrescriptions> drugs) {
+        this.drugs = drugs;
     }
 
     public int getQuantity() {
@@ -71,14 +79,6 @@ public class Prescription implements Serializable {
 
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
-    }
-
-    public List<Drug> getDrugs() {
-        return drugs;
-    }
-
-    public void setDrugs(List<Drug> drugs) {
-        this.drugs = drugs;
     }
 
     @Override

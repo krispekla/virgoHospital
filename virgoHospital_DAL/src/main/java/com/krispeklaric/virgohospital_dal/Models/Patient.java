@@ -67,6 +67,110 @@ public class Patient implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private List<Appointment> appointments;
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getMiddlename() {
+        return middlename;
+    }
+
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public ContactDetail getContactDetail() {
+        return contactDetail;
+    }
+
+    public void setContactDetail(ContactDetail contactDetail) {
+        this.contactDetail = contactDetail;
+    }
+
+    public NextOfKin getNextOfKin() {
+        return nextOfKin;
+    }
+
+    public void setNextOfKin(NextOfKin nextOfKin) {
+        this.nextOfKin = nextOfKin;
+    }
+
+    public PersonalDetail getPersonalDetail() {
+        return personalDetail;
+    }
+
+    public void setPersonalDetail(PersonalDetail personalDetail) {
+        this.personalDetail = personalDetail;
+    }
+
+    public PatientLifestyle getPatientLifestyle() {
+        return patientLifestyle;
+    }
+
+    public void setPatientLifestyle(PatientLifestyle patientLifestyle) {
+        this.patientLifestyle = patientLifestyle;
+    }
+
+    public BasicComplaint getBasicComplaints() {
+        return basicComplaints;
+    }
+
+    public void setBasicComplaints(BasicComplaint basicComplaints) {
+        this.basicComplaints = basicComplaints;
+    }
+
+    public MedicalComplaint getMedicalComplaints() {
+        return medicalComplaints;
+    }
+
+    public void setMedicalComplaints(MedicalComplaint medicalComplaints) {
+        this.medicalComplaints = medicalComplaints;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
     public Long getId() {
         return id;
     }

@@ -9,6 +9,6 @@ import javax.persistence.*;
 public class EntityManagerFactoryHelper {
 
     public static EntityManagerFactory getEntityManagerFactory() {
-        return Persistence.createEntityManagerFactory("");
+        return Persistence.createEntityManagerFactory("com.krispeklaric_virgoHospital_DAL_jar_1.0-DEVELOPMENTPU");
     }
 }

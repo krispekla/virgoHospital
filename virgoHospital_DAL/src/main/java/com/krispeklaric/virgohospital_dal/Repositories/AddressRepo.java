@@ -26,7 +26,7 @@ public class AddressRepo extends BaseRepo implements IAddressRepo, Serializable 
         return emf.createEntityManager();
     }
 
-    public void create(Address address) {
+    public Address create(Address address) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -61,6 +61,7 @@ public class AddressRepo extends BaseRepo implements IAddressRepo, Serializable 
                 contactDetailPermanent = em.merge(contactDetailPermanent);
             }
             em.getTransaction().commit();
+            return address;
         } finally {
             if (em != null) {
                 em.close();
@@ -68,7 +69,7 @@ public class AddressRepo extends BaseRepo implements IAddressRepo, Serializable 
         }
     }
 
-    public void edit(Address address) throws NonexistentEntityException, Exception {
+    public Address edit(Address address) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -114,6 +115,7 @@ public class AddressRepo extends BaseRepo implements IAddressRepo, Serializable 
                 contactDetailPermanentNew = em.merge(contactDetailPermanentNew);
             }
             em.getTransaction().commit();
+            return address;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

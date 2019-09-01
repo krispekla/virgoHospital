@@ -25,13 +25,14 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
         return emf.createEntityManager();
     }
 
-    public void create(Patient patient) {
+    public Patient create(Patient patient) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(patient);
             em.getTransaction().commit();
+            return patient;
         } finally {
             if (em != null) {
                 em.close();
@@ -39,13 +40,14 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
         }
     }
 
-    public void edit(Patient patient) throws NonexistentEntityException, Exception {
+    public Patient edit(Patient patient) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             patient = em.merge(patient);
             em.getTransaction().commit();
+            return patient;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
