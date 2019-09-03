@@ -139,6 +139,11 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         jButtonAddExtensiveForm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAddExtensiveForm.setText("Add extensive");
+        jButtonAddExtensiveForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddExtensiveFormMouseClicked(evt);
+            }
+        });
 
         jButtonEdit.setText("Edit");
 
@@ -676,6 +681,12 @@ public class OutpatientModule extends javax.swing.JFrame {
         model.setRowCount(0);
         this.FillPatientTable();
     }//GEN-LAST:event_jButtonPatientsRefreshMouseClicked
+
+    private void jButtonAddExtensiveFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddExtensiveFormMouseClicked
+        ExtensiveForm extensive = new ExtensiveForm(this, rootPaneCheckingEnabled);
+        extensive.setLocationRelativeTo(null);
+        extensive.setVisible(true);
+    }//GEN-LAST:event_jButtonAddExtensiveFormMouseClicked
 
     /**
      * @param args the command line arguments
