@@ -28,7 +28,7 @@ public class PrescriptionRepo extends BaseRepo implements IPrescriptionRepo, Ser
         return emf.createEntityManager();
     }
 
-    public void create(Prescription prescription) {
+    public Prescription create(Prescription prescription) {
        EntityManager em = null;
         try {
             em = getEntityManager();
@@ -44,6 +44,7 @@ public class PrescriptionRepo extends BaseRepo implements IPrescriptionRepo, Ser
                 appointment = em.merge(appointment);
             }
             em.getTransaction().commit();
+            return prescription;
         } finally {
             if (em != null) {
                 em.close();
@@ -51,7 +52,7 @@ public class PrescriptionRepo extends BaseRepo implements IPrescriptionRepo, Ser
         }
     }
 
-    public void edit(Prescription prescription) throws NonexistentEntityException, Exception {
+    public Prescription edit(Prescription prescription) throws NonexistentEntityException, Exception {
        EntityManager em = null;
         try {
             em = getEntityManager();
@@ -73,6 +74,7 @@ public class PrescriptionRepo extends BaseRepo implements IPrescriptionRepo, Ser
                 appointmentNew = em.merge(appointmentNew);
             }
             em.getTransaction().commit();
+            return prescription;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IPersonalDetailRepo {
 
-    public void create(PersonalDetail personalDetail);
+    public PersonalDetail create(PersonalDetail personalDetail);
 
-    public void edit(PersonalDetail personalDetail) throws NonexistentEntityException, Exception;
+    public PersonalDetail edit(PersonalDetail personalDetail) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

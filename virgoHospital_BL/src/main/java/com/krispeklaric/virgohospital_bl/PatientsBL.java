@@ -1,5 +1,8 @@
 package com.krispeklaric.virgohospital_bl;
 
+import com.krispeklaric.virgohospital_bl.Messages.patient.InsertPatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.patient.GetSinglePatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.patient.GetPatientsResult;
 import com.krispeklaric.virgohospital_bl.Messages.*;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.IPatientRepo;

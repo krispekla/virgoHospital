@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IBillRepo {
 
-    public void create(Bill bill);
+    public Bill create(Bill bill);
 
-    public void edit(Bill bill) throws NonexistentEntityException, Exception;
+    public Bill edit(Bill bill) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

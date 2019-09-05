@@ -29,7 +29,7 @@ public class DoctorRepo extends BaseRepo implements IDoctorRepo, Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Doctor doctor) {
+    public Doctor create(Doctor doctor) {
         if (doctor.getSchedule() == null) {
             doctor.setSchedule(new ArrayList<DoctorSchedule>());
         }
@@ -86,6 +86,7 @@ public class DoctorRepo extends BaseRepo implements IDoctorRepo, Serializable {
                 }
             }
             em.getTransaction().commit();
+            return doctor;
         } finally {
             if (em != null) {
                 em.close();
@@ -93,7 +94,7 @@ public class DoctorRepo extends BaseRepo implements IDoctorRepo, Serializable {
         }
     }
 
-    public void edit(Doctor doctor) throws NonexistentEntityException, Exception {
+    public Doctor edit(Doctor doctor) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -172,6 +173,7 @@ public class DoctorRepo extends BaseRepo implements IDoctorRepo, Serializable {
                 }
             }
             em.getTransaction().commit();
+            return doctor;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

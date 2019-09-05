@@ -27,7 +27,7 @@ public class TestRepo extends BaseRepo implements ITestRepo, Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Test test) {
+    public Test create(Test test) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -57,6 +57,7 @@ public class TestRepo extends BaseRepo implements ITestRepo, Serializable {
                 appointment = em.merge(appointment);
             }
             em.getTransaction().commit();
+            return test;
         } finally {
             if (em != null) {
                 em.close();
@@ -64,7 +65,7 @@ public class TestRepo extends BaseRepo implements ITestRepo, Serializable {
         }
     }
 
-    public void edit(Test test) throws NonexistentEntityException, Exception {
+    public Test edit(Test test) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -105,6 +106,7 @@ public class TestRepo extends BaseRepo implements ITestRepo, Serializable {
                 appointmentNew = em.merge(appointmentNew);
             }
             em.getTransaction().commit();
+            return test;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

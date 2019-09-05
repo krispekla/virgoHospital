@@ -5,9 +5,9 @@
  */
 package com.krispeklaric.virgohospital_bl;
 
-import com.krispeklaric.virgohospital_bl.Messages.GetAddressResult;
-import com.krispeklaric.virgohospital_bl.Messages.GetSingleAddressResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertAddressResult;
+import com.krispeklaric.virgohospital_bl.Messages.address.GetAddressResult;
+import com.krispeklaric.virgohospital_bl.Messages.address.GetSingleAddressResult;
+import com.krispeklaric.virgohospital_bl.Messages.address.InsertAddressResult;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.IAddressRepo;
 import com.krispeklaric.virgohospital_dal.Models.Address;

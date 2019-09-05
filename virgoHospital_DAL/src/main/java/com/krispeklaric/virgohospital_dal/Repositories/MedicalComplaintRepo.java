@@ -25,13 +25,14 @@ public class MedicalComplaintRepo extends BaseRepo implements IMedicalComplaintR
         return emf.createEntityManager();
     }
 
-    public void create(MedicalComplaint medicalComplaint) {
+    public MedicalComplaint create(MedicalComplaint medicalComplaint) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(medicalComplaint);
             em.getTransaction().commit();
+            return medicalComplaint;
         } finally {
             if (em != null) {
                 em.close();
@@ -39,13 +40,14 @@ public class MedicalComplaintRepo extends BaseRepo implements IMedicalComplaintR
         }
     }
 
-    public void edit(MedicalComplaint medicalComplaint) throws NonexistentEntityException, Exception {
+    public MedicalComplaint edit(MedicalComplaint medicalComplaint) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             medicalComplaint = em.merge(medicalComplaint);
             em.getTransaction().commit();
+            return medicalComplaint;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

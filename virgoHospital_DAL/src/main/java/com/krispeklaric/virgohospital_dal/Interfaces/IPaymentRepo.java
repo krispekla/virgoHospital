@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IPaymentRepo {
 
-    public void create(Payment payment);
+    public Payment create(Payment payment);
 
-    public void edit(Payment payment) throws NonexistentEntityException, Exception;
+    public Payment edit(Payment payment) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

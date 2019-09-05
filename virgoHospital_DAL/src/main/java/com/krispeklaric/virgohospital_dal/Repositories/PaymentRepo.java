@@ -26,7 +26,7 @@ public class PaymentRepo extends BaseRepo implements IPaymentRepo, Serializable 
         return emf.createEntityManager();
     }
 
-    public void create(Payment payment) {
+    public Payment create(Payment payment) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -47,6 +47,7 @@ public class PaymentRepo extends BaseRepo implements IPaymentRepo, Serializable 
                 bill = em.merge(bill);
             }
             em.getTransaction().commit();
+            return payment;
         } finally {
             if (em != null) {
                 em.close();
@@ -54,7 +55,7 @@ public class PaymentRepo extends BaseRepo implements IPaymentRepo, Serializable 
         }
     }
 
-    public void edit(Payment payment) throws NonexistentEntityException, Exception {
+    public Payment edit(Payment payment) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,6 +82,7 @@ public class PaymentRepo extends BaseRepo implements IPaymentRepo, Serializable 
                 billNew = em.merge(billNew);
             }
             em.getTransaction().commit();
+            return payment;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

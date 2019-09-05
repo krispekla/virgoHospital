@@ -25,13 +25,14 @@ public class PersonalDetailRepo extends BaseRepo implements IPersonalDetailRepo,
         return emf.createEntityManager();
     }
 
-    public void create(PersonalDetail personalDetail) {
+    public PersonalDetail create(PersonalDetail personalDetail) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(personalDetail);
             em.getTransaction().commit();
+            return personalDetail;
         } finally {
             if (em != null) {
                 em.close();
@@ -39,13 +40,14 @@ public class PersonalDetailRepo extends BaseRepo implements IPersonalDetailRepo,
         }
     }
 
-    public void edit(PersonalDetail personalDetail) throws NonexistentEntityException, Exception {
+    public PersonalDetail edit(PersonalDetail personalDetail) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             personalDetail = em.merge(personalDetail);
             em.getTransaction().commit();
+            return personalDetail;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

@@ -31,57 +31,57 @@ public class ExtensiveForm extends javax.swing.JDialog {
         JLabelExtensiveForm = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jComboBoxSex3 = new javax.swing.JComboBox<>();
+        jComboBoxSexSex = new javax.swing.JComboBox<>();
         jLabelBirthdate3 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate3 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldBirthdateExtensive = new javax.swing.JFormattedTextField();
         jLabelFirstname3 = new javax.swing.JLabel();
-        jTextFieldFirstName3 = new javax.swing.JTextField();
+        jTextFieldFirstNameExtensive = new javax.swing.JTextField();
         jLabelMiddle3 = new javax.swing.JLabel();
-        jTextFieldMiddleName3 = new javax.swing.JTextField();
-        jTextFieldSurname3 = new javax.swing.JTextField();
+        jTextFieldMiddleNameExtensive = new javax.swing.JTextField();
+        jTextFieldSurnameSurname = new javax.swing.JTextField();
         jLabelSurname3 = new javax.swing.JLabel();
         jLabelSex3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldOutpatientID = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldFirstName = new javax.swing.JTextField();
+        jTextFieldStatePresent = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldFirstName1 = new javax.swing.JTextField();
-        jTextFieldFirstName2 = new javax.swing.JTextField();
+        jTextFieldCityPresent = new javax.swing.JTextField();
+        jTextFieldStreetPresent = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldHouseNumberPresent = new javax.swing.JFormattedTextField();
         jLabelBirthdate = new javax.swing.JLabel();
         jLabelBirthdate1 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldAreacodePresent = new javax.swing.JFormattedTextField();
         jLabelBirthdate2 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate2 = new javax.swing.JFormattedTextField();
+        jFormattedTextZipcodePresent = new javax.swing.JFormattedTextField();
         jLabelBirthdate4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate4 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldAreacodePermanent = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabelBirthdate5 = new javax.swing.JLabel();
-        jTextFieldFirstName4 = new javax.swing.JTextField();
-        jFormattedTextFieldBirthdate5 = new javax.swing.JFormattedTextField();
+        jTextFieldStatePermanent = new javax.swing.JTextField();
+        jFormattedTextFieldZipcodePermanent = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldFirstName5 = new javax.swing.JTextField();
-        jTextFieldFirstName6 = new javax.swing.JTextField();
+        jTextFieldCityPermanent = new javax.swing.JTextField();
+        jTextFieldStreetPermanent = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextFieldBirthdate6 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldHousenumberPermanent = new javax.swing.JFormattedTextField();
         jLabelBirthdate6 = new javax.swing.JLabel();
-        jFormattedTextFieldPhoneNum = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldPhoneNumWork = new javax.swing.JFormattedTextField();
         jLabelBirthdate7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jFormattedTextFieldPhoneNum1 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldPhoneNumHome = new javax.swing.JFormattedTextField();
         jLabelBirthdate8 = new javax.swing.JLabel();
-        jFormattedTextFieldPhoneNum2 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldPhoneNumMobile = new javax.swing.JFormattedTextField();
         jLabelBirthdate9 = new javax.swing.JLabel();
-        jTextFieldFirstName7 = new javax.swing.JTextField();
+        jTextFieldPager = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextFieldFirstName8 = new javax.swing.JTextField();
+        jTextFieldFax = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextFieldFirstName9 = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jFormattedTextFieldPhoneNum3 = new javax.swing.JFormattedTextField();
@@ -126,76 +126,76 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelSurname7 = new javax.swing.JLabel();
         jLabelMiddle6 = new javax.swing.JLabel();
         jLabelSurname8 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jFormattedNbDependants = new javax.swing.JFormattedTextField();
+        jFormattedHeight = new javax.swing.JFormattedTextField();
+        jFormattedWeight = new javax.swing.JFormattedTextField();
+        jComboBoxBloodType = new javax.swing.JComboBox<>();
+        jTextFieldOccupation = new javax.swing.JTextField();
+        jFormattedTextFieldGrossIncome = new javax.swing.JFormattedTextField();
+        jCheckBoxMarried = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabelFirstname6 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBoxVegeterian = new javax.swing.JCheckBox();
+        jCheckBoxSmoker = new javax.swing.JCheckBox();
         jLabelFirstname7 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBoxAlcohol = new javax.swing.JCheckBox();
         jLabelFirstname8 = new javax.swing.JLabel();
         jLabelFirstname9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldStimulans = new javax.swing.JTextField();
         jLabelSurname9 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldCoffe = new javax.swing.JFormattedTextField();
         jLabelSurname10 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldDrinks = new javax.swing.JFormattedTextField();
         jLabelFirstname10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldRegularMeals = new javax.swing.JTextField();
         jLabelFirstname11 = new javax.swing.JLabel();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBoxEatingHome = new javax.swing.JCheckBox();
         jLabelSurname11 = new javax.swing.JLabel();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldAvgCigarettes = new javax.swing.JFormattedTextField();
         jLabelSurname12 = new javax.swing.JLabel();
-        jFormattedTextField9 = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldAvgDrinks = new javax.swing.JFormattedTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabelFirstname12 = new javax.swing.JLabel();
         jLabelMiddle7 = new javax.swing.JLabel();
         jLabelSurname13 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint = new javax.swing.JTextArea();
+        jTextAreaStateOfComplainTreatmentHistory = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint1 = new javax.swing.JTextArea();
-        jTextField4 = new javax.swing.JTextField();
+        jTextAreaStateOfComplaintComplaintStatement = new javax.swing.JTextArea();
+        jTextFieldHospitalTreated = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextFieldFirstName17 = new javax.swing.JTextField();
+        jTextFieldFirstNameDiabetic = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextFieldFirstName18 = new javax.swing.JTextField();
+        jTextFieldFirstNameHypertensive = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint2 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintCardiac = new javax.swing.JTextArea();
         jLabelFirstname13 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint3 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintDigestive = new javax.swing.JTextArea();
         jLabelFirstname14 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint4 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintOrthopedic = new javax.swing.JTextArea();
         jLabelFirstname15 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint5 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintAllergies = new javax.swing.JTextArea();
         jLabelFirstname16 = new javax.swing.JLabel();
         jLabelFirstname17 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint6 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintNeurological = new javax.swing.JTextArea();
         jLabelFirstname18 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint7 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintDrug = new javax.swing.JTextArea();
         jLabelFirstname19 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint8 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintRespiratory = new javax.swing.JTextArea();
         jLabelFirstname20 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint9 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintSurgeries = new javax.swing.JTextArea();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextAreaStateOfComplaint10 = new javax.swing.JTextArea();
+        jTextAreaStateOfComplaintMuscular = new javax.swing.JTextArea();
         jLabelFirstname21 = new javax.swing.JLabel();
         jButtonCancel = new javax.swing.JButton();
         jButtonAdd = new javax.swing.JButton();
@@ -208,22 +208,22 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBoxSex3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        jComboBoxSexSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
 
         jLabelBirthdate3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate3.setText("Date of Birth(dd/mm/yyyy):");
 
-        jFormattedTextFieldBirthdate3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedTextFieldBirthdate3.setText("01/01/2000");
+        jFormattedTextFieldBirthdateExtensive.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jFormattedTextFieldBirthdateExtensive.setText("01/01/2000");
 
         jLabelFirstname3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFirstname3.setText("First name:");
 
-        jTextFieldFirstName3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldFirstNameExtensive.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName3jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
@@ -231,15 +231,15 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelMiddle3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelMiddle3.setText("Middle name:");
 
-        jTextFieldMiddleName3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldMiddleNameExtensive.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldMiddleName3KeyTyped(evt);
+                jTextFieldMiddleNameExtensiveKeyTyped(evt);
             }
         });
 
-        jTextFieldSurname3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldSurnameSurname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSurname3KeyTyped(evt);
+                jTextFieldSurnameSurnameKeyTyped(evt);
             }
         });
 
@@ -254,7 +254,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Outpatient ID (OPID):");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
+        jFormattedTextFieldOutpatientID.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -266,7 +266,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(221, 221, 221)
                         .addComponent(jLabelBirthdate3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedTextFieldBirthdate3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextFieldBirthdateExtensive, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -277,13 +277,13 @@ public class ExtensiveForm extends javax.swing.JDialog {
                             .addComponent(jLabelSex3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField1)
-                            .addComponent(jTextFieldFirstName3)
-                            .addComponent(jTextFieldMiddleName3)
+                            .addComponent(jFormattedTextFieldOutpatientID)
+                            .addComponent(jTextFieldFirstNameExtensive)
+                            .addComponent(jTextFieldMiddleNameExtensive)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBoxSex3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxSexSex, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 39, Short.MAX_VALUE))
-                            .addComponent(jTextFieldSurname3))))
+                            .addComponent(jTextFieldSurnameSurname))))
                 .addGap(348, 348, 348))
         );
         jPanel1Layout.setVerticalGroup(
@@ -292,27 +292,27 @@ public class ExtensiveForm extends javax.swing.JDialog {
                 .addGap(109, 109, 109)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldOutpatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstname3)
-                    .addComponent(jTextFieldFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFirstNameExtensive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMiddle3)
-                    .addComponent(jTextFieldMiddleName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMiddleNameExtensive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname3)
-                    .addComponent(jTextFieldSurname3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldSurnameSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSex3)
-                    .addComponent(jComboBoxSex3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSexSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBirthdate3)
-                    .addComponent(jFormattedTextFieldBirthdate3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldBirthdateExtensive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
 
@@ -324,29 +324,29 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("State:");
 
-        jTextFieldFirstName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldStatePresent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStatePresent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstNamejTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldStatePresentjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("City:");
 
-        jTextFieldFirstName1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldCityPresent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldCityPresent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName1jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldCityPresentjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
-        jTextFieldFirstName2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStreetPresent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Street:");
 
-        jFormattedTextFieldBirthdate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldHouseNumberPresent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabelBirthdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -356,13 +356,13 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelBirthdate1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate1.setText("Area code:");
 
-        jFormattedTextFieldBirthdate1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldAreacodePresent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabelBirthdate2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate2.setText("Zip code:");
 
-        jFormattedTextFieldBirthdate2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextZipcodePresent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabelBirthdate4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -371,7 +371,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Permament Address");
 
-        jFormattedTextFieldBirthdate4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldAreacodePermanent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("State:");
@@ -380,38 +380,38 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelBirthdate5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate5.setText("Zip code:");
 
-        jTextFieldFirstName4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName4.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldStatePermanent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStatePermanent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName4jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldStatePermanentjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
-        jFormattedTextFieldBirthdate5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldZipcodePermanent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("City:");
 
-        jTextFieldFirstName5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName5.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldCityPermanent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldCityPermanent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName5jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldCityPermanentjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
-        jTextFieldFirstName6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStreetPermanent.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Street:");
 
-        jFormattedTextFieldBirthdate6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldHousenumberPermanent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         jLabelBirthdate6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate6.setText("House number:");
 
-        jFormattedTextFieldPhoneNum.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
-        jFormattedTextFieldPhoneNum.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumWork.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
+        jFormattedTextFieldPhoneNumWork.setToolTipText("+385");
 
         jLabelBirthdate7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -420,44 +420,44 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Present Address");
 
-        jFormattedTextFieldPhoneNum1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
-        jFormattedTextFieldPhoneNum1.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumHome.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
+        jFormattedTextFieldPhoneNumHome.setToolTipText("+385");
 
         jLabelBirthdate8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate8.setText("Telephone (Home):");
 
-        jFormattedTextFieldPhoneNum2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
-        jFormattedTextFieldPhoneNum2.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumMobile.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
+        jFormattedTextFieldPhoneNumMobile.setToolTipText("+385");
 
         jLabelBirthdate9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate9.setText("Mobile:");
 
-        jTextFieldFirstName7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName7.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldPager.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldPager.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName7jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Pager:");
 
-        jTextFieldFirstName8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName8.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldFax.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFax.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName8jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Fax:");
 
-        jTextFieldFirstName9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName9.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName9jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
@@ -480,11 +480,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldStatePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextFieldCityPresent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabelBirthdate2)
@@ -493,10 +493,10 @@ public class ExtensiveForm extends javax.swing.JDialog {
                                     .addComponent(jLabelBirthdate))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextFieldBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jFormattedTextFieldBirthdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jFormattedTextFieldBirthdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jFormattedTextFieldHouseNumberPresent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldStreetPresent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextFieldAreacodePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextZipcodePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(103, 103, 103)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -506,12 +506,12 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(56, 56, 56)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldFirstName4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldStatePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldFirstName5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCityPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabelBirthdate5)
@@ -520,10 +520,10 @@ public class ExtensiveForm extends javax.swing.JDialog {
                                 .addComponent(jLabelBirthdate6))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextFieldBirthdate6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldFirstName6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFormattedTextFieldBirthdate4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFormattedTextFieldBirthdate5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jFormattedTextFieldHousenumberPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldStreetPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldAreacodePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldZipcodePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
@@ -531,31 +531,31 @@ public class ExtensiveForm extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelBirthdate7)
                         .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextFieldPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldPhoneNumWork, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabelBirthdate9)
                             .addGap(18, 18, 18)
-                            .addComponent(jFormattedTextFieldPhoneNum2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldPhoneNumMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabelBirthdate8)
                             .addGap(18, 18, 18)
-                            .addComponent(jFormattedTextFieldPhoneNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldPhoneNumHome, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldFirstName8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldFax, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldFirstName9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldFirstName7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldPager, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(218, 218, 218))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -572,74 +572,74 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldStatePresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextFieldFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCityPresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextFieldFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldStreetPresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate)
-                            .addComponent(jFormattedTextFieldBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldHouseNumberPresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate1)
-                            .addComponent(jFormattedTextFieldBirthdate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldAreacodePresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate2)
-                            .addComponent(jFormattedTextFieldBirthdate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jFormattedTextZipcodePresent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextFieldFirstName4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldStatePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jTextFieldFirstName5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCityPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextFieldFirstName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldStreetPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate6)
-                            .addComponent(jFormattedTextFieldBirthdate6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldHousenumberPermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate4)
-                            .addComponent(jFormattedTextFieldBirthdate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldAreacodePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelBirthdate5)
-                            .addComponent(jFormattedTextFieldBirthdate5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldZipcodePermanent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextFieldPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldPhoneNumWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBirthdate7)
                     .addComponent(jLabel13)
-                    .addComponent(jTextFieldFirstName9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextFieldPhoneNum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldPhoneNumHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBirthdate8)
                     .addComponent(jLabel12)
-                    .addComponent(jTextFieldFirstName8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel11)
-                        .addComponent(jTextFieldFirstName7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldPager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormattedTextFieldPhoneNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldPhoneNumMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelBirthdate9)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
@@ -964,19 +964,17 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelSurname8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname8.setText("Gross Annual Income:");
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedNbDependants.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedHeight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedWeight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "0" }));
+        jComboBoxBloodType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "0" }));
 
-        jTextField1.setText("jTextField1");
+        jFormattedTextFieldGrossIncome.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
-        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
-        jCheckBox1.setText("Married");
+        jCheckBoxMarried.setText("Married");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -999,15 +997,15 @@ public class ExtensiveForm extends javax.swing.JDialog {
                             .addComponent(jLabelSurname8))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jFormattedTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                                .addComponent(jFormattedTextFieldGrossIncome, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldOccupation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))))
+                                .addComponent(jCheckBoxMarried, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jFormattedHeight, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFormattedNbDependants, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFormattedWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))))
                 .addContainerGap(453, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1018,31 +1016,31 @@ public class ExtensiveForm extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstname5)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jCheckBoxMarried))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMiddle5)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedNbDependants, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname5)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname7)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxBloodType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMiddle6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname8)
-                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldGrossIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -1055,15 +1053,15 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelFirstname6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFirstname6.setText("Vegeterian:");
 
-        jCheckBox2.setText("Yes");
+        jCheckBoxVegeterian.setText("Yes");
 
-        jCheckBox3.setText("Yes");
+        jCheckBoxSmoker.setText("Yes");
 
         jLabelFirstname7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFirstname7.setText("Smoker:");
 
-        jCheckBox4.setText("Yes");
+        jCheckBoxAlcohol.setText("Yes");
 
         jLabelFirstname8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1077,37 +1075,35 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelSurname9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname9.setText("Coffe per day:");
 
-        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedTextFieldCoffe.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
         jLabelSurname10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSurname10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname10.setText("Soft drinks per day:");
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedTextFieldDrinks.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
         jLabelFirstname10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFirstname10.setText("Regular meals:");
 
-        jTextField3.setText("jTextField2");
-
         jLabelFirstname11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelFirstname11.setText("Eating home predominantely:");
 
-        jCheckBox5.setText("Yes");
+        jCheckBoxEatingHome.setText("Yes");
 
         jLabelSurname11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSurname11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname11.setText("Avg cigarettes per day:");
 
-        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedTextFieldAvgCigarettes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
         jLabelSurname12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSurname12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname12.setText("Avg drinks per day:");
 
-        jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
+        jFormattedTextFieldAvgDrinks.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#"))));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1124,12 +1120,12 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jCheckBoxEatingHome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFormattedTextField8)
-                                    .addComponent(jFormattedTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jFormattedTextFieldAvgCigarettes)
+                                    .addComponent(jFormattedTextFieldAvgDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1140,7 +1136,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabelFirstname9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldStimulans, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1149,10 +1145,10 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCheckBoxSmoker, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxVegeterian, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                                 .addGap(46, 46, 46)))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelSurname10)
@@ -1161,15 +1157,15 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jFormattedTextField6)
-                                .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jFormattedTextFieldCoffe)
+                                .addComponent(jFormattedTextFieldDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldRegularMeals, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jLabelFirstname8)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
+                .addComponent(jCheckBoxAlcohol, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1181,45 +1177,45 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFirstname6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox2))
+                            .addComponent(jCheckBoxVegeterian))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFirstname7)
-                            .addComponent(jCheckBox3))
+                            .addComponent(jCheckBoxSmoker))
                         .addGap(95, 95, 95)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFirstname8)
-                            .addComponent(jCheckBox4))
+                            .addComponent(jCheckBoxAlcohol))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelSurname9)
-                            .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldCoffe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelSurname10)
-                            .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFirstname10)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldRegularMeals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(95, 95, 95)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstname9)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldStimulans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstname11)
-                    .addComponent(jCheckBox5))
+                    .addComponent(jCheckBoxEatingHome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname11)
-                    .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldAvgCigarettes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname12)
-                    .addComponent(jFormattedTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldAvgDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58))
         );
 
@@ -1242,35 +1238,33 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint.setColumns(20);
-        jTextAreaStateOfComplaint.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaStateOfComplaint);
+        jTextAreaStateOfComplainTreatmentHistory.setColumns(20);
+        jTextAreaStateOfComplainTreatmentHistory.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaStateOfComplainTreatmentHistory);
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint1.setColumns(20);
-        jTextAreaStateOfComplaint1.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaStateOfComplaint1);
-
-        jTextField4.setText("jTextField4");
+        jTextAreaStateOfComplaintComplaintStatement.setColumns(20);
+        jTextAreaStateOfComplaintComplaintStatement.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaStateOfComplaintComplaintStatement);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel26.setText("Basic complaints");
 
-        jTextFieldFirstName17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName17.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldFirstNameDiabetic.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFirstNameDiabetic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName17jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldFirstNameDiabeticjTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setText("Diabetic:");
 
-        jTextFieldFirstName18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFirstName18.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldFirstNameHypertensive.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFirstNameHypertensive.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFirstName18jTextFieldOnlyAplhabeticKeyTyped(evt);
+                jTextFieldFirstNameHypertensivejTextFieldOnlyAplhabeticKeyTyped(evt);
             }
         });
 
@@ -1279,9 +1273,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint2.setColumns(20);
-        jTextAreaStateOfComplaint2.setRows(5);
-        jScrollPane3.setViewportView(jTextAreaStateOfComplaint2);
+        jTextAreaStateOfComplaintCardiac.setColumns(20);
+        jTextAreaStateOfComplaintCardiac.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaStateOfComplaintCardiac);
 
         jLabelFirstname13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1289,9 +1283,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint3.setColumns(20);
-        jTextAreaStateOfComplaint3.setRows(5);
-        jScrollPane4.setViewportView(jTextAreaStateOfComplaint3);
+        jTextAreaStateOfComplaintDigestive.setColumns(20);
+        jTextAreaStateOfComplaintDigestive.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaStateOfComplaintDigestive);
 
         jLabelFirstname14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1299,9 +1293,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint4.setColumns(20);
-        jTextAreaStateOfComplaint4.setRows(5);
-        jScrollPane5.setViewportView(jTextAreaStateOfComplaint4);
+        jTextAreaStateOfComplaintOrthopedic.setColumns(20);
+        jTextAreaStateOfComplaintOrthopedic.setRows(5);
+        jScrollPane5.setViewportView(jTextAreaStateOfComplaintOrthopedic);
 
         jLabelFirstname15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1309,9 +1303,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint5.setColumns(20);
-        jTextAreaStateOfComplaint5.setRows(5);
-        jScrollPane6.setViewportView(jTextAreaStateOfComplaint5);
+        jTextAreaStateOfComplaintAllergies.setColumns(20);
+        jTextAreaStateOfComplaintAllergies.setRows(5);
+        jScrollPane6.setViewportView(jTextAreaStateOfComplaintAllergies);
 
         jLabelFirstname16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1323,9 +1317,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint6.setColumns(20);
-        jTextAreaStateOfComplaint6.setRows(5);
-        jScrollPane7.setViewportView(jTextAreaStateOfComplaint6);
+        jTextAreaStateOfComplaintNeurological.setColumns(20);
+        jTextAreaStateOfComplaintNeurological.setRows(5);
+        jScrollPane7.setViewportView(jTextAreaStateOfComplaintNeurological);
 
         jLabelFirstname18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1333,9 +1327,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint7.setColumns(20);
-        jTextAreaStateOfComplaint7.setRows(5);
-        jScrollPane8.setViewportView(jTextAreaStateOfComplaint7);
+        jTextAreaStateOfComplaintDrug.setColumns(20);
+        jTextAreaStateOfComplaintDrug.setRows(5);
+        jScrollPane8.setViewportView(jTextAreaStateOfComplaintDrug);
 
         jLabelFirstname19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1343,9 +1337,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint8.setColumns(20);
-        jTextAreaStateOfComplaint8.setRows(5);
-        jScrollPane9.setViewportView(jTextAreaStateOfComplaint8);
+        jTextAreaStateOfComplaintRespiratory.setColumns(20);
+        jTextAreaStateOfComplaintRespiratory.setRows(5);
+        jScrollPane9.setViewportView(jTextAreaStateOfComplaintRespiratory);
 
         jLabelFirstname20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1353,15 +1347,15 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jScrollPane10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint9.setColumns(20);
-        jTextAreaStateOfComplaint9.setRows(5);
-        jScrollPane10.setViewportView(jTextAreaStateOfComplaint9);
+        jTextAreaStateOfComplaintSurgeries.setColumns(20);
+        jTextAreaStateOfComplaintSurgeries.setRows(5);
+        jScrollPane10.setViewportView(jTextAreaStateOfComplaintSurgeries);
 
         jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTextAreaStateOfComplaint10.setColumns(20);
-        jTextAreaStateOfComplaint10.setRows(5);
-        jScrollPane11.setViewportView(jTextAreaStateOfComplaint10);
+        jTextAreaStateOfComplaintMuscular.setColumns(20);
+        jTextAreaStateOfComplaintMuscular.setRows(5);
+        jScrollPane11.setViewportView(jTextAreaStateOfComplaintMuscular);
 
         jLabelFirstname21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelFirstname21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1389,7 +1383,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(88, 88, 88)
                         .addComponent(jLabelSurname13)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldHospitalTreated, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1400,11 +1394,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
                                 .addGroup(jPanel6Layout.createSequentialGroup()
                                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFirstName17, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldFirstNameDiabetic, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel6Layout.createSequentialGroup()
                                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFirstName18, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextFieldFirstNameHypertensive, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel25)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1464,7 +1458,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSurname13)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldHospitalTreated, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
@@ -1494,11 +1488,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jTextFieldFirstName17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldFirstNameDiabetic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel28)
-                            .addComponent(jTextFieldFirstName18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldFirstNameHypertensive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelFirstname13)
@@ -1529,6 +1523,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jButtonAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAdd.setText("Add");
+        jButtonAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1563,49 +1562,49 @@ public class ExtensiveForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldFirstName3jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName3jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName3jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldMiddleName3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMiddleName3KeyTyped
+    private void jTextFieldMiddleNameExtensiveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMiddleNameExtensiveKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMiddleName3KeyTyped
+    }//GEN-LAST:event_jTextFieldMiddleNameExtensiveKeyTyped
 
-    private void jTextFieldSurname3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSurname3KeyTyped
+    private void jTextFieldSurnameSurnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSurnameSurnameKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSurname3KeyTyped
+    }//GEN-LAST:event_jTextFieldSurnameSurnameKeyTyped
 
-    private void jTextFieldFirstNamejTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNamejTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldStatePresentjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldStatePresentjTextFieldOnlyAplhabeticKeyTyped
         char c = evt.getKeyChar();
 
         if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
-    }//GEN-LAST:event_jTextFieldFirstNamejTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldStatePresentjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName1jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName1jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldCityPresentjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCityPresentjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName1jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldCityPresentjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName4jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName4jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldStatePermanentjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldStatePermanentjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName4jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldStatePermanentjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName5jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName5jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldCityPermanentjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCityPermanentjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName5jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldCityPermanentjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName7jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName7jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName7jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName8jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName8jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName8jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName9jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName9jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName9jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped
 
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
         dispose();
@@ -1643,13 +1642,17 @@ public class ExtensiveForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFirstName15jTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName17jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName17jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldFirstNameDiabeticjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameDiabeticjTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName17jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldFirstNameDiabeticjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldFirstName18jTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstName18jTextFieldOnlyAplhabeticKeyTyped
+    private void jTextFieldFirstNameHypertensivejTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameHypertensivejTextFieldOnlyAplhabeticKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstName18jTextFieldOnlyAplhabeticKeyTyped
+    }//GEN-LAST:event_jTextFieldFirstNameHypertensivejTextFieldOnlyAplhabeticKeyTyped
+
+    private void jButtonAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddMouseClicked
+//       /------------------
+    }//GEN-LAST:event_jButtonAddMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1698,38 +1701,38 @@ public class ExtensiveForm extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonCancel;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBoxSex3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
-    private javax.swing.JFormattedTextField jFormattedTextField8;
-    private javax.swing.JFormattedTextField jFormattedTextField9;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate2;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate3;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate4;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate5;
-    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate6;
+    private javax.swing.JCheckBox jCheckBoxAlcohol;
+    private javax.swing.JCheckBox jCheckBoxEatingHome;
+    private javax.swing.JCheckBox jCheckBoxMarried;
+    private javax.swing.JCheckBox jCheckBoxSmoker;
+    private javax.swing.JCheckBox jCheckBoxVegeterian;
+    private javax.swing.JComboBox<String> jComboBoxBloodType;
+    private javax.swing.JComboBox<String> jComboBoxSexSex;
+    private javax.swing.JFormattedTextField jFormattedHeight;
+    private javax.swing.JFormattedTextField jFormattedNbDependants;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAreacodePermanent;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAreacodePresent;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAvgCigarettes;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAvgDrinks;
     private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate7;
     private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate8;
     private javax.swing.JFormattedTextField jFormattedTextFieldBirthdate9;
-    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum;
-    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum2;
+    private javax.swing.JFormattedTextField jFormattedTextFieldBirthdateExtensive;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCoffe;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDrinks;
+    private javax.swing.JFormattedTextField jFormattedTextFieldGrossIncome;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHouseNumberPresent;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHousenumberPermanent;
+    private javax.swing.JFormattedTextField jFormattedTextFieldOutpatientID;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum3;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum4;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum5;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumHome;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumMobile;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumWork;
+    private javax.swing.JFormattedTextField jFormattedTextFieldZipcodePermanent;
+    private javax.swing.JFormattedTextField jFormattedTextZipcodePresent;
+    private javax.swing.JFormattedTextField jFormattedWeight;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1828,23 +1831,21 @@ public class ExtensiveForm extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint1;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint10;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint2;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint3;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint4;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint5;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint6;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint7;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint8;
-    private javax.swing.JTextArea jTextAreaStateOfComplaint9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextFieldFirstName;
-    private javax.swing.JTextField jTextFieldFirstName1;
+    private javax.swing.JTextArea jTextAreaStateOfComplainTreatmentHistory;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintAllergies;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintCardiac;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintComplaintStatement;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintDigestive;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintDrug;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintMuscular;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintNeurological;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintOrthopedic;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintRespiratory;
+    private javax.swing.JTextArea jTextAreaStateOfComplaintSurgeries;
+    private javax.swing.JTextField jTextFieldCityPermanent;
+    private javax.swing.JTextField jTextFieldCityPresent;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldFax;
     private javax.swing.JTextField jTextFieldFirstName10;
     private javax.swing.JTextField jTextFieldFirstName11;
     private javax.swing.JTextField jTextFieldFirstName12;
@@ -1852,19 +1853,21 @@ public class ExtensiveForm extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldFirstName14;
     private javax.swing.JTextField jTextFieldFirstName15;
     private javax.swing.JTextField jTextFieldFirstName16;
-    private javax.swing.JTextField jTextFieldFirstName17;
-    private javax.swing.JTextField jTextFieldFirstName18;
-    private javax.swing.JTextField jTextFieldFirstName2;
-    private javax.swing.JTextField jTextFieldFirstName3;
-    private javax.swing.JTextField jTextFieldFirstName4;
-    private javax.swing.JTextField jTextFieldFirstName5;
-    private javax.swing.JTextField jTextFieldFirstName6;
-    private javax.swing.JTextField jTextFieldFirstName7;
-    private javax.swing.JTextField jTextFieldFirstName8;
-    private javax.swing.JTextField jTextFieldFirstName9;
-    private javax.swing.JTextField jTextFieldMiddleName3;
+    private javax.swing.JTextField jTextFieldFirstNameDiabetic;
+    private javax.swing.JTextField jTextFieldFirstNameExtensive;
+    private javax.swing.JTextField jTextFieldFirstNameHypertensive;
+    private javax.swing.JTextField jTextFieldHospitalTreated;
     private javax.swing.JTextField jTextFieldMiddleName4;
-    private javax.swing.JTextField jTextFieldSurname3;
+    private javax.swing.JTextField jTextFieldMiddleNameExtensive;
+    private javax.swing.JTextField jTextFieldOccupation;
+    private javax.swing.JTextField jTextFieldPager;
+    private javax.swing.JTextField jTextFieldRegularMeals;
+    private javax.swing.JTextField jTextFieldStatePermanent;
+    private javax.swing.JTextField jTextFieldStatePresent;
+    private javax.swing.JTextField jTextFieldStimulans;
+    private javax.swing.JTextField jTextFieldStreetPermanent;
+    private javax.swing.JTextField jTextFieldStreetPresent;
     private javax.swing.JTextField jTextFieldSurname4;
+    private javax.swing.JTextField jTextFieldSurnameSurname;
     // End of variables declaration//GEN-END:variables
 }

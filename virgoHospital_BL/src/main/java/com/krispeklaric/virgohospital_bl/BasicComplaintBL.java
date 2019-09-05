@@ -5,6 +5,9 @@
  */
 package com.krispeklaric.virgohospital_bl;
 
+import com.krispeklaric.virgohospital_bl.Messages.basic_complaint.InsertBasicComplaintResult;
+import com.krispeklaric.virgohospital_bl.Messages.basic_complaint.GetSingleBasicComplaintResult;
+import com.krispeklaric.virgohospital_bl.Messages.basic_complaint.GetBasicComplaintResult;
 import com.krispeklaric.virgohospital_bl.Messages.*;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.IBasicComplaintRepo;

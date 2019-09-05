@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IPrescriptionRepo {
 
-    public void create(Prescription prescription);
+    public Prescription create(Prescription prescription);
 
-    public void edit(Prescription prescription) throws NonexistentEntityException, Exception;
+    public Prescription edit(Prescription prescription) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

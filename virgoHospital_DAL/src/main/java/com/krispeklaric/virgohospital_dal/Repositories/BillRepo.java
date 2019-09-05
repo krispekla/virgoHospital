@@ -29,7 +29,7 @@ public class BillRepo extends BaseRepo implements IBillRepo, Serializable {
     }
 
 
-    public void create(Bill bill) {
+    public Bill create(Bill bill) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -64,6 +64,7 @@ public class BillRepo extends BaseRepo implements IBillRepo, Serializable {
                 payment = em.merge(payment);
             }
             em.getTransaction().commit();
+            return bill;
         } finally {
             if (em != null) {
                 em.close();
@@ -71,7 +72,7 @@ public class BillRepo extends BaseRepo implements IBillRepo, Serializable {
         }
     }
 
-    public void edit(Bill bill) throws NonexistentEntityException, Exception {
+    public Bill edit(Bill bill) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -117,6 +118,7 @@ public class BillRepo extends BaseRepo implements IBillRepo, Serializable {
                 paymentNew = em.merge(paymentNew);
             }
             em.getTransaction().commit();
+            return bill;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

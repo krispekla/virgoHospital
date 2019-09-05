@@ -26,7 +26,7 @@ public class TestTypeRepo extends BaseRepo implements ITestTypeRepo, Serializabl
         return emf.createEntityManager();
     }
 
-    public void create(TestType testType) {
+    public TestType create(TestType testType) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -47,6 +47,7 @@ public class TestTypeRepo extends BaseRepo implements ITestTypeRepo, Serializabl
                 test = em.merge(test);
             }
             em.getTransaction().commit();
+            return testType;
         } finally {
             if (em != null) {
                 em.close();
@@ -54,7 +55,7 @@ public class TestTypeRepo extends BaseRepo implements ITestTypeRepo, Serializabl
         }
     }
 
-    public void edit(TestType testType) throws NonexistentEntityException, Exception {
+    public TestType edit(TestType testType) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,6 +82,7 @@ public class TestTypeRepo extends BaseRepo implements ITestTypeRepo, Serializabl
                 testNew = em.merge(testNew);
             }
             em.getTransaction().commit();
+            return testType;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

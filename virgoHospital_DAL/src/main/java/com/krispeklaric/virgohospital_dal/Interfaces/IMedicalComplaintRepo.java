@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IMedicalComplaintRepo {
 
-    public void create(MedicalComplaint medicalComplaint);
+    public MedicalComplaint create(MedicalComplaint medicalComplaint);
 
-    public void edit(MedicalComplaint medicalComplaint) throws NonexistentEntityException, Exception;
+    public MedicalComplaint edit(MedicalComplaint medicalComplaint) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

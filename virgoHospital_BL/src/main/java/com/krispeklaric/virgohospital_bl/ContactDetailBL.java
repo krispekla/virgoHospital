@@ -5,9 +5,9 @@
  */
 package com.krispeklaric.virgohospital_bl;
 
-import com.krispeklaric.virgohospital_bl.Messages.GetContactDetailResult;
-import com.krispeklaric.virgohospital_bl.Messages.GetSingleContactDetailResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.contact_detail.GetContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.contact_detail.GetSingleContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.IContactDetailRepo;
 import com.krispeklaric.virgohospital_dal.Models.ContactDetail;

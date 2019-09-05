@@ -25,13 +25,14 @@ public class PatientLifestyleRepo extends BaseRepo implements IPatientLifestyleR
         return emf.createEntityManager();
     }
 
-    public void create(PatientLifestyle patientLifestyle) {
+    public PatientLifestyle create(PatientLifestyle patientLifestyle) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(patientLifestyle);
             em.getTransaction().commit();
+            return patientLifestyle;
         } finally {
             if (em != null) {
                 em.close();
@@ -39,13 +40,14 @@ public class PatientLifestyleRepo extends BaseRepo implements IPatientLifestyleR
         }
     }
 
-    public void edit(PatientLifestyle patientLifestyle) throws NonexistentEntityException, Exception {
+    public PatientLifestyle edit(PatientLifestyle patientLifestyle) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             patientLifestyle = em.merge(patientLifestyle);
             em.getTransaction().commit();
+            return patientLifestyle;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

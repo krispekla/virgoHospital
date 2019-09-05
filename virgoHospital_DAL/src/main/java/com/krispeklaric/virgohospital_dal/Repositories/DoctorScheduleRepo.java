@@ -26,7 +26,7 @@ public class DoctorScheduleRepo extends BaseRepo implements IDoctorScheduleRepo,
         return emf.createEntityManager();
     }
 
-    public void create(DoctorSchedule doctorSchedule) {
+    public DoctorSchedule create(DoctorSchedule doctorSchedule) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -42,6 +42,7 @@ public class DoctorScheduleRepo extends BaseRepo implements IDoctorScheduleRepo,
                 doctor = em.merge(doctor);
             }
             em.getTransaction().commit();
+            return doctorSchedule;
         } finally {
             if (em != null) {
                 em.close();
@@ -49,7 +50,7 @@ public class DoctorScheduleRepo extends BaseRepo implements IDoctorScheduleRepo,
         }
     }
 
-    public void edit(DoctorSchedule doctorSchedule) throws NonexistentEntityException, Exception {
+    public DoctorSchedule edit(DoctorSchedule doctorSchedule) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -71,6 +72,7 @@ public class DoctorScheduleRepo extends BaseRepo implements IDoctorScheduleRepo,
                 doctorNew = em.merge(doctorNew);
             }
             em.getTransaction().commit();
+            return doctorSchedule;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

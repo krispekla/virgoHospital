@@ -8,12 +8,12 @@ package com.krispeklaric.virgohospital_gui;
 import com.krispeklaric.virgohospital_bl.AddressBL;
 import com.krispeklaric.virgohospital_bl.BasicComplaintBL;
 import com.krispeklaric.virgohospital_bl.ContactDetailBL;
-import com.krispeklaric.virgohospital_bl.Messages.InsertAddressResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertBasicComplaintResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertContactDetailResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertNextOfKinResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertPatientResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertPhoneNumberResult;
+import com.krispeklaric.virgohospital_bl.Messages.address.InsertAddressResult;
+import com.krispeklaric.virgohospital_bl.Messages.basic_complaint.InsertBasicComplaintResult;
+import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.next_of_kin.InsertNextOfKinResult;
+import com.krispeklaric.virgohospital_bl.Messages.patient.InsertPatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
 import com.krispeklaric.virgohospital_bl.NextOfKinBL;
 import com.krispeklaric.virgohospital_bl.PatientsBL;
 import com.krispeklaric.virgohospital_bl.PhoneNumberBL;
@@ -179,6 +179,7 @@ public class SimpleForm extends javax.swing.JDialog {
         jLabel1Contact2.setText("Contact telephone number 2:");
 
         jFormattedTextFieldPhoneNum1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
+        jFormattedTextFieldPhoneNum1.setText("+385");
         jFormattedTextFieldPhoneNum1.setToolTipText("+385");
 
         jFormattedTextFieldPhoneNum2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));

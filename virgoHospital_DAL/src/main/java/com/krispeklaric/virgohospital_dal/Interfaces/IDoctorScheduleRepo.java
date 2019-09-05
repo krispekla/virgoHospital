@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IDoctorScheduleRepo {
 
-    public void create(DoctorSchedule doctorSchedule);
+    public DoctorSchedule create(DoctorSchedule doctorSchedule);
 
-    public void edit(DoctorSchedule doctorSchedule) throws NonexistentEntityException, Exception;
+    public DoctorSchedule edit(DoctorSchedule doctorSchedule) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface ITestTypeRepo {
 
-    public void create(TestType testType);
+    public TestType create(TestType testType);
 
-    public void edit(TestType testType) throws NonexistentEntityException, Exception;
+    public TestType edit(TestType testType) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

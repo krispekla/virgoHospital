@@ -5,9 +5,9 @@
  */
 package com.krispeklaric.virgohospital_bl;
 
-import com.krispeklaric.virgohospital_bl.Messages.GetPhoneNumberResult;
-import com.krispeklaric.virgohospital_bl.Messages.GetSinglePhoneNumberResult;
-import com.krispeklaric.virgohospital_bl.Messages.InsertPhoneNumberResult;
+import com.krispeklaric.virgohospital_bl.Messages.phone_number.GetPhoneNumberResult;
+import com.krispeklaric.virgohospital_bl.Messages.phone_number.GetSinglePhoneNumberResult;
+import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.IPhoneNumberRepo;
 import com.krispeklaric.virgohospital_dal.Models.PhoneNumber;

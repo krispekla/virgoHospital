@@ -80,4 +80,7 @@ public class RepoFactory {
         return new TestTypeRepo();
     }
 
+     public static IDrugRepo getDrugRepo() {
+        return new DrugRepo();
+    }
 }

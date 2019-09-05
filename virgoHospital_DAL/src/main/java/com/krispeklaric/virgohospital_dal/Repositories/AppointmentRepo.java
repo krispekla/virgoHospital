@@ -30,7 +30,7 @@ public class AppointmentRepo extends BaseRepo implements IAppointmentRepo, Seria
         return emf.createEntityManager();
     }
 
-    public void create(Appointment appointment) {
+    public Appointment create(Appointment appointment) {
         if (appointment.getTests() == null) {
             appointment.setTests(new ArrayList<Test>());
         }
@@ -96,6 +96,7 @@ public class AppointmentRepo extends BaseRepo implements IAppointmentRepo, Seria
                 }
             }
             em.getTransaction().commit();
+            return appointment;
         } finally {
             if (em != null) {
                 em.close();
@@ -103,7 +104,7 @@ public class AppointmentRepo extends BaseRepo implements IAppointmentRepo, Seria
         }
     }
 
-    public void edit(Appointment appointment) throws NonexistentEntityException, Exception {
+    public Appointment edit(Appointment appointment) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -196,6 +197,7 @@ public class AppointmentRepo extends BaseRepo implements IAppointmentRepo, Seria
                 }
             }
             em.getTransaction().commit();
+            return appointment;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {

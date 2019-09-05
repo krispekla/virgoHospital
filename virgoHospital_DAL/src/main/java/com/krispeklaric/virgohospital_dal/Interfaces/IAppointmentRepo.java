@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface IAppointmentRepo {
 
-    public void create(Appointment appointment);
+    public Appointment create(Appointment appointment);
 
-    public void edit(Appointment appointment) throws NonexistentEntityException, Exception;
+    public Appointment edit(Appointment appointment) throws NonexistentEntityException, Exception;
 
     public void destroy(Long id) throws NonexistentEntityException;
 

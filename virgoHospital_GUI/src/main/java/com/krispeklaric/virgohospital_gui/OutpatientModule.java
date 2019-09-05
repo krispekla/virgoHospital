@@ -5,6 +5,7 @@
  */
 package com.krispeklaric.virgohospital_gui;
 
+import com.krispeklaric.virgohospital_bl.Messages.patient.GetPatientsResult;
 import com.krispeklaric.virgohospital_bl.*;
 import com.krispeklaric.virgohospital_bl.Messages.*;
 import com.krispeklaric.virgohospital_dal.Models.*;

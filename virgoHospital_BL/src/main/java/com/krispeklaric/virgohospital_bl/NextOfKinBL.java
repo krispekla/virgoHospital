@@ -5,6 +5,9 @@
  */
 package com.krispeklaric.virgohospital_bl;
 
+import com.krispeklaric.virgohospital_bl.Messages.next_of_kin.InsertNextOfKinResult;
+import com.krispeklaric.virgohospital_bl.Messages.next_of_kin.GetSingleNextOfKinResult;
+import com.krispeklaric.virgohospital_bl.Messages.next_of_kin.GetNextOfKinResult;
 import com.krispeklaric.virgohospital_bl.Messages.*;
 import com.krispeklaric.virgohospital_dal.Factory.RepoFactory;
 import com.krispeklaric.virgohospital_dal.Interfaces.INextOfKinRepo;
