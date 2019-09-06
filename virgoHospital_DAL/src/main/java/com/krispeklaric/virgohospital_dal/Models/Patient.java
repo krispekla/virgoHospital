@@ -23,6 +23,9 @@ public class Patient implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = true)
+    private Long OPID;
+
     @Column(nullable = false)
     private String firstname;
 
@@ -66,6 +69,14 @@ public class Patient implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private List<Appointment> appointments;
+
+    public Long getOPID() {
+        return OPID;
+    }
+
+    public void setOPID(Long OPID) {
+        this.OPID = OPID;
+    }
 
     public String getFirstname() {
         return firstname;

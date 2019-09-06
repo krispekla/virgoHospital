@@ -171,19 +171,19 @@ public class SimpleForm extends javax.swing.JDialog {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextAreaStateOfComplaint.setColumns(20);
+        jTextAreaStateOfComplaint.setLineWrap(true);
         jTextAreaStateOfComplaint.setRows(5);
+        jTextAreaStateOfComplaint.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextAreaStateOfComplaint);
 
         jLabel1Contact2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1Contact2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1Contact2.setText("Contact telephone number 2:");
 
-        jFormattedTextFieldPhoneNum1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
-        jFormattedTextFieldPhoneNum1.setText("+385");
+        jFormattedTextFieldPhoneNum1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#############"))));
         jFormattedTextFieldPhoneNum1.setToolTipText("+385");
 
-        jFormattedTextFieldPhoneNum2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("+#############"))));
-        jFormattedTextFieldPhoneNum2.setText("+385");
+        jFormattedTextFieldPhoneNum2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#############"))));
         jFormattedTextFieldPhoneNum2.setToolTipText("+385");
 
         jTextFieldFirstNameKin.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -212,7 +212,7 @@ public class SimpleForm extends javax.swing.JDialog {
 
         jComboBoxContactCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Work", "Mobile", "Home" }));
 
-        jComboBoxContactCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Work", "Mobile", "Home" }));
+        jComboBoxContactCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mobile", "Work", "Home" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

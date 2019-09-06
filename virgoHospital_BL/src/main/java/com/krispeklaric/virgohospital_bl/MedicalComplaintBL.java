@@ -25,7 +25,7 @@ public class MedicalComplaintBL {
         this.repo = RepoFactory.getMedicalComplaintRepo();
     }
 
-    public InsertMedicalComplaintResult insertContactDetail(MedicalComplaint p) {
+    public InsertMedicalComplaintResult insertMedicalComplaint(MedicalComplaint p) {
         InsertMedicalComplaintResult result = new InsertMedicalComplaintResult();
         try {
             result.medicalComplaint = repo.create(p);
@@ -37,7 +37,7 @@ public class MedicalComplaintBL {
         return result;
     }
 
-    public InsertMedicalComplaintResult updateContactDetail(MedicalComplaint p) {
+    public InsertMedicalComplaintResult updateMedicalComplaint(MedicalComplaint p) {
         InsertMedicalComplaintResult result = new InsertMedicalComplaintResult();
 
         try {
@@ -49,7 +49,7 @@ public class MedicalComplaintBL {
         return result;
     }
 
-    public InsertMedicalComplaintResult deleteContactDetail(Long id) {
+    public InsertMedicalComplaintResult deleteMedicalComplaint(Long id) {
         InsertMedicalComplaintResult result = new InsertMedicalComplaintResult();
 
         try {

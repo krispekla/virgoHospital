@@ -25,7 +25,7 @@ public class PatientLifestyleBL {
         this.repo = RepoFactory.getPatientLifestyleRepo();
     }
 
-    public InsertPatientLifestyleResult insertContactDetail(PatientLifestyle p) {
+    public InsertPatientLifestyleResult insertPatientLifestyle(PatientLifestyle p) {
         InsertPatientLifestyleResult result = new InsertPatientLifestyleResult();
         try {
             result.patientLifestyle = repo.create(p);
@@ -37,7 +37,7 @@ public class PatientLifestyleBL {
         return result;
     }
 
-    public InsertPatientLifestyleResult updateContactDetail(PatientLifestyle p) {
+    public InsertPatientLifestyleResult updatePatientLifestyle(PatientLifestyle p) {
         InsertPatientLifestyleResult result = new InsertPatientLifestyleResult();
 
         try {
@@ -49,7 +49,7 @@ public class PatientLifestyleBL {
         return result;
     }
 
-    public InsertPatientLifestyleResult deleteContactDetail(Long id) {
+    public InsertPatientLifestyleResult deletePatientLifestyle(Long id) {
         InsertPatientLifestyleResult result = new InsertPatientLifestyleResult();
 
         try {

@@ -257,7 +257,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldOutpatientID">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="########" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -570,6 +570,9 @@
                   <Format format="###" subtype="-1" type="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldHouseNumberPresentActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBirthdate">
               <Properties>
@@ -608,7 +611,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextZipcodePresent">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="###" subtype="-1" type="0"/>
+                  <Format format="######" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -666,7 +669,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldZipcodePermanent">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="###" subtype="-1" type="0"/>
+                  <Format format="######" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -722,7 +725,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNumWork">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -747,7 +750,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNumHome">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -764,7 +767,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNumMobile">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -854,19 +857,19 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabelBirthdate11" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextFieldPhoneNum4" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="jFormattedTelephoneWorkNextOfKin" min="-2" pref="94" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabelBirthdate10" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextFieldPhoneNum3" min="-2" pref="94" max="-2" attributes="0"/>
+                                          <Component id="jFormattedTelephoneMobileNextOfKin" min="-2" pref="94" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabelBirthdate12" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextFieldPhoneNum5" min="-2" pref="94" max="-2" attributes="0"/>
+                                          <Component id="jFormattedTelephoneHomeNextOfKin" min="-2" pref="94" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -875,17 +878,17 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldFirstName11" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldFaxNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel16" min="-2" pref="39" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldFirstName12" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldEmailNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldFirstName10" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldPagerNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
@@ -900,9 +903,9 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextFieldSurname4" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldFirstName13" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldMiddleName4" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSurnameNextOfKin" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldFirstNextOfKin" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldMiddleNextOfKin" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -910,12 +913,12 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel18" min="-2" pref="39" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldFirstName14" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldStateNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel20" min="-2" pref="39" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldFirstName15" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCityNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -923,28 +926,38 @@
                                               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextFieldFirstName16" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldStreetNextOfKin" min="-2" pref="130" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jLabelBirthdate15" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jFormattedTextFieldBirthdate9" min="-2" pref="84" max="-2" attributes="0"/>
+                                              <Component id="jFormattedHouseNbNextOfKin" min="-2" pref="84" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace pref="49" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabelBirthdate14" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelBirthdate13" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jFormattedTextFieldBirthdate7" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldBirthdate8" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabelBirthdate14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelBirthdate13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jFormattedAreaNextOfKin" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="jFormattedZipCodeNextOfKin" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelSurname14" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldNextOfKinRelatinship" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -967,17 +980,21 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelFirstname4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldFirstName13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldFirstNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="jLabelSurname14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNextOfKinRelatinship" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelMiddle4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldMiddleName4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldMiddleNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelSurname4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldSurname4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSurnameNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
@@ -986,27 +1003,27 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldFirstName14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldStateNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldFirstName16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldStreetNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldFirstName15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCityNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelBirthdate15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldBirthdate9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedHouseNbNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelBirthdate13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldBirthdate7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedAreaNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelBirthdate14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldBirthdate8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedZipCodeNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1014,24 +1031,24 @@
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextFieldPhoneNum4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTelephoneWorkNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelBirthdate11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldFirstName12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldEmailNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextFieldPhoneNum5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTelephoneHomeNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelBirthdate12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldFirstName11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldFaxNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextFieldPhoneNum3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTelephoneMobileNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelBirthdate10" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldFirstName10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPagerNextOfKin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
@@ -1039,10 +1056,10 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNum3">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTelephoneMobileNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -1056,15 +1073,12 @@
                 <Property name="text" type="java.lang.String" value="Mobile:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName10">
+            <Component class="javax.swing.JTextField" name="jTextFieldPagerNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName10jTextFieldOnlyAplhabeticKeyTyped"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
@@ -1074,15 +1088,12 @@
                 <Property name="text" type="java.lang.String" value="Pager:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName11">
+            <Component class="javax.swing.JTextField" name="jTextFieldFaxNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName11jTextFieldOnlyAplhabeticKeyTyped"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -1092,14 +1103,14 @@
                 <Property name="text" type="java.lang.String" value="Fax:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName12">
+            <Component class="javax.swing.JTextField" name="jTextFieldEmailNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName12jTextFieldOnlyAplhabeticKeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldEmailNextOfKinjTextFieldOnlyAplhabeticKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
@@ -1118,10 +1129,10 @@
                 <Property name="text" type="java.lang.String" value="Telephones/Fax/Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNum4">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTelephoneWorkNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -1135,10 +1146,10 @@
                 <Property name="text" type="java.lang.String" value="Telephone (Work):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPhoneNum5">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTelephoneHomeNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="+#############" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="+385"/>
               </Properties>
@@ -1161,9 +1172,9 @@
                 <Property name="text" type="java.lang.String" value="First name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName13">
+            <Component class="javax.swing.JTextField" name="jTextFieldFirstNextOfKin">
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName13jTextFieldOnlyAplhabeticKeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstNextOfKinjTextFieldOnlyAplhabeticKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelMiddle4">
@@ -1175,14 +1186,14 @@
                 <Property name="text" type="java.lang.String" value="Middle name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldMiddleName4">
+            <Component class="javax.swing.JTextField" name="jTextFieldMiddleNextOfKin">
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMiddleName4KeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMiddleNextOfKinKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSurname4">
+            <Component class="javax.swing.JTextField" name="jTextFieldSurnameNextOfKin">
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSurname4KeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSurnameNextOfKinKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSurname4">
@@ -1203,7 +1214,7 @@
                 <Property name="text" type="java.lang.String" value="Area code:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldBirthdate7">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedAreaNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="###" subtype="-1" type="0"/>
@@ -1219,10 +1230,10 @@
                 <Property name="text" type="java.lang.String" value="Zip code:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldBirthdate8">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedZipCodeNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="###" subtype="-1" type="0"/>
+                  <Format format="###########" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -1234,14 +1245,14 @@
                 <Property name="text" type="java.lang.String" value="State:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName14">
+            <Component class="javax.swing.JTextField" name="jTextFieldStateNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName14jTextFieldOnlyAplhabeticKeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldStateNextOfKinjTextFieldOnlyAplhabeticKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -1260,22 +1271,25 @@
                 <Property name="text" type="java.lang.String" value="City:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName15">
+            <Component class="javax.swing.JTextField" name="jTextFieldCityNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldFirstName15jTextFieldOnlyAplhabeticKeyTyped"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldCityNextOfKinjTextFieldOnlyAplhabeticKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldFirstName16">
+            <Component class="javax.swing.JTextField" name="jTextFieldStreetNextOfKin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldStreetNextOfKinKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>
@@ -1285,7 +1299,7 @@
                 <Property name="text" type="java.lang.String" value="Street:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldBirthdate9">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedHouseNbNextOfKin">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="###" subtype="-1" type="0"/>
@@ -1309,6 +1323,20 @@
                 <Property name="text" type="java.lang.String" value="Present Address"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldNextOfKinRelatinship">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldNextOfKinRelatinshipKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSurname14">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Outpatient relationship:"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -1330,11 +1358,8 @@
                               <Component id="jLabel23" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabelFirstname5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelMiddle5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSurname5" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelSurname6" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelSurname7" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelMiddle6" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1345,18 +1370,47 @@
                                   <Component id="jComboBoxBloodType" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jFormattedTextFieldGrossIncome" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextFieldOccupation" alignment="0" pref="111" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jCheckBoxMarried" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedHeight" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedNbDependants" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedWeight" alignment="1" pref="69" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldOccupation" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="453" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabelSurname5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFirstname5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelMiddle5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jCheckBoxMarried" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxNbDependents" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                              <Component id="jSliderWeight" pref="448" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel30" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel29" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+                          <Component id="jSliderHeight1" min="-2" pref="454" max="-2" attributes="0"/>
+                          <EmptySpace pref="119" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1365,7 +1419,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="jLabel23" min="-2" pref="28" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelFirstname5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBoxMarried" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1373,19 +1427,27 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelMiddle5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedNbDependants" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxNbDependents" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSurname5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedHeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelSurname7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel29" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                                  <Component id="jLabelSurname5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSliderWeight" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel30" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSurname7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedWeight" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelSurname6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBoxBloodType" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1400,7 +1462,14 @@
                           <Component id="jLabelSurname8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jFormattedTextFieldGrossIncome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="175" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                          <Component id="jSliderHeight1" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1477,27 +1546,6 @@
                 <Property name="text" type="java.lang.String" value="Gross Annual Income:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedNbDependants">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedHeight">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedWeight">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxBloodType">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1514,17 +1562,71 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldOccupation">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldOccupationKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldGrossIncome">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format subtype="0" type="4"/>
+                  <Format format="########" subtype="-1" type="0"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBoxMarried">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Married"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel29">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="cm"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel30">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="kg"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxNbDependents">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="1"/>
+                    <StringItem index="1" value="2"/>
+                    <StringItem index="2" value="3"/>
+                    <StringItem index="3" value="4"/>
+                    <StringItem index="4" value="5"/>
+                    <StringItem index="5" value="6"/>
+                    <StringItem index="6" value="7"/>
+                    <StringItem index="7" value="8"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JSlider" name="jSliderWeight">
+              <Properties>
+                <Property name="majorTickSpacing" type="int" value="10"/>
+                <Property name="maximum" type="int" value="120"/>
+                <Property name="minimum" type="int" value="3"/>
+                <Property name="minorTickSpacing" type="int" value="2"/>
+                <Property name="paintLabels" type="boolean" value="true"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSlider" name="jSliderHeight1">
+              <Properties>
+                <Property name="majorTickSpacing" type="int" value="5"/>
+                <Property name="maximum" type="int" value="210"/>
+                <Property name="minimum" type="int" value="150"/>
+                <Property name="minorTickSpacing" type="int" value="2"/>
+                <Property name="paintLabels" type="boolean" value="true"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -1551,16 +1653,13 @@
                                   <Component id="jLabelFirstname11" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jCheckBoxEatingHome" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jFormattedTextFieldAvgCigarettes" max="32767" attributes="0"/>
-                                          <Component id="jFormattedTextFieldAvgDrinks" min="-2" pref="63" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Component id="jSliderAvgDrinks" min="-2" pref="298" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1569,7 +1668,7 @@
                               <Component id="jLabel24" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
@@ -1592,7 +1691,7 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jCheckBoxVegeterian" pref="267" max="32767" attributes="0"/>
+                                      <Component id="jCheckBoxVegeterian" pref="274" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1601,15 +1700,21 @@
                                   <Component id="jLabelFirstname10" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelSurname9" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jFormattedTextFieldCoffe" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextFieldDrinks" min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jTextFieldRegularMeals" min="-2" pref="175" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextFieldRegularMeals" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jComboBoxSoftDrinks" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxCoffee" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1618,6 +1723,13 @@
                       <Component id="jLabelFirstname8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jCheckBoxAlcohol" pref="630" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="428" max="32767" attributes="0"/>
+                          <Component id="jSliderAvgCigarettes" min="-2" pref="297" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1649,12 +1761,12 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelSurname9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldCoffe" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxCoffee" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelSurname10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextFieldDrinks" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxSoftDrinks" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1673,17 +1785,24 @@
                           <Component id="jLabelFirstname11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBoxEatingHome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSurname11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextFieldAvgCigarettes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <Component id="jLabelSurname11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSliderAvgDrinks" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabelSurname12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSurname12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextFieldAvgDrinks" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="438" max="32767" attributes="0"/>
+                          <Component id="jSliderAvgCigarettes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1759,13 +1878,6 @@
                 <Property name="text" type="java.lang.String" value="Coffe per day:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldCoffe">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelSurname10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1773,13 +1885,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Soft drinks per day:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDrinks">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelFirstname10">
@@ -1816,13 +1921,6 @@
                 <Property name="text" type="java.lang.String" value="Avg cigarettes per day:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldAvgCigarettes">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelSurname12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1832,11 +1930,62 @@
                 <Property name="text" type="java.lang.String" value="Avg drinks per day:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldAvgDrinks">
+            <Component class="javax.swing.JComboBox" name="jComboBoxCoffee">
               <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#" subtype="-1" type="0"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="1"/>
+                    <StringItem index="1" value="2"/>
+                    <StringItem index="2" value="3"/>
+                    <StringItem index="3" value="4"/>
+                    <StringItem index="4" value="5"/>
+                    <StringItem index="5" value="6"/>
+                    <StringItem index="6" value="7"/>
+                    <StringItem index="7" value="8"/>
+                  </StringArray>
                 </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxSoftDrinks">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="1"/>
+                    <StringItem index="1" value="2"/>
+                    <StringItem index="2" value="3"/>
+                    <StringItem index="3" value="4"/>
+                    <StringItem index="4" value="5"/>
+                    <StringItem index="5" value="6"/>
+                    <StringItem index="6" value="7"/>
+                    <StringItem index="7" value="8"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JSlider" name="jSliderAvgDrinks">
+              <Properties>
+                <Property name="majorTickSpacing" type="int" value="1"/>
+                <Property name="maximum" type="int" value="8"/>
+                <Property name="minorTickSpacing" type="int" value="1"/>
+                <Property name="paintLabels" type="boolean" value="true"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSlider" name="jSliderAvgCigarettes">
+              <Properties>
+                <Property name="majorTickSpacing" type="int" value="5"/>
+                <Property name="maximum" type="int" value="40"/>
+                <Property name="minorTickSpacing" type="int" value="2"/>
+                <Property name="paintLabels" type="boolean" value="true"/>
+                <Property name="paintTicks" type="boolean" value="true"/>
+                <Property name="snapToTicks" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -2092,7 +2241,9 @@
                 <Component class="javax.swing.JTextArea" name="jTextAreaStateOfComplainTreatmentHistory">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -2110,7 +2261,9 @@
                 <Component class="javax.swing.JTextArea" name="jTextAreaStateOfComplaintComplaintStatement">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
