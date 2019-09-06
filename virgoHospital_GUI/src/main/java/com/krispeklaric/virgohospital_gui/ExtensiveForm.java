@@ -381,7 +381,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelBirthdate1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate1.setText("Area code:");
 
-        jFormattedTextFieldAreacodePresent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        try {
+            jFormattedTextFieldAreacodePresent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("*******")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabelBirthdate2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -396,7 +400,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Permament Address");
 
-        jFormattedTextFieldAreacodePermanent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        try {
+            jFormattedTextFieldAreacodePermanent.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("*******")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("State:");
@@ -689,11 +697,6 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel15.setText("Fax:");
 
         jTextFieldEmailNextOfKin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldEmailNextOfKin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldEmailNextOfKinjTextFieldOnlyAplhabeticKeyTyped(evt);
-            }
-        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Email:");
@@ -749,7 +752,11 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelBirthdate13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate13.setText("Area code:");
 
-        jFormattedAreaNextOfKin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        try {
+            jFormattedAreaNextOfKin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("*******")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabelBirthdate14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -910,12 +917,13 @@ public class ExtensiveForm extends javax.swing.JDialog {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFirstname4)
-                    .addComponent(jTextFieldFirstNextOfKin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelSurname14)
-                        .addComponent(jTextFieldNextOfKinRelatinship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldNextOfKinRelatinship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelFirstname4)
+                        .addComponent(jTextFieldFirstNextOfKin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMiddle4)
@@ -1353,6 +1361,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jTextAreaStateOfComplainTreatmentHistory.setColumns(20);
         jTextAreaStateOfComplainTreatmentHistory.setLineWrap(true);
         jTextAreaStateOfComplainTreatmentHistory.setRows(5);
+        jTextAreaStateOfComplainTreatmentHistory.setText("-");
         jTextAreaStateOfComplainTreatmentHistory.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextAreaStateOfComplainTreatmentHistory);
 
@@ -1361,13 +1370,17 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jTextAreaStateOfComplaintComplaintStatement.setColumns(20);
         jTextAreaStateOfComplaintComplaintStatement.setLineWrap(true);
         jTextAreaStateOfComplaintComplaintStatement.setRows(5);
+        jTextAreaStateOfComplaintComplaintStatement.setText("-");
         jTextAreaStateOfComplaintComplaintStatement.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextAreaStateOfComplaintComplaintStatement);
+
+        jTextFieldHospitalTreated.setText("-");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel26.setText("Basic complaints");
 
         jTextFieldFirstNameDiabetic.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFirstNameDiabetic.setText("-");
         jTextFieldFirstNameDiabetic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldFirstNameDiabeticjTextFieldOnlyAplhabeticKeyTyped(evt);
@@ -1378,6 +1391,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabel27.setText("Diabetic:");
 
         jTextFieldFirstNameHypertensive.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFirstNameHypertensive.setText("-");
         jTextFieldFirstNameHypertensive.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldFirstNameHypertensivejTextFieldOnlyAplhabeticKeyTyped(evt);
@@ -1391,6 +1405,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintCardiac.setColumns(20);
         jTextAreaStateOfComplaintCardiac.setRows(5);
+        jTextAreaStateOfComplaintCardiac.setText("-");
         jScrollPane3.setViewportView(jTextAreaStateOfComplaintCardiac);
 
         jLabelFirstname13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1401,6 +1416,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintDigestive.setColumns(20);
         jTextAreaStateOfComplaintDigestive.setRows(5);
+        jTextAreaStateOfComplaintDigestive.setText("-");
         jScrollPane4.setViewportView(jTextAreaStateOfComplaintDigestive);
 
         jLabelFirstname14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1411,6 +1427,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintOrthopedic.setColumns(20);
         jTextAreaStateOfComplaintOrthopedic.setRows(5);
+        jTextAreaStateOfComplaintOrthopedic.setText("-");
         jScrollPane5.setViewportView(jTextAreaStateOfComplaintOrthopedic);
 
         jLabelFirstname15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1421,6 +1438,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintAllergies.setColumns(20);
         jTextAreaStateOfComplaintAllergies.setRows(5);
+        jTextAreaStateOfComplaintAllergies.setText("-");
         jScrollPane6.setViewportView(jTextAreaStateOfComplaintAllergies);
 
         jLabelFirstname16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1435,6 +1453,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintNeurological.setColumns(20);
         jTextAreaStateOfComplaintNeurological.setRows(5);
+        jTextAreaStateOfComplaintNeurological.setText("-");
         jScrollPane7.setViewportView(jTextAreaStateOfComplaintNeurological);
 
         jLabelFirstname18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1445,6 +1464,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintDrug.setColumns(20);
         jTextAreaStateOfComplaintDrug.setRows(5);
+        jTextAreaStateOfComplaintDrug.setText("-");
         jScrollPane8.setViewportView(jTextAreaStateOfComplaintDrug);
 
         jLabelFirstname19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1455,6 +1475,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintRespiratory.setColumns(20);
         jTextAreaStateOfComplaintRespiratory.setRows(5);
+        jTextAreaStateOfComplaintRespiratory.setText("-");
         jScrollPane9.setViewportView(jTextAreaStateOfComplaintRespiratory);
 
         jLabelFirstname20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1465,12 +1486,14 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jTextAreaStateOfComplaintSurgeries.setColumns(20);
         jTextAreaStateOfComplaintSurgeries.setRows(5);
+        jTextAreaStateOfComplaintSurgeries.setText("-");
         jScrollPane10.setViewportView(jTextAreaStateOfComplaintSurgeries);
 
         jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextAreaStateOfComplaintMuscular.setColumns(20);
         jTextAreaStateOfComplaintMuscular.setRows(5);
+        jTextAreaStateOfComplaintMuscular.setText("-");
         jScrollPane11.setViewportView(jTextAreaStateOfComplaintMuscular);
 
         jLabelFirstname21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1725,10 +1748,6 @@ public class ExtensiveForm extends javax.swing.JDialog {
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
         dispose();
     }//GEN-LAST:event_jButtonCancelMouseClicked
-
-    private void jTextFieldEmailNextOfKinjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailNextOfKinjTextFieldOnlyAplhabeticKeyTyped
-        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
-    }//GEN-LAST:event_jTextFieldEmailNextOfKinjTextFieldOnlyAplhabeticKeyTyped
 
     private void jTextFieldFirstNextOfKinjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNextOfKinjTextFieldOnlyAplhabeticKeyTyped
         jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
