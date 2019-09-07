@@ -17,7 +17,7 @@ public class Payment implements Serializable {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private PaymentType paymentType;
 
     private long cardNumber;

@@ -21,10 +21,10 @@ public class DoctorSchedule implements Serializable {
     @Enumerated(EnumType.STRING)
     private WorkDay workDay;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime startHour;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime endHour;
 
     @ManyToOne

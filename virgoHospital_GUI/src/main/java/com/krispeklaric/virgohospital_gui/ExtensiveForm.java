@@ -468,31 +468,16 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelBirthdate9.setText("Mobile:");
 
         jTextFieldPager.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldPager.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Pager:");
 
         jTextFieldFax.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldFax.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Fax:");
 
         jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped(evt);
-            }
-        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Email:");
@@ -1028,7 +1013,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
         jLabel30.setText("kg");
 
-        jComboBoxNbDependents.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxNbDependents.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         jSliderWeight.setMajorTickSpacing(10);
         jSliderWeight.setMaximum(120);
@@ -1195,9 +1180,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jLabelSurname12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSurname12.setText("Avg drinks per day:");
 
-        jComboBoxCoffee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxCoffee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" }));
 
-        jComboBoxSoftDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jComboBoxSoftDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         jSliderAvgDrinks.setMajorTickSpacing(1);
         jSliderAvgDrinks.setMaximum(8);
@@ -1733,18 +1718,6 @@ public class ExtensiveForm extends javax.swing.JDialog {
         jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
     }//GEN-LAST:event_jTextFieldCityPermanentjTextFieldOnlyAplhabeticKeyTyped
 
-    private void jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped
-        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
-    }//GEN-LAST:event_jTextFieldPagerjTextFieldOnlyAplhabeticKeyTyped
-
-    private void jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped
-        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
-    }//GEN-LAST:event_jTextFieldFaxjTextFieldOnlyAplhabeticKeyTyped
-
-    private void jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped
-        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
-    }//GEN-LAST:event_jTextFieldEmailjTextFieldOnlyAplhabeticKeyTyped
-
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
         dispose();
     }//GEN-LAST:event_jButtonCancelMouseClicked
@@ -1956,7 +1929,10 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
             //Next of Kin Address
             Address addressNextOfKin = new Address();
+            Address addressNextOfKinEmpty = new Address();
+
             InsertAddressResult addressNextOfKinResult = new InsertAddressResult();
+            InsertAddressResult addressNextOfKinResultPresent = new InsertAddressResult();
 
             if (!jTextFieldStateNextOfKin.getText().isEmpty()) {
                 addressNextOfKin.setState(jTextFieldStateNextOfKin.getText());
@@ -1982,7 +1958,8 @@ public class ExtensiveForm extends javax.swing.JDialog {
                 addressNextOfKin.setZipCode((String) jFormattedZipCodeNextOfKin.getText());
             }
 
-            addressNextOfKinResult = addressBL.insertAddress(addressNextOfKin);
+            addressNextOfKinResultPresent = addressBL.insertAddress(addressNextOfKin);
+            addressNextOfKinResult = addressBL.insertAddress(addressNextOfKinEmpty);
 
             //Contact Details
             ContactDetailBL contactDetailBL = new ContactDetailBL();
@@ -1991,8 +1968,8 @@ public class ExtensiveForm extends javax.swing.JDialog {
             ContactDetail contactDetailPatient = new ContactDetail();
             InsertContactDetailResult contactDetailPatientResult = new InsertContactDetailResult();
 
-            contactDetailPatient.setPresentAddress(addressPresent);
-            contactDetailPatient.setPermanentAddress(addressPermanent);
+            contactDetailPatient.setPresentAddress(addressPresentResult.address);
+            contactDetailPatient.setPermanentAddress(addressPermanentResult.address);
 
             contactDetailPatientResult = contactDetailBL.insertContactDetail(contactDetailPatient);
 
@@ -2000,8 +1977,8 @@ public class ExtensiveForm extends javax.swing.JDialog {
             ContactDetail contactDetailNextOfKin = new ContactDetail();
             InsertContactDetailResult contactDetailNextOfKinResult = new InsertContactDetailResult();
 
-            contactDetailNextOfKin.setPresentAddress(addressPresent);
-            contactDetailNextOfKin.setPermanentAddress(addressPermanent);
+            contactDetailNextOfKin.setPresentAddress(addressNextOfKinResultPresent.address);
+            contactDetailNextOfKin.setPermanentAddress(addressNextOfKinResult.address);
 
             contactDetailNextOfKinResult = contactDetailBL.insertContactDetail(contactDetailNextOfKin);
 
@@ -2113,7 +2090,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
             patient.setGender(jComboBoxSexSex.getSelectedItem().toString().charAt(0));
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             LocalDate birthdate = LocalDate.parse(jFormattedTextFieldBirthdateExtensive.getText(), formatter);
             patient.setBirthdate(birthdate);
@@ -2142,7 +2119,7 @@ public class ExtensiveForm extends javax.swing.JDialog {
             InsertNextOfKinResult nextOfKinResult = new InsertNextOfKinResult();
 
             if (!jTextFieldFirstNextOfKin.getText().isEmpty()) {
-                patient.setFirstname(jTextFieldFirstNextOfKin.getText());
+                nextOfKin.setFirstname(jTextFieldFirstNextOfKin.getText());
             }
 
             if (!jTextFieldMiddleNextOfKin.getText().isEmpty()) {

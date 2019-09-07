@@ -16,7 +16,7 @@ public class BasicComplaint implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String complaintStatement;
 
     private String treatmentHistory;

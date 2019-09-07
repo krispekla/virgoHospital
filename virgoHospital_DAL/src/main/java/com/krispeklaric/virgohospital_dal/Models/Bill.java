@@ -18,7 +18,7 @@ public class Bill implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "Money default '0'", nullable = false)
+    @Column(columnDefinition = "Money default '0'", nullable = true)
     private BigDecimal consultationPrice;
 
     @Column(columnDefinition = "Money default '0'")

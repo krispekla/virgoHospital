@@ -17,10 +17,10 @@ public class Doctor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String firstname;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String lastname;
 
     private boolean unavailable;

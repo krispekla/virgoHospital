@@ -17,7 +17,7 @@ public class TestType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String name;
 
     @Column(columnDefinition = "Money default '0'", nullable = false)

@@ -16,34 +16,34 @@ public class PatientLifestyle implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private boolean vegeterian;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private boolean smoker;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private boolean alcoholConsumer;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String usingStimulans;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int coffePerDay;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int softDrinksPerDay;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String regularMelas;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private boolean eatingHomePredominantly;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int avgCigarettesDay;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int avgDrinksDay;
 
     @OneToOne(mappedBy = "patientLifestyle")

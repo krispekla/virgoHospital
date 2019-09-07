@@ -22,7 +22,7 @@ public class Test implements Serializable {
     @JoinColumn(name = "testType_ID")
     private TestType testType;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime testTime;
 
     private String testResults;

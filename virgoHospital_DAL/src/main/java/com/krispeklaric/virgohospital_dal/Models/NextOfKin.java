@@ -17,15 +17,15 @@ public class NextOfKin implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String firstname;
 
     private String middlename;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String lastname;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String outpatientRelationship;
 
     @OneToOne

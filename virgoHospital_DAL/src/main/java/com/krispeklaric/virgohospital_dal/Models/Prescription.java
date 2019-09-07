@@ -18,12 +18,12 @@ public class Prescription implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String name;
 
     private int quantity;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDate prescriptionDate;
 
     @ManyToOne

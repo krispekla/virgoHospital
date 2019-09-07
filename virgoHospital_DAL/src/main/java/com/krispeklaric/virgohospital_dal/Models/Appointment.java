@@ -26,7 +26,7 @@ public class Appointment implements Serializable {
     @JoinColumn
     private Doctor doctor;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime startDateHour;
 
     private LocalDateTime endDateHour;

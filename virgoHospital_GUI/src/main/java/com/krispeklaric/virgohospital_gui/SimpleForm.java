@@ -8,20 +8,32 @@ package com.krispeklaric.virgohospital_gui;
 import com.krispeklaric.virgohospital_bl.AddressBL;
 import com.krispeklaric.virgohospital_bl.BasicComplaintBL;
 import com.krispeklaric.virgohospital_bl.ContactDetailBL;
+import com.krispeklaric.virgohospital_bl.DoctorBL;
+import com.krispeklaric.virgohospital_bl.MedicalComplaintBL;
 import com.krispeklaric.virgohospital_bl.Messages.address.InsertAddressResult;
 import com.krispeklaric.virgohospital_bl.Messages.basic_complaint.InsertBasicComplaintResult;
 import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.doctor.GetDoctorResult;
+import com.krispeklaric.virgohospital_bl.Messages.medical_complaint.InsertMedicalComplaintResult;
 import com.krispeklaric.virgohospital_bl.Messages.next_of_kin.InsertNextOfKinResult;
 import com.krispeklaric.virgohospital_bl.Messages.patient.InsertPatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.patient_lifestyle.InsertPatientLifestyleResult;
+import com.krispeklaric.virgohospital_bl.Messages.personal_details.InsertPersonalDetailResult;
 import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
 import com.krispeklaric.virgohospital_bl.NextOfKinBL;
+import com.krispeklaric.virgohospital_bl.PatientLifestyleBL;
 import com.krispeklaric.virgohospital_bl.PatientsBL;
+import com.krispeklaric.virgohospital_bl.PersonalDetailsBL;
 import com.krispeklaric.virgohospital_bl.PhoneNumberBL;
 import com.krispeklaric.virgohospital_dal.Models.Address;
 import com.krispeklaric.virgohospital_dal.Models.BasicComplaint;
 import com.krispeklaric.virgohospital_dal.Models.ContactDetail;
+import com.krispeklaric.virgohospital_dal.Models.Doctor;
+import com.krispeklaric.virgohospital_dal.Models.MedicalComplaint;
 import com.krispeklaric.virgohospital_dal.Models.NextOfKin;
 import com.krispeklaric.virgohospital_dal.Models.Patient;
+import com.krispeklaric.virgohospital_dal.Models.PatientLifestyle;
+import com.krispeklaric.virgohospital_dal.Models.PersonalDetail;
 import com.krispeklaric.virgohospital_dal.Models.PhoneNumber;
 import com.krispeklaric.virgohospital_dal.Models.PhoneType;
 import com.sun.glass.events.KeyEvent;
@@ -79,6 +91,7 @@ public class SimpleForm extends javax.swing.JDialog {
         jTextFieldRelationshipOutpatient = new javax.swing.JTextField();
         jComboBoxContactCombo1 = new javax.swing.JComboBox<>();
         jComboBoxContactCombo2 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -214,6 +227,10 @@ public class SimpleForm extends javax.swing.JDialog {
 
         jComboBoxContactCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mobile", "Work", "Home" }));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Next of Kin");
+        jLabel2.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,8 +262,10 @@ public class SimpleForm extends javax.swing.JDialog {
                                     .addComponent(jLabelFirstnameKin)
                                     .addComponent(jLabelMiddlenameKin)
                                     .addComponent(jLabelSurnameKin)
-                                    .addComponent(jLabelOutpatientRelationship)
-                                    .addComponent(jLabelBrief)))
+                                    .addComponent(jLabelBrief)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabelOutpatientRelationship))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +305,7 @@ public class SimpleForm extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstname)
                     .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -320,7 +339,9 @@ public class SimpleForm extends javax.swing.JDialog {
                     .addComponent(jLabel1Contact2)
                     .addComponent(jFormattedTextFieldPhoneNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxContactCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFirstnameKin)
                     .addGroup(layout.createSequentialGroup()
@@ -390,6 +411,10 @@ public class SimpleForm extends javax.swing.JDialog {
         ContactDetailBL contactDetailBL = new ContactDetailBL();
         PhoneNumberBL phoneNumberBL = new PhoneNumberBL();
         AddressBL addressBL = new AddressBL();
+        DoctorBL doctorBL = new DoctorBL();
+        MedicalComplaintBL medicalComplaintBL = new MedicalComplaintBL();
+        PatientLifestyleBL patientLifestyleBL = new PatientLifestyleBL();
+        PersonalDetailsBL personalDetailsBL = new PersonalDetailsBL();
 
         Patient patient = new Patient();
         patient.setFirstname(jTextFieldFirstName.getText());
@@ -397,7 +422,7 @@ public class SimpleForm extends javax.swing.JDialog {
         patient.setLastname(jTextFieldSurname.getText());
         patient.setGender(jComboBoxSex.getSelectedItem().toString().charAt(0));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         LocalDate birthdate = LocalDate.parse(jFormattedTextFieldBirthdate.getText(), formatter);
         patient.setBirthdate(birthdate);
@@ -412,6 +437,8 @@ public class SimpleForm extends javax.swing.JDialog {
         basicComplaint.setComplaintStatement(jTextAreaStateOfComplaint.getText());
 
         ContactDetail contact = new ContactDetail();
+        ContactDetail contactNextOfKin = new ContactDetail();
+
         PhoneNumber phone1 = new PhoneNumber();
         PhoneNumber phone2 = new PhoneNumber();
 
@@ -429,27 +456,59 @@ public class SimpleForm extends javax.swing.JDialog {
 
             Address a1 = new Address();
             Address a2 = new Address();
+            Address a3 = new Address();
+            Address a4 = new Address();
 
             InsertAddressResult adr1 = addressBL.insertAddress(a1);
             InsertAddressResult adr2 = addressBL.insertAddress(a2);
+            InsertAddressResult adr3 = addressBL.insertAddress(a3);
+            InsertAddressResult adr4 = addressBL.insertAddress(a4);
 
             contact.setPermanentAddress(adr1.address);
             contact.setPresentAddress(adr2.address);
 
-            InsertContactDetailResult res4 = contactDetailBL.insertContactDetail(contact);
+            contactNextOfKin.setPermanentAddress(adr3.address);
+            contactNextOfKin.setPresentAddress(adr4.address);
 
-            phone1.setContact(res4.contactDetail);
-            phone2.setContact(res4.contactDetail);
+            InsertContactDetailResult contactPatient = contactDetailBL.insertContactDetail(contact);
+            InsertContactDetailResult resNextOfKinContact = contactDetailBL.insertContactDetail(contactNextOfKin);
+
+            phone1.setContact(contactPatient.contactDetail);
+            phone2.setContact(contactPatient.contactDetail);
 
             InsertPhoneNumberResult resPhone1 = phoneNumberBL.insertPhoneNumber(phone1);
             InsertPhoneNumberResult resPhone2 = phoneNumberBL.insertPhoneNumber(phone2);
 
-            patient.setContactDetail(res4.contactDetail);
+            GetDoctorResult doctors = doctorBL.getAll();
+            Doctor availableDoctor = doctors.doctors.stream().filter(doc -> doc.isUnavailable() == false).findFirst().orElse(null);
+
+            if (availableDoctor != null) {
+                patient.setDoctor(availableDoctor);
+            }
+
+            MedicalComplaint medCompl = new MedicalComplaint();
+            PatientLifestyle patLife = new PatientLifestyle();
+            PersonalDetail persDet = new PersonalDetail();
+
+            InsertMedicalComplaintResult medical = new InsertMedicalComplaintResult();
+            InsertPatientLifestyleResult lifestyle = new InsertPatientLifestyleResult();
+            InsertPersonalDetailResult personal = new InsertPersonalDetailResult();
+
+            medical = medicalComplaintBL.insertMedicalComplaint(medCompl);
+            lifestyle = patientLifestyleBL.insertPatientLifestyle(patLife);
+            personal = personalDetailsBL.insertContactDetail(persDet);
+
+            patient.setContactDetail(contactPatient.contactDetail);
+            patient.setMedicalComplaints(medical.medicalComplaint);
+            patient.setPatientLifestyle(lifestyle.patientLifestyle);
+            patient.setPersonalDetail(personal.personalDetail);
 
             InsertPatientResult res2 = patientBL.insertPatient(patient);
             if (res2.isOK) {
                 kin.setPatient(res2.patient);
             }
+
+            kin.setContactDetailNextOf(contactNextOfKin);
             InsertNextOfKinResult res3 = nextOfKinBL.insertNextOfKin(kin);
             if (res3.isOK) {
                 dispose();
@@ -512,6 +571,7 @@ public class SimpleForm extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum1;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNum2;
     private javax.swing.JLabel jLabel1Contact2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelBirthdate;
     private javax.swing.JLabel jLabelBrief;
     private javax.swing.JLabel jLabelContact1;

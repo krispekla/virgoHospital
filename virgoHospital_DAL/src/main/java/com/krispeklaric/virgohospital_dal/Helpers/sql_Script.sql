@@ -1,4 +1,4 @@
-﻿
+
 GO
 
 --Basic Complaints START
@@ -374,16 +374,6 @@ insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contac
 insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID,medicalComplaint_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Jaimie', 'Salomon', 'Anabella', '1973-10-31 06:15:50', 'F', 8, 8, 8, 8, 8, 3);
 insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID,medicalComplaint_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Darius', 'Mitkov', 'Mohammed', '1998-05-15 07:17:45', 'M', 9, 9, 9, 9 ,9 ,4 );
 insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID,medicalComplaint_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Pia', 'Fielden', 'Mercedes', '1997-10-07 00:38:30', 'F', 10, 10, 10, 10, 10, 5);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID) values ('Leigh', 'Degli Antoni', 'Murdoch', '1971-07-26 23:17:05', 'M', 11, 11, 11, 11, 1);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Ynes', 'Rudsdell', 'Franny', '1981-12-15 01:09:59', 'F', 12, 12, 12, 12, 2);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Saleem', 'Mathews', 'Crawford', '1988-12-12 09:34:59', 'M', 13, 13, 13, 13, 3);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Farr', 'Lavalle', 'Rogers', '1988-11-19 17:20:37', 'M', 14, 14, 14, 14, 4);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Maurise', 'Habbergham', 'Barnard', '1977-12-18 22:24:09', 'M', 15, 15, 15, 15, 5);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Dennie', 'Sackler', 'Dorotea', '1971-10-18 12:18:28', 'F', 16, 16, 16, 16, 2);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Arin', 'Guidini', 'Even', '1988-05-09 11:02:15', 'M', 17, 17, 17, 17, 2);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Donnell', 'McIlriach', 'Caspar', '1977-07-07 01:10:55', 'M', 18, 18, 18, 18, 3);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Astrid', 'Schaben', 'Caro', '1992-02-21 19:36:06', 'F', 19, 19, 19, 19, 4);
-insert into Patients (FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER ,contactDetail_ID, basicComplaints_ID, personalDetail_ID, patientLifestyle_ID, doctor_ID)values ('Brigham', 'Pinhorn', 'Arne', '1987-07-13 03:23:16', 'M', 20, 20, 20, 20, 2);
 
 GO
 -- Patients END
@@ -399,6 +389,4 @@ INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSH
 INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSHIP], contactDetail_ID, patient_ID) VALUES('Rae','Alden','Simmons','grandfather', 53, 8);
 INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSHIP], contactDetail_ID, patient_ID) VALUES('Ariel','Elliott','Boyer','cousin', 59, 9);
 INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSHIP], contactDetail_ID, patient_ID) VALUES('Sean','Fallon','Cross','parent', 60 , 10);
-INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSHIP], contactDetail_ID, patient_ID) VALUES('Britanney','Clarke','Riddle','grandmother', 61, 11);
-INSERT INTO NextOfKins([FIRSTNAME],[MIDDLENAME],[LASTNAME],[OUTPATIENTRELATIONSHIP], contactDetail_ID, patient_ID) VALUES('Daniel','Jakeem','Dominguez','grandfather', 62, 12);
 GO
