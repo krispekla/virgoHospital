@@ -29,10 +29,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OutpatientModule extends javax.swing.JFrame {
 
-    private PatientsBL _bL;
+    private static Patient _currentPatient;
+    private static PatientsBL _patientsBL;
+    private static BasicComplaintBL _basicComplaintBL;
+    private static MedicalComplaintBL _medicalComplaintBL;
+    private static PatientLifestyleBL _patientLifestyleBL;
+    private static PersonalDetailsBL _personalDetailsBL;
+    private static NextOfKinBL _nextOfKinBL;
+    private static AddressBL _addressBL;
+    private static PhoneNumberBL _phoneNumberBL;
 
     public OutpatientModule() {
-        _bL = new PatientsBL();
+        _patientsBL = new PatientsBL();
+        _basicComplaintBL = new BasicComplaintBL();
+        _medicalComplaintBL = new MedicalComplaintBL();
+        _patientLifestyleBL = new PatientLifestyleBL();
+        _personalDetailsBL = new PersonalDetailsBL();
+        _nextOfKinBL = new NextOfKinBL();
+        _addressBL = new AddressBL();
+        _phoneNumberBL = new PhoneNumberBL();
+
         initComponents();
 
         SetupPatientTable();
@@ -231,6 +247,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextAreaStateOfComplaintOrthopedicEdit = new javax.swing.JTextArea();
         jLabelFirstname15 = new javax.swing.JLabel();
         jButtonPatientsRefresh = new javax.swing.JButton();
+        jButtonDeletePatient = new javax.swing.JButton();
         jPanelPersonel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePersonel = new javax.swing.JTable();
@@ -1893,6 +1910,15 @@ public class OutpatientModule extends javax.swing.JFrame {
             }
         });
 
+        jButtonDeletePatient.setBackground(new java.awt.Color(255, 102, 102));
+        jButtonDeletePatient.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonDeletePatient.setText("Delete");
+        jButtonDeletePatient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeletePatientMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPatientsLayout = new javax.swing.GroupLayout(jPanelPatients);
         jPanelPatients.setLayout(jPanelPatientsLayout);
         jPanelPatientsLayout.setHorizontalGroup(
@@ -1917,13 +1943,15 @@ public class OutpatientModule extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
-                                        .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonEditPatients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(38, 38, 38))
                                     .addComponent(jButtonAddSimpleForm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonAddExtensiveForm, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                    .addComponent(jButtonAddExtensiveForm, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
+                                        .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButtonDeletePatient)
+                                            .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButtonEditPatients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(38, 38, 38)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPatientsLayout.setVerticalGroup(
@@ -1940,16 +1968,19 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAddExtensiveForm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
+                .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPatientsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(jTabbedPanePatientData, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanelPatientsLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jButtonDeletePatient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonEditPatients)
                         .addGap(30, 30, 30)
                         .addComponent(jButtonSave)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
-                        .addComponent(jTabbedPanePatientData, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                        .addGap(51, 51, 51))))
         );
 
         jTabbedPaneMain.addTab("Patients", jPanelPatients);
@@ -2460,8 +2491,8 @@ public class OutpatientModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
         if (model.getRowCount() > 0) {
             Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePatients.getSelectedRow());
-            PatientsBL patientsBL = new PatientsBL();
-            GetSinglePatientResult patientRes = patientsBL.getById((Long) selectedRow.get(0));
+
+            GetSinglePatientResult patientRes = _patientsBL.getById((Long) selectedRow.get(0));
 
             if (patientRes.isOK) {
                 _currentPatient = patientRes.patient;
@@ -2569,7 +2600,19 @@ public class OutpatientModule extends javax.swing.JFrame {
         UpdatePatient();
     }//GEN-LAST:event_jButtonSaveMouseClicked
 
-    private static Patient _currentPatient;
+    private void jButtonDeletePatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeletePatientMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePatients.getSelectedRow());
+
+            GetSinglePatientResult patientRes = _patientsBL.getById((Long) selectedRow.get(0));
+
+            if (patientRes.isOK) {
+                _patientsBL.deletePatient(patientRes.patient.getId());
+              
+            }
+        }
+    }//GEN-LAST:event_jButtonDeletePatientMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2626,6 +2669,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddExtensiveForm;
     private javax.swing.JButton jButtonAddSimpleForm;
     private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonDeletePatient;
     private javax.swing.JButton jButtonEditPatients;
     private javax.swing.JButton jButtonPatientsRefresh;
     private javax.swing.JButton jButtonSave;
@@ -2871,7 +2915,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private void FillPatientTable() {
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
 
-        GetPatientsResult result = _bL.getAll();
+        GetPatientsResult result = _patientsBL.getAll();
 
         if (!result.isOK) {
             System.out.println(result.msg);
@@ -3347,8 +3391,6 @@ public class OutpatientModule extends javax.swing.JFrame {
                     += "\n Patient OID needs to have 11 numbers and is required";
         }
 
-        
-        
         if (validationStatusMessages.isEmpty()) {
             return true;
         } else {
@@ -3359,6 +3401,169 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private void UpdatePatient() {
 
+        //Basic Complain
+        BasicComplaint tempBasic = _currentPatient.getBasicComplaints();
+        tempBasic.setComplaintStatement(jTextAreaStateOfComplaintComplaintStatementEdit.getText());
+        tempBasic.setTreatmentHistory(jTextAreaStateOfComplainTreatmentHistoryEdit.getText());
+        tempBasic.setHospitalTreated(jTextFieldHospitalTreatedEdit.getText());
+
+        //Medical complains
+        MedicalComplaint tempMedical = _currentPatient.getMedicalComplaints();
+        tempMedical.setDiabetic(jTextFieldFirstNameDiabeticEdit.getText());
+        tempMedical.setHypertensive(jTextFieldFirstNameHypertensiveEdit.getText());
+        tempMedical.setNeurologicalCondition(jTextAreaStateOfComplaintNeurologicalEdit.getText());
+        tempMedical.setAllergies(jTextAreaStateOfComplaintAllergiesEdit.getText());
+        tempMedical.setDrugsReaction(jTextAreaStateOfComplaintDrugEdit.getText());
+        tempMedical.setOrthopedicCondition(jTextAreaStateOfComplaintOrthopedicEdit.getText());
+        tempMedical.setMuscularCondition(jTextAreaStateOfComplaintMuscularEdit.getText());
+        tempMedical.setRespiratoryCondition(jTextAreaStateOfComplaintRespiratoryEdit.getText());
+        tempMedical.setHistoryOfSurgeries(jTextAreaStateOfComplaintSurgeriesEdit.getText());
+        tempMedical.setCardiacCondition(jTextAreaStateOfComplaintCardiacEdit.getText());
+        tempMedical.setDigestiveCondition(jTextAreaStateOfComplaintDigestiveEdit.getText());
+
+        //Lifestyle
+        PatientLifestyle tempLifestyle = _currentPatient.getPatientLifestyle();
+        tempLifestyle.setVegeterian(jCheckBoxVegeterianEdit.isSelected());
+        tempLifestyle.setSmoker(jCheckBoxSmokerEdit.isSelected());
+        tempLifestyle.setAlcoholConsumer(jCheckBoxAlcoholEdit.isSelected());
+        tempLifestyle.setEatingHomePredominantly(jCheckBoxEatingHomeEdit.isSelected());
+        tempLifestyle.setCoffePerDay(jComboBoxCoffeeEdit.getSelectedIndex());
+        tempLifestyle.setSoftDrinksPerDay(jComboBoxSoftDrinksEdit.getSelectedIndex());
+        tempLifestyle.setUsingStimulans(jTextFieldStimulansEdit.getText());
+        tempLifestyle.setRegularMelas(jTextFieldRegularMealsEdit.getText());
+        tempLifestyle.setAvgDrinksDay(jSliderAvgDrinksEdit.getValue());
+        tempLifestyle.setAvgCigarettesDay(jSliderAvgCigarettesEdit.getValue());
+
+        //PersonalDetail
+        PersonalDetail tempPersonal = _currentPatient.getPersonalDetail();
+        tempPersonal.setMaritalStatus(jCheckBoxMarriedEdit.isSelected());
+        tempPersonal.setNbOfDependents(jComboBoxNbDependentsEdit.getSelectedIndex());
+        tempPersonal.setBloodType((String) jComboBoxBloodTypeEdit.getSelectedItem());
+        tempPersonal.setOccupation(jTextFieldOccupationEdit.getText());
+        tempPersonal.setOccupation(jFormattedTextFieldGrossIncomeEdit.getText());
+        tempPersonal.setHeight(jSliderHeightEdit.getValue());
+        tempPersonal.setWeight(jSliderWeightEdit.getValue());
+
+        //Next of kin
+        NextOfKin tempNextOf = _currentPatient.getNextOfKin();
+        tempNextOf.setFirstname(jTextFieldFirstNextOfKinEdit.getText());
+        tempNextOf.setMiddlename(jTextFieldMiddleNextOfKinEdit.getText());
+        tempNextOf.setLastname(jTextFieldSurnameNextOfKinEdit.getText());
+        tempNextOf.setOutpatientRelationship(jTextFieldNextOfKinRelatinshipEdit.getText());
+
+        //Next of kin Address
+        Address tempAddressNext = _currentPatient.getNextOfKin().getContactDetailNextOf().getPresentAddress();
+        tempAddressNext.setState(jTextFieldStateNextOfKinEdit.getText());
+        tempAddressNext.setCity(jTextFieldCityNextOfKinEdit.getText());
+        tempAddressNext.setStreet(jTextFieldStreetNextOfKinEdit.getText());
+        tempAddressNext.setHouseNumber(Integer.parseInt(jFormattedHouseNbNextOfKinEdit.getText()));
+        tempAddressNext.setArea(jFormattedAreaNextOfKinEdit.getText());
+        tempAddressNext.setZipCode(jFormattedZipCodeNextOfKinEdit.getText());
+
+        //Next of kin Phones
+        List<PhoneNumber> tempPhonesNext = _currentPatient.getNextOfKin().getContactDetailNextOf().getPhones();
+        if (!tempPhonesNext.isEmpty()) {
+            for (int i = 0; i < tempPhonesNext.size(); i++) {
+
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Work)) {
+                    tempPhonesNext.get(i).setNumber(jFormattedTelephoneWorkNextOfKinEdit.getText());
+                }
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Home)) {
+                    tempPhonesNext.get(i).setNumber(jFormattedTelephoneHomeNextOfKinEdit.getText());
+                }
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Mobile)) {
+                    tempPhonesNext.get(i).setNumber("asdfg");
+                }
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Email)) {
+                    tempPhonesNext.get(i).setNumber(jTextFieldEmailNextOfKinEdit.getText());
+                }
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Fax)) {
+                    tempPhonesNext.get(i).setNumber(jTextFieldFaxNextOfKinEdit.getText());
+                }
+                if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Pager)) {
+                    tempPhonesNext.get(i).setNumber(jTextFieldPagerNextOfKinEdit.getText());
+                }
+            }
+        }
+
+        //Phones
+        List<PhoneNumber> tempPhones = _currentPatient.getNextOfKin().getContactDetailNextOf().getPhones();
+        if (!tempPhones.isEmpty()) {
+            for (int i = 0; i < tempPhones.size(); i++) {
+
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Work)) {
+                    tempPhones.get(i).setNumber(jFormattedTextFieldPhoneNumWorkEdit.getText());
+                }
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Home)) {
+                    tempPhones.get(i).setNumber(jFormattedTextFieldPhoneNumHomeEdit.getText());
+                }
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Mobile)) {
+                    tempPhones.get(i).setNumber(jFormattedTextFieldPhoneNumMobileEdit.getText());
+                }
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Email)) {
+                    tempPhones.get(i).setNumber(jTextFieldEmailEdit.getText());
+                }
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Fax)) {
+                    tempPhones.get(i).setNumber(jTextFieldFaxEdit.getText());
+                }
+                if (tempPhones.get(i).getPhoneType().equals(PhoneType.Pager)) {
+                    tempPhones.get(i).setNumber(jTextFieldPagerEdit.getText());
+                }
+            }
+        }
+
+        //Address Present(patient)
+        Address tempAddressPresent = _currentPatient.getContactDetail().getPresentAddress();
+        tempAddressPresent.setState(jTextFieldStatePresentEdit.getText());
+        tempAddressPresent.setCity(jTextFieldCityPresentEdit.getText());
+        tempAddressPresent.setStreet(jTextFieldStreetPresentEdit.getText());
+        tempAddressPresent.setHouseNumber(Integer.parseInt(jFormattedTextFieldHouseNumberPresentEdit.getText()));
+        tempAddressPresent.setArea(jFormattedTextFieldAreacodePresentEdit.getText());
+        tempAddressPresent.setZipCode(jFormattedTextZipcodePresentEdit.getText());
+
+        //Address Permanent(patient)
+        Address tempAddressPermanent = _currentPatient.getContactDetail().getPermanentAddress();
+        tempAddressPermanent.setState(jTextFieldStatePermanentEdit.getText());
+        tempAddressPermanent.setCity(jTextFieldCityPermanentEdit.getText());
+        tempAddressPermanent.setStreet(jTextFieldStreetPermanentEdit.getText());
+        tempAddressPermanent.setHouseNumber(Integer.parseInt(jFormattedTextFieldHousenumberPermanentEdit.getText()));
+        tempAddressPermanent.setArea(jFormattedTextFieldAreacodePermanentEdit.getText());
+        tempAddressPermanent.setZipCode(jFormattedTextFieldZipcodePermanentEdit.getText());
+
+        //Patient
+        _currentPatient.setOPID(Long.parseLong(jOutpatOPIDEdit.getText()));
+        _currentPatient.setFirstname(jTextFieLDPatientFirstEdit.getText());
+        _currentPatient.setMiddlename(jTextFieldPatientMidd.getText());
+        _currentPatient.setLastname(jTextSurrnameEdit.getText());
+        _currentPatient.setGender(jComboBoxSexEdit.getSelectedItem().toString().charAt(0));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate birthday = LocalDate.parse(jFormattedTextFieldBirthdateEdit.getText(), formatter);
+        _currentPatient.setBirthdate(birthday);
+
+        //----------------------
+        try {
+            _patientsBL.updatePatient(_currentPatient);
+            _addressBL.updateAddress(tempAddressPermanent);
+            _addressBL.updateAddress(tempAddressPresent);
+            _addressBL.updateAddress(tempAddressNext);
+
+            for (PhoneNumber tempPhone : tempPhones) {
+                _phoneNumberBL.updatePhoneNumber(tempPhone);
+            }
+            for (PhoneNumber tempPhone : tempPhonesNext) {
+                _phoneNumberBL.updatePhoneNumber(tempPhone);
+            }
+
+            _nextOfKinBL.updateNextOfKin(tempNextOf);
+            _personalDetailsBL.updateContactDetail(tempPersonal);
+            _patientLifestyleBL.updatePatientLifestyle(tempLifestyle);
+            _medicalComplaintBL.updateMedicalComplaint(tempMedical);
+            _basicComplaintBL.updateBasicComplaint(tempBasic);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        ToggleEnabled(false);
     }
 
 }
