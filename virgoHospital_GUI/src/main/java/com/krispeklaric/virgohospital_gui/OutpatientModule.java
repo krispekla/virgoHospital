@@ -8,7 +8,12 @@ package com.krispeklaric.virgohospital_gui;
 import com.krispeklaric.virgohospital_bl.Messages.patient.GetPatientsResult;
 import com.krispeklaric.virgohospital_bl.*;
 import com.krispeklaric.virgohospital_bl.Messages.*;
+import com.krispeklaric.virgohospital_bl.Messages.address.InsertAddressResult;
+import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
+import com.krispeklaric.virgohospital_bl.Messages.doctor.GetDoctorResult;
+import com.krispeklaric.virgohospital_bl.Messages.doctor.GetSingleDoctorResult;
 import com.krispeklaric.virgohospital_bl.Messages.patient.GetSinglePatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
 import com.krispeklaric.virgohospital_dal.Models.*;
 import com.sun.glass.events.KeyEvent;
 import java.time.LocalDate;
@@ -18,7 +23,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Vector;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -28,8 +35,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Kris
  */
 public class OutpatientModule extends javax.swing.JFrame {
-
+    
     private static Patient _currentPatient;
+    private static Doctor _currentDoctor;
     private static PatientsBL _patientsBL;
     private static BasicComplaintBL _basicComplaintBL;
     private static MedicalComplaintBL _medicalComplaintBL;
@@ -38,7 +46,12 @@ public class OutpatientModule extends javax.swing.JFrame {
     private static NextOfKinBL _nextOfKinBL;
     private static AddressBL _addressBL;
     private static PhoneNumberBL _phoneNumberBL;
-
+    private static DoctorBL _doctorBL;
+    private static ContactDetailBL _contactDetailBL;
+    private static List<Doctor> _generalDoctors;
+    
+    private static Boolean addingDoctor;
+    
     public OutpatientModule() {
         _patientsBL = new PatientsBL();
         _basicComplaintBL = new BasicComplaintBL();
@@ -48,11 +61,16 @@ public class OutpatientModule extends javax.swing.JFrame {
         _nextOfKinBL = new NextOfKinBL();
         _addressBL = new AddressBL();
         _phoneNumberBL = new PhoneNumberBL();
-
+        _doctorBL = new DoctorBL();
+        _contactDetailBL = new ContactDetailBL();
+        addingDoctor = false;
+        
         initComponents();
-
+        
         SetupPatientTable();
+        SetupDoctorTable();
         FillPatientTable();
+        FillDoctorTable();
     }
 
     /**
@@ -87,6 +105,8 @@ public class OutpatientModule extends javax.swing.JFrame {
         jComboBoxSexEdit = new javax.swing.JComboBox<>();
         jLabelBirthdate3 = new javax.swing.JLabel();
         jFormattedTextFieldBirthdateEdit = new javax.swing.JFormattedTextField();
+        jLabel51 = new javax.swing.JLabel();
+        jComboBoxDoctorsForPatient = new javax.swing.JComboBox<>();
         jPanelContactDetailsTab = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jTextFieldStatePresentEdit = new javax.swing.JTextField();
@@ -253,9 +273,45 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTablePersonel = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButtonAddDoctor = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonEditPersonel = new javax.swing.JButton();
+        jButtonSavePersonel = new javax.swing.JButton();
+        jButtonDeleteDoctor = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jTextFieldFirstNameDoctor = new javax.swing.JTextField();
+        jLabelFirstname22 = new javax.swing.JLabel();
+        jLabelSurname15 = new javax.swing.JLabel();
+        jTextFieldSurnameDoctor = new javax.swing.JTextField();
+        jComboBoxDoctorType = new javax.swing.JComboBox<>();
+        jLabelSex4 = new javax.swing.JLabel();
+        jCheckBoxDocAvailable = new javax.swing.JCheckBox();
+        jLabelFirstname23 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jTextFieldStatePresentDoctor = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        jTextFieldCityPresentDoctor = new javax.swing.JTextField();
+        jTextFieldStreetPresentDoctor = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        jFormattedTextFieldHouseNumberPresentDoctor = new javax.swing.JFormattedTextField();
+        jLabelBirthdate16 = new javax.swing.JLabel();
+        jLabelBirthdate17 = new javax.swing.JLabel();
+        jFormattedTextFieldAreacodePresentDoctor = new javax.swing.JFormattedTextField();
+        jLabelBirthdate18 = new javax.swing.JLabel();
+        jFormattedTextZipcodePresentDoctor = new javax.swing.JFormattedTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jFormattedTextFieldPhoneNumWorkDoctor = new javax.swing.JFormattedTextField();
+        jLabelBirthdate19 = new javax.swing.JLabel();
+        jFormattedTextFieldPhoneNumHomeDoctor = new javax.swing.JFormattedTextField();
+        jLabelBirthdate20 = new javax.swing.JLabel();
+        jFormattedTextFieldPhoneNumMobileDoctor = new javax.swing.JFormattedTextField();
+        jLabelBirthdate21 = new javax.swing.JLabel();
+        jTextFieldPagerDoctor = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        jTextFieldFaxDoctor = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        jTextFieldEmailDoctor = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        jButtonRefreshPersonel = new javax.swing.JButton();
         jPanelDoctors = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -330,24 +386,30 @@ public class OutpatientModule extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablePatients);
 
+        jButtonAddSimpleForm.setBackground(new java.awt.Color(204, 255, 204));
         jButtonAddSimpleForm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAddSimpleForm.setText("Add simple");
+        jButtonAddSimpleForm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAddSimpleForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAddSimpleFormMouseClicked(evt);
             }
         });
 
+        jButtonAddExtensiveForm.setBackground(new java.awt.Color(0, 204, 102));
         jButtonAddExtensiveForm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAddExtensiveForm.setText("Add extensive");
+        jButtonAddExtensiveForm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAddExtensiveForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAddExtensiveFormMouseClicked(evt);
             }
         });
 
+        jButtonEditPatients.setBackground(new java.awt.Color(255, 204, 51));
         jButtonEditPatients.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonEditPatients.setText("Edit");
+        jButtonEditPatients.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEditPatients.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonEditPatientsMouseClicked(evt);
@@ -356,6 +418,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         jButtonSave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonSave.setText("Save");
+        jButtonSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonSaveMouseClicked(evt);
@@ -418,11 +481,22 @@ public class OutpatientModule extends javax.swing.JFrame {
         jFormattedTextFieldBirthdateEdit.setText("01/01/2000");
         jFormattedTextFieldBirthdateEdit.setEnabled(false);
 
+        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel51.setText("Doctor:");
+
+        jComboBoxDoctorsForPatient.setEnabled(false);
+
         javax.swing.GroupLayout jPanelBasicDetailsTabLayout = new javax.swing.GroupLayout(jPanelBasicDetailsTab);
         jPanelBasicDetailsTab.setLayout(jPanelBasicDetailsTabLayout);
         jPanelBasicDetailsTabLayout.setHorizontalGroup(
             jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBasicDetailsTabLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBasicDetailsTabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelSex3)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxSexEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBasicDetailsTabLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addGroup(jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelBasicDetailsTabLayout.createSequentialGroup()
@@ -440,16 +514,16 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jOutpatOPIDEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                .addComponent(jLabelBirthdate3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextFieldBirthdateEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBasicDetailsTabLayout.createSequentialGroup()
+                        .addComponent(jLabel51)
+                        .addGap(30, 30, 30)
+                        .addComponent(jComboBoxDoctorsForPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelBasicDetailsTabLayout.createSequentialGroup()
+                        .addComponent(jLabelBirthdate3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFormattedTextFieldBirthdateEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBasicDetailsTabLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelSex3)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxSexEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
         );
         jPanelBasicDetailsTabLayout.setVerticalGroup(
             jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +553,11 @@ public class OutpatientModule extends javax.swing.JFrame {
                 .addGroup(jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextSurrnameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSurname3))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelBasicDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(jComboBoxDoctorsForPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPanePatientData.addTab("Basic Details", jPanelBasicDetailsTab);
@@ -1902,8 +1980,10 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         jTabbedPanePatientData.addTab("Complaints", jPanelComplaintsTab);
 
+        jButtonPatientsRefresh.setBackground(new java.awt.Color(51, 153, 255));
         jButtonPatientsRefresh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonPatientsRefresh.setText("Refresh");
+        jButtonPatientsRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonPatientsRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonPatientsRefreshMouseClicked(evt);
@@ -1913,6 +1993,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jButtonDeletePatient.setBackground(new java.awt.Color(255, 102, 102));
         jButtonDeletePatient.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonDeletePatient.setText("Delete");
+        jButtonDeletePatient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonDeletePatient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDeletePatientMouseClicked(evt);
@@ -1938,20 +2019,16 @@ public class OutpatientModule extends javax.swing.JFrame {
                                 .addComponent(jTabbedPanePatientData, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelPatientsLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jButtonPatientsRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonAddSimpleForm, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(jButtonAddExtensiveForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonDeletePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonEditPatients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonAddSimpleForm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonAddExtensiveForm, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPatientsLayout.createSequentialGroup()
-                                        .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButtonDeletePatient)
-                                            .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButtonEditPatients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(38, 38, 38)))))))
+                                .addComponent(jButtonPatientsRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPatientsLayout.setVerticalGroup(
@@ -1971,16 +2048,15 @@ public class OutpatientModule extends javax.swing.JFrame {
                 .addGroup(jPanelPatientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelPatientsLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jTabbedPanePatientData, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
+                        .addComponent(jTabbedPanePatientData, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPatientsLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jButtonDeletePatient)
+                        .addGap(77, 77, 77)
+                        .addComponent(jButtonDeletePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEditPatients)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButtonSave)
-                        .addGap(51, 51, 51))))
+                        .addComponent(jButtonEditPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
 
         jTabbedPaneMain.addTab("Patients", jPanelPatients);
@@ -1996,23 +2072,375 @@ public class OutpatientModule extends javax.swing.JFrame {
             }
         ));
         jTablePersonel.getTableHeader().setReorderingAllowed(false);
+        jTablePersonel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePersonelMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTablePersonel);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Personel");
 
+        jButtonAddDoctor.setBackground(new java.awt.Color(51, 204, 0));
         jButtonAddDoctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAddDoctor.setText("Add new");
+        jButtonAddDoctor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAddDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddDoctorMouseClicked(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Edit");
+        jButtonEditPersonel.setBackground(new java.awt.Color(255, 204, 102));
+        jButtonEditPersonel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonEditPersonel.setText("Edit");
+        jButtonEditPersonel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditPersonel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEditPersonelMouseClicked(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Save");
+        jButtonSavePersonel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSavePersonel.setText("Save");
+        jButtonSavePersonel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSavePersonel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSavePersonelMouseClicked(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 153));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Change active status");
+        jButtonDeleteDoctor.setBackground(new java.awt.Color(255, 153, 153));
+        jButtonDeleteDoctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonDeleteDoctor.setText("Delete");
+        jButtonDeleteDoctor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeleteDoctorMouseClicked(evt);
+            }
+        });
+
+        jTextFieldFirstNameDoctor.setEnabled(false);
+        jTextFieldFirstNameDoctor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldFirstNameDoctorjTextFieldOnlyAplhabeticKeyTyped(evt);
+            }
+        });
+
+        jLabelFirstname22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelFirstname22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelFirstname22.setText("First name:");
+
+        jLabelSurname15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSurname15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSurname15.setText("Last name:");
+
+        jTextFieldSurnameDoctor.setEnabled(false);
+        jTextFieldSurnameDoctor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSurnameDoctorKeyTyped(evt);
+            }
+        });
+
+        jComboBoxDoctorType.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxDoctorType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Cardiologist", "Psychiatrist", "Dermatologists", "Endocrinologists", "Neurologists", "Oncologists", "Pediatricians", "Radiologists" }));
+        jComboBoxDoctorType.setEnabled(false);
+
+        jLabelSex4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSex4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSex4.setText("Doctor type:");
+
+        jCheckBoxDocAvailable.setEnabled(false);
+
+        jLabelFirstname23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelFirstname23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelFirstname23.setText("Unavailable:");
+
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel43.setText("State:");
+
+        jTextFieldStatePresentDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStatePresentDoctor.setEnabled(false);
+        jTextFieldStatePresentDoctor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldStatePresentDoctorjTextFieldOnlyAplhabeticKeyTyped(evt);
+            }
+        });
+
+        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel44.setText("City:");
+
+        jTextFieldCityPresentDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldCityPresentDoctor.setEnabled(false);
+        jTextFieldCityPresentDoctor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCityPresentDoctorjTextFieldOnlyAplhabeticKeyTyped(evt);
+            }
+        });
+
+        jTextFieldStreetPresentDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldStreetPresentDoctor.setEnabled(false);
+
+        jLabel45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel45.setText("Street:");
+
+        jFormattedTextFieldHouseNumberPresentDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        jFormattedTextFieldHouseNumberPresentDoctor.setEnabled(false);
+        jFormattedTextFieldHouseNumberPresentDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldHouseNumberPresentDoctorActionPerformed(evt);
+            }
+        });
+
+        jLabelBirthdate16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate16.setText("House number:");
+
+        jLabelBirthdate17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate17.setText("Area code:");
+
+        try {
+            jFormattedTextFieldAreacodePresentDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("*******")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldAreacodePresentDoctor.setEnabled(false);
+
+        jLabelBirthdate18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate18.setText("Zip code:");
+
+        jFormattedTextZipcodePresentDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("######"))));
+        jFormattedTextZipcodePresentDoctor.setEnabled(false);
+
+        jLabel46.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel46.setText("Address");
+
+        jLabel47.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel47.setText("Telephones/Fax/Email");
+
+        jFormattedTextFieldPhoneNumWorkDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+        jFormattedTextFieldPhoneNumWorkDoctor.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumWorkDoctor.setEnabled(false);
+
+        jLabelBirthdate19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate19.setText("Telephone (Work):");
+
+        jFormattedTextFieldPhoneNumHomeDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+        jFormattedTextFieldPhoneNumHomeDoctor.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumHomeDoctor.setEnabled(false);
+
+        jLabelBirthdate20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate20.setText("Telephone (Home):");
+
+        jFormattedTextFieldPhoneNumMobileDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+        jFormattedTextFieldPhoneNumMobileDoctor.setToolTipText("+385");
+        jFormattedTextFieldPhoneNumMobileDoctor.setEnabled(false);
+
+        jLabelBirthdate21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBirthdate21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelBirthdate21.setText("Mobile:");
+
+        jTextFieldPagerDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldPagerDoctor.setEnabled(false);
+
+        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel48.setText("Pager:");
+
+        jTextFieldFaxDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldFaxDoctor.setEnabled(false);
+
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel49.setText("Fax:");
+
+        jTextFieldEmailDoctor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldEmailDoctor.setEnabled(false);
+
+        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel50.setText("Email:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelFirstname23)
+                            .addComponent(jLabelSex4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCheckBoxDocAvailable)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelBirthdate18)
+                                    .addComponent(jLabelBirthdate17)
+                                    .addComponent(jLabelBirthdate16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFormattedTextFieldHouseNumberPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextFieldAreacodePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextZipcodePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBoxDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jTextFieldCityPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextFieldStatePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addGap(35, 35, 35)
+                                                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel45)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldStreetPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelSurname15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelFirstname22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldSurnameDoctor)
+                            .addComponent(jTextFieldFirstNameDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel47)
+                        .addGap(137, 137, 137))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelBirthdate19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jFormattedTextFieldPhoneNumWorkDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelBirthdate21)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jFormattedTextFieldPhoneNumMobileDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelBirthdate20)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jFormattedTextFieldPhoneNumHomeDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel49)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFieldFaxDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFieldEmailDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel48)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFieldPagerDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(105, 105, 105))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(jLabel47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFirstname22)
+                    .addComponent(jTextFieldFirstNameDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelSurname15)
+                            .addComponent(jTextFieldSurnameDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelSex4)
+                            .addComponent(jComboBoxDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel43)
+                            .addComponent(jTextFieldStatePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel44)
+                            .addComponent(jTextFieldCityPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel45)
+                            .addComponent(jTextFieldStreetPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedTextFieldPhoneNumWorkDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBirthdate19))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedTextFieldPhoneNumHomeDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBirthdate20))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedTextFieldPhoneNumMobileDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBirthdate21))))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelFirstname23)
+                        .addComponent(jCheckBoxDocAvailable)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelBirthdate16)
+                                .addComponent(jFormattedTextFieldHouseNumberPresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelBirthdate17)
+                                .addComponent(jFormattedTextFieldAreacodePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelBirthdate18)
+                                .addComponent(jFormattedTextZipcodePresentDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel50)
+                            .addComponent(jTextFieldEmailDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel49)
+                            .addComponent(jTextFieldFaxDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel48)
+                            .addComponent(jTextFieldPagerDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jButtonRefreshPersonel.setBackground(new java.awt.Color(51, 153, 255));
+        jButtonRefreshPersonel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonRefreshPersonel.setText("Refresh");
+        jButtonRefreshPersonel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRefreshPersonel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRefreshPersonelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelPersonelLayout = new javax.swing.GroupLayout(jPanelPersonel);
         jPanelPersonel.setLayout(jPanelPersonelLayout);
@@ -2020,22 +2448,18 @@ public class OutpatientModule extends javax.swing.JFrame {
             jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPersonelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 879, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(397, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonelLayout.createSequentialGroup()
-                        .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAddDoctor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonelLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonSavePersonel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEditPersonel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAddDoctor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(jButtonDeleteDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRefreshPersonel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanelPersonelLayout.setVerticalGroup(
             jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2043,19 +2467,23 @@ public class OutpatientModule extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelPersonelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE))
+                        .addComponent(jButtonRefreshPersonel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAddDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelPersonelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPersonelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAddDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
-                .addComponent(jButton1)
-                .addGap(24, 24, 24)
-                .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonDeleteDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(jButtonEditPersonel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButtonSavePersonel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPersonelLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
 
@@ -2168,7 +2596,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                         .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2288,7 +2716,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                 .addGroup(jPanelAppointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAppointmentsLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addContainerGap(988, Short.MAX_VALUE))
+                        .addContainerGap(995, Short.MAX_VALUE))
                     .addGroup(jPanelAppointmentsLayout.createSequentialGroup()
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2353,7 +2781,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                     .addGroup(jPanelBillsLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(376, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         jPanelBillsLayout.setVerticalGroup(
             jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2375,7 +2803,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jPanelReports.setLayout(jPanelReportsLayout);
         jPanelReportsLayout.setHorizontalGroup(
             jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 1195, Short.MAX_VALUE)
         );
         jPanelReportsLayout.setVerticalGroup(
             jPanelReportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2393,6 +2821,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jButtonClose.setBackground(new java.awt.Color(255, 153, 153));
         jButtonClose.setText("Close");
         jButtonClose.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButtonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonCloseMouseClicked(evt);
@@ -2465,7 +2894,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private void jTextFieldPatientMiddKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPatientMiddKeyTyped
         char c = evt.getKeyChar();
-
+        
         if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
@@ -2473,7 +2902,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private void jTextSurrnameEditKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextSurrnameEditKeyTyped
         char c = evt.getKeyChar();
-
+        
         if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
@@ -2481,7 +2910,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private void jTextFieLDPatientFirstEditjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieLDPatientFirstEditjTextFieldOnlyAplhabeticKeyTyped
         char c = evt.getKeyChar();
-
+        
         if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
@@ -2491,17 +2920,17 @@ public class OutpatientModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
         if (model.getRowCount() > 0) {
             Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePatients.getSelectedRow());
-
+            
             GetSinglePatientResult patientRes = _patientsBL.getById((Long) selectedRow.get(0));
-
+            
             if (patientRes.isOK) {
                 _currentPatient = patientRes.patient;
-
+                
                 ClearInputFields();
                 SetEditValues();
             }
         }
-
+        
 
     }//GEN-LAST:event_jTablePatientsMouseClicked
 
@@ -2580,10 +3009,10 @@ public class OutpatientModule extends javax.swing.JFrame {
     private void jButtonEditPatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditPatientsMouseClicked
         if ((String) jButtonEditPatients.getText() == "Edit") {
             jButtonEditPatients.setText("Cancel");
-            ToggleEnabled(true);
+            ToggleEnabledPatient(true);
         } else {
             jButtonEditPatients.setText("Edit");
-            ToggleEnabled(false);
+            ToggleEnabledPatient(false);
         }
 
     }//GEN-LAST:event_jButtonEditPatientsMouseClicked
@@ -2592,11 +3021,11 @@ public class OutpatientModule extends javax.swing.JFrame {
         if (jButtonEditPatients.getText().equalsIgnoreCase("Edit")) {
             return;
         }
-
+        
         if (!PatientInputValidation()) {
             return;
         }
-
+        
         UpdatePatient();
     }//GEN-LAST:event_jButtonSaveMouseClicked
 
@@ -2604,15 +3033,109 @@ public class OutpatientModule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
         if (model.getRowCount() > 0) {
             Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePatients.getSelectedRow());
-
+            
             GetSinglePatientResult patientRes = _patientsBL.getById((Long) selectedRow.get(0));
-
+            
             if (patientRes.isOK) {
                 _patientsBL.deletePatient(patientRes.patient.getId());
-              
+                
             }
         }
     }//GEN-LAST:event_jButtonDeletePatientMouseClicked
+
+    private void jButtonRefreshPersonelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRefreshPersonelMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTablePersonel.getModel();
+        model.setRowCount(0);
+        this.FillDoctorTable();
+    }//GEN-LAST:event_jButtonRefreshPersonelMouseClicked
+
+    private void jButtonEditPersonelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditPersonelMouseClicked
+        if ((String) jButtonEditPersonel.getText() == "Edit") {
+            jButtonEditPersonel.setText("Cancel");
+            ToggleEnabledPersonel(true);
+        } else {
+            jButtonEditPersonel.setText("Edit");
+            ToggleEnabledPersonel(false);
+        }
+
+    }//GEN-LAST:event_jButtonEditPersonelMouseClicked
+
+    private void jButtonSavePersonelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSavePersonelMouseClicked
+        if (jButtonEditPersonel.getText().equalsIgnoreCase("Edit")) {
+            return;
+        }
+        
+        if (!DoctorInputValidation()) {
+            return;
+        }
+        
+        UpdateOrCreateDoctor();
+        jButtonEditPersonel.setText("Edit");
+        ToggleEnabledPersonel(false);
+    }//GEN-LAST:event_jButtonSavePersonelMouseClicked
+
+    private void jTextFieldFirstNameDoctorjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameDoctorjTextFieldOnlyAplhabeticKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldFirstNameDoctorjTextFieldOnlyAplhabeticKeyTyped
+
+    private void jTextFieldSurnameDoctorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSurnameDoctorKeyTyped
+        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
+    }//GEN-LAST:event_jTextFieldSurnameDoctorKeyTyped
+
+    private void jTextFieldStatePresentDoctorjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldStatePresentDoctorjTextFieldOnlyAplhabeticKeyTyped
+        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
+    }//GEN-LAST:event_jTextFieldStatePresentDoctorjTextFieldOnlyAplhabeticKeyTyped
+
+    private void jTextFieldCityPresentDoctorjTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCityPresentDoctorjTextFieldOnlyAplhabeticKeyTyped
+        jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(evt);
+    }//GEN-LAST:event_jTextFieldCityPresentDoctorjTextFieldOnlyAplhabeticKeyTyped
+
+    private void jFormattedTextFieldHouseNumberPresentDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldHouseNumberPresentDoctorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldHouseNumberPresentDoctorActionPerformed
+
+    private void jTablePersonelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePersonelMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTablePersonel.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePersonel.getSelectedRow());
+            
+            GetSingleDoctorResult docRes = _doctorBL.getById((Long) selectedRow.get(0));
+            
+            if (docRes.isOK) {
+                _currentDoctor = docRes.doctors;
+                
+                ClearInputFieldsPersonel();
+                SetEditValuesPersonel();
+            }
+        }
+    }//GEN-LAST:event_jTablePersonelMouseClicked
+
+    private void jButtonAddDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddDoctorMouseClicked
+        this._currentDoctor = new Doctor();
+        this.addingDoctor = true;
+        this.ClearInputFieldsPersonel();
+        if ((String) jButtonEditPersonel.getText() == "Edit") {
+            jButtonEditPersonel.setText("Cancel");
+            ToggleEnabledPersonel(true);
+        }
+    }//GEN-LAST:event_jButtonAddDoctorMouseClicked
+
+    private void jButtonDeleteDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDoctorMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTablePersonel.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTablePersonel.getSelectedRow());
+            
+            GetSingleDoctorResult docRes = _doctorBL.getById((Long) selectedRow.get(0));
+            
+            if (docRes.isOK) {
+                _doctorBL.deleteContactDetail(docRes.doctors.getId());
+                
+            }
+        }    }//GEN-LAST:event_jButtonDeleteDoctorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2654,11 +3177,8 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2669,11 +3189,16 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddExtensiveForm;
     private javax.swing.JButton jButtonAddSimpleForm;
     private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonDeleteDoctor;
     private javax.swing.JButton jButtonDeletePatient;
     private javax.swing.JButton jButtonEditPatients;
+    private javax.swing.JButton jButtonEditPersonel;
     private javax.swing.JButton jButtonPatientsRefresh;
+    private javax.swing.JButton jButtonRefreshPersonel;
     private javax.swing.JButton jButtonSave;
+    private javax.swing.JButton jButtonSavePersonel;
     private javax.swing.JCheckBox jCheckBoxAlcoholEdit;
+    private javax.swing.JCheckBox jCheckBoxDocAvailable;
     private javax.swing.JCheckBox jCheckBoxEatingHomeEdit;
     private javax.swing.JCheckBox jCheckBoxMarriedEdit;
     private javax.swing.JCheckBox jCheckBoxSmokerEdit;
@@ -2682,6 +3207,8 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxBloodTypeEdit;
     private javax.swing.JComboBox<String> jComboBoxCoffeeEdit;
+    private javax.swing.JComboBox<String> jComboBoxDoctorType;
+    private javax.swing.JComboBox<String> jComboBoxDoctorsForPatient;
     private javax.swing.JComboBox<String> jComboBoxNbDependentsEdit;
     private javax.swing.JComboBox<String> jComboBoxSexEdit;
     private javax.swing.JComboBox<String> jComboBoxSoftDrinksEdit;
@@ -2693,15 +3220,21 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextFieldAreacodePermanentEdit;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAreacodePresentDoctor;
     private javax.swing.JFormattedTextField jFormattedTextFieldAreacodePresentEdit;
     private javax.swing.JFormattedTextField jFormattedTextFieldBirthdateEdit;
     private javax.swing.JFormattedTextField jFormattedTextFieldGrossIncomeEdit;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHouseNumberPresentDoctor;
     private javax.swing.JFormattedTextField jFormattedTextFieldHouseNumberPresentEdit;
     private javax.swing.JFormattedTextField jFormattedTextFieldHousenumberPermanentEdit;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumHomeDoctor;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumHomeEdit;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumMobileDoctor;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumMobileEdit;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumWorkDoctor;
     private javax.swing.JFormattedTextField jFormattedTextFieldPhoneNumWorkEdit;
     private javax.swing.JFormattedTextField jFormattedTextFieldZipcodePermanentEdit;
+    private javax.swing.JFormattedTextField jFormattedTextZipcodePresentDoctor;
     private javax.swing.JFormattedTextField jFormattedTextZipcodePresentEdit;
     private javax.swing.JFormattedTextField jFormattedZipCodeNextOfKinEdit;
     private javax.swing.JLabel jLabel1;
@@ -2741,7 +3274,16 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2754,7 +3296,13 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBirthdate13;
     private javax.swing.JLabel jLabelBirthdate14;
     private javax.swing.JLabel jLabelBirthdate15;
+    private javax.swing.JLabel jLabelBirthdate16;
+    private javax.swing.JLabel jLabelBirthdate17;
+    private javax.swing.JLabel jLabelBirthdate18;
+    private javax.swing.JLabel jLabelBirthdate19;
     private javax.swing.JLabel jLabelBirthdate2;
+    private javax.swing.JLabel jLabelBirthdate20;
+    private javax.swing.JLabel jLabelBirthdate21;
     private javax.swing.JLabel jLabelBirthdate3;
     private javax.swing.JLabel jLabelBirthdate4;
     private javax.swing.JLabel jLabelBirthdate5;
@@ -2774,6 +3322,8 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFirstname19;
     private javax.swing.JLabel jLabelFirstname20;
     private javax.swing.JLabel jLabelFirstname21;
+    private javax.swing.JLabel jLabelFirstname22;
+    private javax.swing.JLabel jLabelFirstname23;
     private javax.swing.JLabel jLabelFirstname3;
     private javax.swing.JLabel jLabelFirstname4;
     private javax.swing.JLabel jLabelFirstname5;
@@ -2788,11 +3338,13 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMiddle7;
     private javax.swing.JLabel jLabelPatientTitle;
     private javax.swing.JLabel jLabelSex3;
+    private javax.swing.JLabel jLabelSex4;
     private javax.swing.JLabel jLabelSurname10;
     private javax.swing.JLabel jLabelSurname11;
     private javax.swing.JLabel jLabelSurname12;
     private javax.swing.JLabel jLabelSurname13;
     private javax.swing.JLabel jLabelSurname14;
+    private javax.swing.JLabel jLabelSurname15;
     private javax.swing.JLabel jLabelSurname3;
     private javax.swing.JLabel jLabelSurname4;
     private javax.swing.JLabel jLabelSurname5;
@@ -2801,6 +3353,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSurname8;
     private javax.swing.JLabel jLabelSurname9;
     private javax.swing.JFormattedTextField jOutpatOPIDEdit;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAppointments;
     private javax.swing.JPanel jPanelBasicDetailsTab;
     private javax.swing.JPanel jPanelBills;
@@ -2863,29 +3416,37 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieLDPatientFirstEdit;
     private javax.swing.JTextField jTextFieldCityNextOfKinEdit;
     private javax.swing.JTextField jTextFieldCityPermanentEdit;
+    private javax.swing.JTextField jTextFieldCityPresentDoctor;
     private javax.swing.JTextField jTextFieldCityPresentEdit;
+    private javax.swing.JTextField jTextFieldEmailDoctor;
     private javax.swing.JTextField jTextFieldEmailEdit;
     private javax.swing.JTextField jTextFieldEmailNextOfKinEdit;
+    private javax.swing.JTextField jTextFieldFaxDoctor;
     private javax.swing.JTextField jTextFieldFaxEdit;
     private javax.swing.JTextField jTextFieldFaxNextOfKinEdit;
     private javax.swing.JTextField jTextFieldFirstNameDiabeticEdit;
+    private javax.swing.JTextField jTextFieldFirstNameDoctor;
     private javax.swing.JTextField jTextFieldFirstNameHypertensiveEdit;
     private javax.swing.JTextField jTextFieldFirstNextOfKinEdit;
     private javax.swing.JTextField jTextFieldHospitalTreatedEdit;
     private javax.swing.JTextField jTextFieldMiddleNextOfKinEdit;
     private javax.swing.JTextField jTextFieldNextOfKinRelatinshipEdit;
     private javax.swing.JTextField jTextFieldOccupationEdit;
+    private javax.swing.JTextField jTextFieldPagerDoctor;
     private javax.swing.JTextField jTextFieldPagerEdit;
     private javax.swing.JTextField jTextFieldPagerNextOfKinEdit;
     private javax.swing.JTextField jTextFieldPatientMidd;
     private javax.swing.JTextField jTextFieldRegularMealsEdit;
     private javax.swing.JTextField jTextFieldStateNextOfKinEdit;
     private javax.swing.JTextField jTextFieldStatePermanentEdit;
+    private javax.swing.JTextField jTextFieldStatePresentDoctor;
     private javax.swing.JTextField jTextFieldStatePresentEdit;
     private javax.swing.JTextField jTextFieldStimulansEdit;
     private javax.swing.JTextField jTextFieldStreetNextOfKinEdit;
     private javax.swing.JTextField jTextFieldStreetPermanentEdit;
+    private javax.swing.JTextField jTextFieldStreetPresentDoctor;
     private javax.swing.JTextField jTextFieldStreetPresentEdit;
+    private javax.swing.JTextField jTextFieldSurnameDoctor;
     private javax.swing.JTextField jTextFieldSurnameNextOfKinEdit;
     private javax.swing.JTextField jTextSurrnameEdit;
     private javax.swing.JToggleButton jToggleButton1;
@@ -2901,27 +3462,28 @@ public class OutpatientModule extends javax.swing.JFrame {
             "Email",
             "Mobile"
         };
-
+        
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
-
+        
         model.setColumnIdentifiers(columnNames);
         jTablePatients.setRowSelectionAllowed(true);
         jTablePatients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
+        
         jTablePatients.getColumn(columnNames[0]).setPreferredWidth(10);
-
+        
     }
-
+    
     private void FillPatientTable() {
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
-
+        
         GetPatientsResult result = _patientsBL.getAll();
-
+        
         if (!result.isOK) {
             System.out.println(result.msg);
         }
+        
         List<Patient> patients = result.patients;
-
+        
         for (int i = 0; i < patients.size(); i++) {
             Object rowData[] = new Object[8];
             rowData[0] = patients.get(i).getId();
@@ -2930,10 +3492,10 @@ public class OutpatientModule extends javax.swing.JFrame {
             rowData[3] = patients.get(i).getLastname();
             rowData[4] = patients.get(i).getGender();
             rowData[5] = patients.get(i).getBirthdate();
-
+            
             if (patients.get(i).getContactDetail() != null) {
                 List<PhoneNumber> tempPhone = patients.get(i).getContactDetail().getPhones();
-
+                
                 for (PhoneNumber phoneNumber : tempPhone) {
                     if (phoneNumber.getPhoneType().equals(PhoneType.Email)) {
                         rowData[6] = phoneNumber.getNumber();
@@ -2943,59 +3505,60 @@ public class OutpatientModule extends javax.swing.JFrame {
                     }
                 }
             }
-
+            
             model.addRow(rowData);
         }
     }
-
-    private void ToggleEnabled(Boolean val) {
+    
+    private void ToggleEnabledPatient(Boolean val) {
         jOutpatOPIDEdit.setEnabled(val);
         jTextFieLDPatientFirstEdit.setEnabled(val);
         jTextFieldPatientMidd.setEnabled(val);
         jTextSurrnameEdit.setEnabled(val);
         jComboBoxSexEdit.setEnabled(val);
         jFormattedTextFieldBirthdateEdit.setEnabled(val);
-
+        jComboBoxDoctorsForPatient.setEnabled(val);
+        
         jTextFieldStatePresentEdit.setEnabled(val);
         jTextFieldCityPresentEdit.setEnabled(val);
         jTextFieldStreetPresentEdit.setEnabled(val);
         jFormattedTextFieldHouseNumberPresentEdit.setEnabled(val);
         jFormattedTextFieldAreacodePresentEdit.setEnabled(val);
         jFormattedTextZipcodePresentEdit.setEnabled(val);
-
+        
         jTextFieldStatePermanentEdit.setEnabled(val);
         jTextFieldCityPermanentEdit.setEnabled(val);
         jTextFieldStreetPermanentEdit.setEnabled(val);
         jFormattedTextFieldHousenumberPermanentEdit.setEnabled(val);
         jFormattedTextFieldAreacodePermanentEdit.setEnabled(val);
         jFormattedTextFieldZipcodePermanentEdit.setEnabled(val);
-
+        
         jFormattedTextFieldPhoneNumWorkEdit.setEnabled(val);
         jFormattedTextFieldPhoneNumHomeEdit.setEnabled(val);
         jFormattedTextFieldPhoneNumMobileEdit.setEnabled(val);
         jTextFieldEmailEdit.setEnabled(val);
         jTextFieldFaxEdit.setEnabled(val);
         jTextFieldPagerEdit.setEnabled(val);
-
+        
         jTextFieldFirstNextOfKinEdit.setEnabled(val);
         jTextFieldMiddleNextOfKinEdit.setEnabled(val);
         jTextFieldSurnameNextOfKinEdit.setEnabled(val);
         jTextFieldNextOfKinRelatinshipEdit.setEnabled(val);
-
+        
         jTextFieldStateNextOfKinEdit.setEnabled(val);
         jTextFieldCityNextOfKinEdit.setEnabled(val);
         jTextFieldStreetNextOfKinEdit.setEnabled(val);
         jFormattedHouseNbNextOfKinEdit.setEnabled(val);
         jFormattedAreaNextOfKinEdit.setEnabled(val);
         jFormattedZipCodeNextOfKinEdit.setEnabled(val);
-
+        
         jFormattedTelephoneWorkNextOfKinEdit.setEnabled(val);
         jFormattedTelephoneHomeNextOfKinEdit.setEnabled(val);
         jFormattedTelephoneMobileNextOfKinEdit.setEnabled(val);
         jTextFieldEmailNextOfKinEdit.setEnabled(val);
         jTextFieldFaxNextOfKinEdit.setEnabled(val);
         jTextFieldPagerNextOfKinEdit.setEnabled(val);
-
+        
         jCheckBoxMarriedEdit.setEnabled(val);
         jComboBoxNbDependentsEdit.setEnabled(val);
         jComboBoxBloodTypeEdit.setEnabled(val);
@@ -3016,7 +3579,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextAreaStateOfComplaintComplaintStatementEdit.setEnabled(val);
         jTextAreaStateOfComplainTreatmentHistoryEdit.setEnabled(val);
         jTextFieldHospitalTreatedEdit.setEnabled(val);
-
+        
         jTextFieldFirstNameDiabeticEdit.setEnabled(val);
         jTextFieldFirstNameHypertensiveEdit.setEnabled(val);
         jTextAreaStateOfComplaintNeurologicalEdit.setEnabled(val);
@@ -3028,36 +3591,40 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextAreaStateOfComplaintSurgeriesEdit.setEnabled(val);
         jTextAreaStateOfComplaintCardiacEdit.setEnabled(val);
         jTextAreaStateOfComplaintDigestiveEdit.setEnabled(val);
-
+        
     }
-
+    
     private void SetEditValues() {
         //Basic
         if (_currentPatient.getOPID() != null) {
             jOutpatOPIDEdit.setText(_currentPatient.getOPID().toString());
         }
-
+        
         if (_currentPatient.getFirstname() != null) {
             jTextFieLDPatientFirstEdit.setText(_currentPatient.getFirstname());
         }
-
+        
         if (_currentPatient.getMiddlename() != null) {
             jTextFieldPatientMidd.setText(_currentPatient.getMiddlename());
         }
-
+        
         if (_currentPatient.getLastname() != null) {
             jTextSurrnameEdit.setText(_currentPatient.getLastname());
         }
-
+        
         if (_currentPatient.getGender() == 'M') {
             jComboBoxSexEdit.setSelectedIndex(0);
         } else {
             jComboBoxSexEdit.setSelectedIndex(1);
         }
-
+        
         if (_currentPatient.getBirthdate() != null) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             jFormattedTextFieldBirthdateEdit.setText(formatter.format(_currentPatient.getBirthdate()));
+        }
+        
+        if (_currentPatient.getDoctor() != null) {
+            jComboBoxDoctorsForPatient.setSelectedItem(_currentPatient.getDoctor());
         }
 
         //Address present
@@ -3071,9 +3638,9 @@ public class OutpatientModule extends javax.swing.JFrame {
             if (_currentPatient.getContactDetail().getPresentAddress().getStreet() != null) {
                 jTextFieldStreetPresentEdit.setText(_currentPatient.getContactDetail().getPresentAddress().getStreet());
             }
-
+            
             jFormattedTextFieldHouseNumberPresentEdit.setText(Integer.toString(_currentPatient.getContactDetail().getPresentAddress().getHouseNumber()));
-
+            
             if (_currentPatient.getContactDetail().getPresentAddress().getArea() != null) {
                 jFormattedTextFieldAreacodePresentEdit.setText(_currentPatient.getContactDetail().getPresentAddress().getArea());
             }
@@ -3083,7 +3650,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         }
         //Address permanent
         if (_currentPatient.getContactDetail().getPermanentAddress() != null) {
-
+            
             if (_currentPatient.getContactDetail().getPermanentAddress().getState() != null) {
                 jTextFieldStatePermanentEdit.setText(_currentPatient.getContactDetail().getPermanentAddress().getState());
             }
@@ -3093,9 +3660,9 @@ public class OutpatientModule extends javax.swing.JFrame {
             if (_currentPatient.getContactDetail().getPermanentAddress().getStreet() != null) {
                 jTextFieldStreetPermanentEdit.setText(_currentPatient.getContactDetail().getPermanentAddress().getStreet());
             }
-
+            
             jFormattedTextFieldHousenumberPermanentEdit.setText(Integer.toString(_currentPatient.getContactDetail().getPermanentAddress().getHouseNumber()));
-
+            
             if (_currentPatient.getContactDetail().getPermanentAddress().getArea() != null) {
                 jFormattedTextFieldAreacodePermanentEdit.setText(_currentPatient.getContactDetail().getPermanentAddress().getArea());
             }
@@ -3106,7 +3673,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         //Phones
         List<PhoneNumber> phones = _currentPatient.getContactDetail().getPhones();
-
+        
         if (!phones.isEmpty()) {
             for (PhoneNumber phone : phones) {
                 if (phone.getPhoneType().equals(PhoneType.Work)) {
@@ -3132,15 +3699,15 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         //Next of Kin
         if (_currentPatient.getNextOfKin() != null) {
-
+            
             if (_currentPatient.getNextOfKin().getFirstname() != null) {
                 jTextFieldFirstNextOfKinEdit.setText(_currentPatient.getNextOfKin().getFirstname());
             }
-
+            
             if (_currentPatient.getNextOfKin().getMiddlename() != null) {
                 jTextFieldMiddleNextOfKinEdit.setText(_currentPatient.getNextOfKin().getMiddlename());
             }
-
+            
             if (_currentPatient.getNextOfKin().getLastname() != null) {
                 jTextFieldSurnameNextOfKinEdit.setText(_currentPatient.getNextOfKin().getLastname());
             }
@@ -3159,7 +3726,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                     jTextFieldStreetNextOfKinEdit.setText(_currentPatient.getNextOfKin().getContactDetailNextOf().getPresentAddress().getStreet());
                 }
                 jFormattedHouseNbNextOfKinEdit.setText(Integer.toString(_currentPatient.getNextOfKin().getContactDetailNextOf().getPresentAddress().getHouseNumber()));
-
+                
                 if (_currentPatient.getNextOfKin().getContactDetailNextOf().getPresentAddress().getArea() != null) {
                     jFormattedAreaNextOfKinEdit.setText(_currentPatient.getNextOfKin().getContactDetailNextOf().getPresentAddress().getArea());
                 }
@@ -3170,7 +3737,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
             //Phones
             List<PhoneNumber> nextOfKinPhones = _currentPatient.getNextOfKin().getContactDetailNextOf().getPhones();
-
+            
             if (!nextOfKinPhones.isEmpty()) {
                 for (PhoneNumber phone : nextOfKinPhones) {
                     if (phone.getPhoneType().equals(PhoneType.Work)) {
@@ -3198,7 +3765,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         //Personal details
         jCheckBoxMarriedEdit.setSelected(_currentPatient.getPersonalDetail().isMaritalStatus());
         jComboBoxNbDependentsEdit.setSelectedIndex(_currentPatient.getPersonalDetail().getNbOfDependents() + 1);
-
+        
         if (_currentPatient.getPersonalDetail().getBloodType() != null) {
             String bloodType = _currentPatient.getPersonalDetail().getBloodType();
             if (bloodType.equalsIgnoreCase("A")) {
@@ -3213,15 +3780,15 @@ public class OutpatientModule extends javax.swing.JFrame {
                 jComboBoxBloodTypeEdit.setSelectedIndex(0);
             }
         }
-
+        
         if (_currentPatient.getPersonalDetail().getOccupation() != null) {
             jTextFieldOccupationEdit.setText(_currentPatient.getPersonalDetail().getOccupation());
         }
-
+        
         if (_currentPatient.getPersonalDetail().getGrossAnnualIncome() != null) {
             jFormattedTextFieldGrossIncomeEdit.setText(_currentPatient.getPersonalDetail().getGrossAnnualIncome().toString());
         }
-
+        
         jSliderHeightEdit.setValue(_currentPatient.getPersonalDetail().getHeight());
         jSliderWeightEdit.setValue(_currentPatient.getPersonalDetail().getWeight());
 
@@ -3230,17 +3797,17 @@ public class OutpatientModule extends javax.swing.JFrame {
         jCheckBoxSmokerEdit.setSelected(_currentPatient.getPatientLifestyle().isSmoker());
         jCheckBoxAlcoholEdit.setSelected(_currentPatient.getPatientLifestyle().isAlcoholConsumer());
         jCheckBoxEatingHomeEdit.setSelected(_currentPatient.getPatientLifestyle().isEatingHomePredominantly());
-
+        
         jComboBoxCoffeeEdit.setSelectedIndex(_currentPatient.getPatientLifestyle().getCoffePerDay() + 1);
         jComboBoxSoftDrinksEdit.setSelectedIndex(_currentPatient.getPatientLifestyle().getSoftDrinksPerDay() + 1);
-
+        
         if (_currentPatient.getPatientLifestyle().getUsingStimulans() != null) {
             jTextFieldStimulansEdit.setText(_currentPatient.getPatientLifestyle().getUsingStimulans());
         }
         if (_currentPatient.getPatientLifestyle().getRegularMelas() != null) {
             jTextFieldRegularMealsEdit.setText(_currentPatient.getPatientLifestyle().getRegularMelas());
         }
-
+        
         jSliderAvgDrinksEdit.setValue(_currentPatient.getPatientLifestyle().getAvgDrinksDay());
         jSliderAvgCigarettesEdit.setValue(_currentPatient.getPatientLifestyle().getAvgCigarettesDay());
 
@@ -3290,15 +3857,15 @@ public class OutpatientModule extends javax.swing.JFrame {
             jTextAreaStateOfComplaintDigestiveEdit.setText(_currentPatient.getMedicalComplaints().getDigestiveCondition());
         }
     }
-
+    
     private void jTextFieldFirstNameExtensivejTextFieldOnlyAplhabeticKeyTyped(java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
-
+        
         if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }
-
+    
     private void ClearInputFields() {
         jOutpatOPIDEdit.setText("");
         jTextFieLDPatientFirstEdit.setText("");
@@ -3306,47 +3873,48 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextSurrnameEdit.setText("");
         jComboBoxSexEdit.setSelectedIndex(0);
         jFormattedTextFieldBirthdateEdit.setText("");
-
+        jComboBoxDoctorsForPatient.setSelectedIndex(0);
+        
         jTextFieldStatePresentEdit.setText("");
         jTextFieldCityPresentEdit.setText("");
         jTextFieldStreetPresentEdit.setText("");
         jFormattedTextFieldHouseNumberPresentEdit.setText("");
         jFormattedTextFieldAreacodePresentEdit.setText("");
         jFormattedTextZipcodePresentEdit.setText("");
-
+        
         jTextFieldStatePermanentEdit.setText("");
         jTextFieldCityPermanentEdit.setText("");
         jTextFieldStreetPermanentEdit.setText("");
         jFormattedTextFieldHousenumberPermanentEdit.setText("");
         jFormattedTextFieldAreacodePermanentEdit.setText("");
         jFormattedTextFieldZipcodePermanentEdit.setText("");
-
+        
         jFormattedTextFieldPhoneNumWorkEdit.setText("");
         jFormattedTextFieldPhoneNumHomeEdit.setText("");
         jFormattedTextFieldPhoneNumMobileEdit.setText("");
         jTextFieldEmailEdit.setText("");
         jTextFieldFaxEdit.setText("");
         jTextFieldPagerEdit.setText("");
-
+        
         jTextFieldFirstNextOfKinEdit.setText("");
         jTextFieldMiddleNextOfKinEdit.setText("");
         jTextFieldSurnameNextOfKinEdit.setText("");
         jTextFieldNextOfKinRelatinshipEdit.setText("");
-
+        
         jTextFieldStateNextOfKinEdit.setText("");
         jTextFieldCityNextOfKinEdit.setText("");
         jTextFieldStreetNextOfKinEdit.setText("");
         jFormattedHouseNbNextOfKinEdit.setText("");
         jFormattedAreaNextOfKinEdit.setText("");
         jFormattedZipCodeNextOfKinEdit.setText("");
-
+        
         jFormattedTelephoneWorkNextOfKinEdit.setText("");
         jFormattedTelephoneHomeNextOfKinEdit.setText("");
         jFormattedTelephoneMobileNextOfKinEdit.setText("");
         jTextFieldEmailNextOfKinEdit.setText("");
         jTextFieldFaxNextOfKinEdit.setText("");
         jTextFieldPagerNextOfKinEdit.setText("");
-
+        
         jCheckBoxMarriedEdit.setText("");
         jComboBoxNbDependentsEdit.setSelectedIndex(0);
         jComboBoxBloodTypeEdit.setSelectedIndex(0);
@@ -3354,7 +3922,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jFormattedTextFieldGrossIncomeEdit.setText("");
         jSliderHeightEdit.setValue(179);
         jSliderWeightEdit.setValue(80);
-
+        
         jCheckBoxVegeterianEdit.setText("");
         jCheckBoxSmokerEdit.setText("");
         jCheckBoxAlcoholEdit.setText("");
@@ -3365,11 +3933,11 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextFieldRegularMealsEdit.setText("");
         jSliderAvgDrinksEdit.setValue(0);
         jSliderAvgCigarettesEdit.setValue(0);
-
+        
         jTextAreaStateOfComplaintComplaintStatementEdit.setText("");
         jTextAreaStateOfComplainTreatmentHistoryEdit.setText("");
         jTextFieldHospitalTreatedEdit.setText("");
-
+        
         jTextFieldFirstNameDiabeticEdit.setText("");
         jTextFieldFirstNameHypertensiveEdit.setText("");
         jTextAreaStateOfComplaintNeurologicalEdit.setText("");
@@ -3381,16 +3949,16 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTextAreaStateOfComplaintSurgeriesEdit.setText("");
         jTextAreaStateOfComplaintCardiacEdit.setText("");
         jTextAreaStateOfComplaintDigestiveEdit.setText("");
-
+        
     }
-
+    
     private boolean PatientInputValidation() {
         String validationStatusMessages = "";
         if (jOutpatOPIDEdit.getText().length() != 11) {
             validationStatusMessages
                     += "\n Patient OID needs to have 11 numbers and is required";
         }
-
+        
         if (validationStatusMessages.isEmpty()) {
             return true;
         } else {
@@ -3398,7 +3966,7 @@ public class OutpatientModule extends javax.swing.JFrame {
             return false;
         }
     }
-
+    
     private void UpdatePatient() {
 
         //Basic Complain
@@ -3464,7 +4032,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         List<PhoneNumber> tempPhonesNext = _currentPatient.getNextOfKin().getContactDetailNextOf().getPhones();
         if (!tempPhonesNext.isEmpty()) {
             for (int i = 0; i < tempPhonesNext.size(); i++) {
-
+                
                 if (tempPhonesNext.get(i).getPhoneType().equals(PhoneType.Work)) {
                     tempPhonesNext.get(i).setNumber(jFormattedTelephoneWorkNextOfKinEdit.getText());
                 }
@@ -3490,7 +4058,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         List<PhoneNumber> tempPhones = _currentPatient.getNextOfKin().getContactDetailNextOf().getPhones();
         if (!tempPhones.isEmpty()) {
             for (int i = 0; i < tempPhones.size(); i++) {
-
+                
                 if (tempPhones.get(i).getPhoneType().equals(PhoneType.Work)) {
                     tempPhones.get(i).setNumber(jFormattedTextFieldPhoneNumWorkEdit.getText());
                 }
@@ -3536,25 +4104,26 @@ public class OutpatientModule extends javax.swing.JFrame {
         _currentPatient.setMiddlename(jTextFieldPatientMidd.getText());
         _currentPatient.setLastname(jTextSurrnameEdit.getText());
         _currentPatient.setGender(jComboBoxSexEdit.getSelectedItem().toString().charAt(0));
-
+        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate birthday = LocalDate.parse(jFormattedTextFieldBirthdateEdit.getText(), formatter);
         _currentPatient.setBirthdate(birthday);
-
+        
+        _currentPatient.setDoctor(_generalDoctors.get(jComboBoxDoctorsForPatient.getSelectedIndex()));
         //----------------------
         try {
             _patientsBL.updatePatient(_currentPatient);
             _addressBL.updateAddress(tempAddressPermanent);
             _addressBL.updateAddress(tempAddressPresent);
             _addressBL.updateAddress(tempAddressNext);
-
+            
             for (PhoneNumber tempPhone : tempPhones) {
                 _phoneNumberBL.updatePhoneNumber(tempPhone);
             }
             for (PhoneNumber tempPhone : tempPhonesNext) {
                 _phoneNumberBL.updatePhoneNumber(tempPhone);
             }
-
+            
             _nextOfKinBL.updateNextOfKin(tempNextOf);
             _personalDetailsBL.updateContactDetail(tempPersonal);
             _patientLifestyleBL.updatePatientLifestyle(tempLifestyle);
@@ -3563,7 +4132,335 @@ public class OutpatientModule extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-        ToggleEnabled(false);
+        ToggleEnabledPatient(false);
     }
+    
+    private void SetupDoctorTable() {
+        String[] columnNames = {"Id",
+            "First name",
+            "Last name",
+            "Doctor type",
+            "Unavailable",
+            "Email",
+            "Mobile"
+        };
+        
+        DefaultTableModel model = (DefaultTableModel) jTablePersonel.getModel();
+        
+        model.setColumnIdentifiers(columnNames);
+        jTablePersonel.setRowSelectionAllowed(true);
+        jTablePersonel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        jTablePersonel.getColumn(columnNames[0]).setPreferredWidth(5);
+        jTablePersonel.getColumn(columnNames[4]).setPreferredWidth(30);
+        jTablePersonel.getColumn(columnNames[5]).setPreferredWidth(160);
+        
+    }
+    
+    private void FillDoctorTable() {
+        DefaultTableModel model = (DefaultTableModel) jTablePersonel.getModel();
+        
+        GetDoctorResult result = _doctorBL.getAll();
+        
+        if (!result.isOK) {
+            System.out.println(result.msg);
+        }
+        List<Doctor> tempDocs = result.doctors.stream().filter(x -> (DoctorType.General).equals(x.getDoctorType())).collect(Collectors.toList());
+        _generalDoctors = tempDocs;
+        jComboBoxDoctorsForPatient.setModel(new DefaultComboBoxModel(_generalDoctors.toArray()));
+        
+        List<Doctor> docs = result.doctors;
+        
+        for (int i = 0; i < docs.size(); i++) {
+            Object rowData[] = new Object[7];
+            rowData[0] = docs.get(i).getId();
+            rowData[1] = docs.get(i).getFirstname();
+            rowData[2] = docs.get(i).getLastname();
+            rowData[3] = docs.get(i).getDoctorType();
+            rowData[4] = docs.get(i).isUnavailable();
+            
+            if (docs.get(i).getContactDetail() != null) {
+                List<PhoneNumber> tempPhone = docs.get(i).getContactDetail().getPhones();
+                
+                for (PhoneNumber phoneNumber : tempPhone) {
+                    if (phoneNumber.getPhoneType().equals(PhoneType.Email)) {
+                        rowData[5] = phoneNumber.getNumber();
+                    }
+                    if (phoneNumber.getPhoneType().equals(PhoneType.Mobile)) {
+                        rowData[6] = phoneNumber.getNumber();
+                    }
+                }
+            }
+            
+            model.addRow(rowData);
+        }
+    }
+    
+    private void ToggleEnabledPersonel(boolean val) {
+        jTextFieldFirstNameDoctor.setEnabled(val);
+        jTextFieldSurnameDoctor.setEnabled(val);
+        jComboBoxDoctorType.setEnabled(val);
+        jCheckBoxDocAvailable.setEnabled(val);
+        
+        jTextFieldStatePresentDoctor.setEnabled(val);
+        jTextFieldCityPresentDoctor.setEnabled(val);
+        jTextFieldStreetPresentDoctor.setEnabled(val);
+        jFormattedTextFieldHouseNumberPresentDoctor.setEnabled(val);
+        jFormattedTextFieldAreacodePresentDoctor.setEnabled(val);
+        jFormattedTextZipcodePresentDoctor.setEnabled(val);
+        
+        jFormattedTextFieldPhoneNumWorkDoctor.setEnabled(val);
+        jFormattedTextFieldPhoneNumHomeDoctor.setEnabled(val);
+        jFormattedTextFieldPhoneNumMobileDoctor.setEnabled(val);
+        jTextFieldEmailDoctor.setEnabled(val);
+        jTextFieldFaxDoctor.setEnabled(val);
+        jTextFieldPagerDoctor.setEnabled(val);
+        
+    }
+    
+    private boolean DoctorInputValidation() {
+        String validationStatusMessages = "";
+        if (jTextFieldFirstNameDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Doctor First name is required.";
+        }
+        
+        if (jTextFieldSurnameDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Doctor Last name is required.";
+        }
+        if (jFormattedTextFieldPhoneNumMobileDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Doctor mobile number is required.";
+        }
+        
+        if (validationStatusMessages.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, validationStatusMessages, "Validation check failed:", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    
+    private void UpdateOrCreateDoctor() {
+        //Address Present(patient)
+        Address tempDocAddressPresent = new Address();
+        if (!this.addingDoctor) {
+            if (_currentDoctor.getContactDetail().getPresentAddress() != null) {
+                tempDocAddressPresent = _currentDoctor.getContactDetail().getPresentAddress();
+            }
+        } else {
+            tempDocAddressPresent = new Address();
+        }
+        tempDocAddressPresent.setState(jTextFieldStatePresentDoctor.getText());
+        tempDocAddressPresent.setCity(jTextFieldCityPresentDoctor.getText());
+        tempDocAddressPresent.setStreet(jTextFieldStreetPresentDoctor.getText());
+        if (!jFormattedTextFieldHouseNumberPresentDoctor.getText().isEmpty()) {
+            tempDocAddressPresent.setHouseNumber(Integer.parseInt((String) jFormattedTextFieldHouseNumberPresentDoctor.getText()));
+        }
+        tempDocAddressPresent.setArea(jFormattedTextFieldAreacodePresentDoctor.getText());
+        tempDocAddressPresent.setZipCode(jFormattedTextZipcodePresentDoctor.getText());
+        
+        _currentDoctor.setFirstname(jTextFieldFirstNameDoctor.getText());
+        _currentDoctor.setLastname(jTextFieldSurnameDoctor.getText());
+        _currentDoctor.setDoctorType(DoctorType.valueOf(jComboBoxDoctorType.getSelectedItem().toString()));
+        _currentDoctor.setUnavailable(jCheckBoxDocAvailable.isSelected());
 
+        //Create
+        if (this.addingDoctor) {
+            try {
+                
+                Address addressDoc2 = new Address();
+                InsertAddressResult addressDoc1Result = _addressBL.insertAddress(tempDocAddressPresent);
+                InsertAddressResult addressDoc2Result = _addressBL.insertAddress(addressDoc2);
+                
+                ContactDetail contactDetailDoc = new ContactDetail();
+                contactDetailDoc.setPresentAddress(addressDoc1Result.address);
+                contactDetailDoc.setPermanentAddress(addressDoc2Result.address);
+                InsertContactDetailResult contactDetailDocRes = _contactDetailBL.insertContactDetail(contactDetailDoc);
+                
+                PhoneNumber phoneNumberWork1 = new PhoneNumber();
+                PhoneNumber phoneNumberHome1 = new PhoneNumber();
+                PhoneNumber phoneNumberMobile1 = new PhoneNumber();
+                PhoneNumber phoneNumberEmail1 = new PhoneNumber();
+                PhoneNumber phoneNumberFax1 = new PhoneNumber();
+                PhoneNumber phoneNumberPager1 = new PhoneNumber();
+
+//                InsertPhoneNumberResult phoneNumberWorkResult = new InsertPhoneNumberResult();
+//                InsertPhoneNumberResult phoneNumberHomeResult = new InsertPhoneNumberResult();
+//                InsertPhoneNumberResult phoneNumberMobileResult = new InsertPhoneNumberResult();
+//                InsertPhoneNumberResult phoneNumberEmailResult = new InsertPhoneNumberResult();
+//                InsertPhoneNumberResult phoneNumberFaxResult = new InsertPhoneNumberResult();
+//                InsertPhoneNumberResult phoneNumberPagerResult = new InsertPhoneNumberResult();
+                phoneNumberWork1.setNumber(jFormattedTextFieldPhoneNumWorkDoctor.getText());
+                phoneNumberHome1.setNumber(jFormattedTextFieldPhoneNumHomeDoctor.getText());
+                phoneNumberMobile1.setNumber(jFormattedTextFieldPhoneNumMobileDoctor.getText());
+                phoneNumberEmail1.setNumber(jTextFieldEmailDoctor.getText());
+                phoneNumberFax1.setNumber(jTextFieldFaxDoctor.getText());
+                phoneNumberPager1.setNumber(jTextFieldPagerDoctor.getText());
+                
+                phoneNumberWork1.setPhoneType(PhoneType.Work);
+                phoneNumberHome1.setPhoneType(PhoneType.Home);
+                phoneNumberMobile1.setPhoneType(PhoneType.Mobile);
+                phoneNumberEmail1.setPhoneType(PhoneType.Email);
+                phoneNumberFax1.setPhoneType(PhoneType.Fax);
+                phoneNumberPager1.setPhoneType(PhoneType.Pager);
+                
+                phoneNumberWork1.setContact(contactDetailDocRes.contactDetail);
+                phoneNumberHome1.setContact(contactDetailDocRes.contactDetail);
+                phoneNumberMobile1.setContact(contactDetailDocRes.contactDetail);
+                phoneNumberEmail1.setContact(contactDetailDocRes.contactDetail);
+                phoneNumberFax1.setContact(contactDetailDocRes.contactDetail);
+                phoneNumberPager1.setContact(contactDetailDocRes.contactDetail);
+                
+                _phoneNumberBL.insertPhoneNumber(phoneNumberWork1);
+                _phoneNumberBL.insertPhoneNumber(phoneNumberHome1);
+                _phoneNumberBL.insertPhoneNumber(phoneNumberMobile1);
+                _phoneNumberBL.insertPhoneNumber(phoneNumberEmail1);
+                _phoneNumberBL.insertPhoneNumber(phoneNumberFax1);
+                _phoneNumberBL.insertPhoneNumber(phoneNumberPager1);
+
+////            List<InsertPhoneNumberResult> phoneNumsRes = new ArrayList<InsertPhoneNumberResult>();
+//                for (int i = 0; i < tempDocPhones.size(); i++) {
+//                    InsertPhoneNumberResult temp = _phoneNumberBL.insertPhoneNumber(tempDocPhones.get(i));
+////                phoneNumsRes.add(temp);
+//                }
+                _currentDoctor.setContactDetail(contactDetailDocRes.contactDetail);
+                _doctorBL.insertContactDetail(_currentDoctor);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } //Update
+        else {
+            try {
+                //Phones
+                List<PhoneNumber> tempDocPhones = _currentDoctor.getContactDetail().getPhones();
+                
+                for (int i = 0; i < tempDocPhones.size(); i++) {
+                    
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Work)) {
+                        tempDocPhones.get(i).setNumber(jFormattedTextFieldPhoneNumWorkDoctor.getText());
+                    }
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Home)) {
+                        tempDocPhones.get(i).setNumber(jFormattedTextFieldPhoneNumHomeDoctor.getText());
+                        
+                    }
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Mobile)) {
+                        tempDocPhones.get(i).setNumber(jFormattedTextFieldPhoneNumMobileDoctor.getText());
+                        
+                    }
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Email)) {
+                        tempDocPhones.get(i).setNumber(jTextFieldEmailDoctor.getText());
+                        
+                    }
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Fax)) {
+                        tempDocPhones.get(i).setNumber(jTextFieldFaxDoctor.getText());
+                        
+                    }
+                    if (tempDocPhones.get(i).getPhoneType().equals(PhoneType.Pager)) {
+                        tempDocPhones.get(i).setNumber(jTextFieldPagerDoctor.getText());
+                    }
+                    
+                }
+                
+                _doctorBL.updateContactDetail(_currentDoctor);
+                _addressBL.updateAddress(tempDocAddressPresent);
+                
+                for (PhoneNumber tempPhone : tempDocPhones) {
+                    _phoneNumberBL.updatePhoneNumber(tempPhone);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        
+        this.addingDoctor = false;
+        ToggleEnabledPersonel(false);
+    }
+    
+    private void ClearInputFieldsPersonel() {
+        jTextFieldFirstNameDoctor.setText("");
+        jTextFieldSurnameDoctor.setText("");
+        jComboBoxDoctorType.setSelectedIndex(0);
+        jCheckBoxDocAvailable.setText("");
+        
+        jTextFieldStatePresentDoctor.setText("");
+        jTextFieldCityPresentDoctor.setText("");
+        jTextFieldStreetPresentDoctor.setText("");
+        jFormattedTextFieldHouseNumberPresentDoctor.setText("");
+        jFormattedTextFieldAreacodePresentDoctor.setText("");
+        jFormattedTextZipcodePresentDoctor.setText("");
+        
+        jFormattedTextFieldPhoneNumWorkDoctor.setText("");
+        jFormattedTextFieldPhoneNumHomeDoctor.setText("");
+        jFormattedTextFieldPhoneNumMobileDoctor.setText("");
+        jTextFieldEmailDoctor.setText("");
+        jTextFieldFaxDoctor.setText("");
+        jTextFieldPagerDoctor.setText("");
+        
+    }
+    
+    private void SetEditValuesPersonel() {
+        //Basic
+
+        if (_currentDoctor.getFirstname() != null) {
+            jTextFieldFirstNameDoctor.setText(_currentDoctor.getFirstname());
+        }
+        
+        if (_currentDoctor.getLastname() != null) {
+            jTextFieldSurnameDoctor.setText(_currentDoctor.getLastname());
+        }
+        jComboBoxDoctorType.setSelectedIndex(DoctorType.valueOf(_currentDoctor.getDoctorType().toString()).ordinal());
+        jCheckBoxDocAvailable.setSelected(_currentDoctor.isUnavailable());
+
+        //Address
+        if (_currentDoctor.getContactDetail().getPresentAddress() != null) {
+            if (_currentDoctor.getContactDetail().getPresentAddress().getState() != null) {
+                jTextFieldStatePresentDoctor.setText(_currentDoctor.getContactDetail().getPresentAddress().getState());
+            }
+            if (_currentDoctor.getContactDetail().getPresentAddress().getCity() != null) {
+                jTextFieldCityPresentDoctor.setText(_currentDoctor.getContactDetail().getPresentAddress().getCity());
+            }
+            if (_currentDoctor.getContactDetail().getPresentAddress().getStreet() != null) {
+                jTextFieldStreetPresentDoctor.setText(_currentDoctor.getContactDetail().getPresentAddress().getStreet());
+            }
+            
+            jFormattedTextFieldHouseNumberPresentDoctor.setText(Integer.toString(_currentDoctor.getContactDetail().getPresentAddress().getHouseNumber()));
+            
+            if (_currentDoctor.getContactDetail().getPresentAddress().getArea() != null) {
+                jFormattedTextFieldAreacodePresentDoctor.setText(_currentDoctor.getContactDetail().getPresentAddress().getArea());
+            }
+            if (_currentDoctor.getContactDetail().getPresentAddress().getZipCode() != null) {
+                jFormattedTextZipcodePresentDoctor.setText(_currentDoctor.getContactDetail().getPresentAddress().getZipCode());
+            }
+        }
+
+        //Phones
+        List<PhoneNumber> contacts = _currentDoctor.getContactDetail().getPhones();
+        
+        if (!contacts.isEmpty()) {
+            for (PhoneNumber phone : contacts) {
+                if (phone.getPhoneType().equals(PhoneType.Work)) {
+                    jFormattedTextFieldPhoneNumWorkDoctor.setText(phone.getNumber());
+                }
+                if (phone.getPhoneType().equals(PhoneType.Home)) {
+                    jFormattedTextFieldPhoneNumHomeDoctor.setText(phone.getNumber());
+                }
+                if (phone.getPhoneType().equals(PhoneType.Mobile)) {
+                    jFormattedTextFieldPhoneNumMobileDoctor.setText(phone.getNumber());
+                }
+                if (phone.getPhoneType().equals(PhoneType.Email)) {
+                    jTextFieldEmailDoctor.setText(phone.getNumber());
+                }
+                if (phone.getPhoneType().equals(PhoneType.Fax)) {
+                    jTextFieldFaxDoctor.setText(phone.getNumber());
+                }
+                if (phone.getPhoneType().equals(PhoneType.Pager)) {
+                    jTextFieldPagerDoctor.setText(phone.getNumber());
+                }
+            }
+        }
+        
+    }
+    
 }

@@ -135,7 +135,7 @@ public class Doctor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.krispeklaric.virgohospital_dal.Models.Doctor[ id=" + id + " ]";
+        return this.firstname + " " + this.lastname;
     }
 
 }
