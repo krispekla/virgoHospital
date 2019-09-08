@@ -33,6 +33,9 @@ public class Appointment implements Serializable {
 
     private String diagnosis;
 
+    @Column(nullable = true)
+    private boolean paid;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
     private List<Test> tests;
 
@@ -41,6 +44,14 @@ public class Appointment implements Serializable {
 
     @OneToOne(mappedBy = "appointment")
     private Bill bill;
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
 
     public Long getId() {
         return id;

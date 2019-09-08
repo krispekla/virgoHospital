@@ -212,7 +212,7 @@ public class Patient implements Serializable {
 
     @Override
     public String toString() {
-        return "com.krispeklaric.virgohospital_dal.Models.Patient[ id=" + id + " ]";
+        return this.firstname + " " + this.lastname;
     }
 
 }
