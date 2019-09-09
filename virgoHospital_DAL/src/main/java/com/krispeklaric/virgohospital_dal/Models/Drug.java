@@ -81,7 +81,7 @@ public class Drug implements Serializable {
 
     @Override
     public String toString() {
-        return "com.krispeklaric.virgohospital_dal.Models.Drug[ id=" + id + " ]";
+        return this.name;
     }
 
 }

@@ -15,8 +15,11 @@ import com.krispeklaric.virgohospital_bl.Messages.appointment.InsertAppointmentR
 import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
 import com.krispeklaric.virgohospital_bl.Messages.doctor.GetDoctorResult;
 import com.krispeklaric.virgohospital_bl.Messages.doctor.GetSingleDoctorResult;
+import com.krispeklaric.virgohospital_bl.Messages.drug.GetDrugResult;
+import com.krispeklaric.virgohospital_bl.Messages.drug_prescription.GetDrugPrescriptionResult;
 import com.krispeklaric.virgohospital_bl.Messages.patient.GetSinglePatientResult;
 import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
+import com.krispeklaric.virgohospital_bl.Messages.test_type.GetTestTypeResult;
 import com.krispeklaric.virgohospital_dal.Models.*;
 import com.sun.glass.events.KeyEvent;
 import java.text.SimpleDateFormat;
@@ -47,6 +50,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private static Patient _currentPatient;
     private static Appointment _currentAppointment;
+    private static Appointment _currentAppointmentByDoctor;
     private static Doctor _currentDoctor;
     private static PatientsBL _patientsBL;
     private static BasicComplaintBL _basicComplaintBL;
@@ -59,6 +63,8 @@ public class OutpatientModule extends javax.swing.JFrame {
     private static DoctorBL _doctorBL;
     private static ContactDetailBL _contactDetailBL;
     private static AppointmentBL _appointmentBL;
+    private static DrugBL _drugBL;
+    private static TestTypeBL _testTypeBL;
     private static List<Doctor> _generalDoctors;
     private static List<Doctor> _allDoctors;
     private static List<Patient> _allPatients;
@@ -66,6 +72,11 @@ public class OutpatientModule extends javax.swing.JFrame {
     private static Boolean addingDoctor;
     private static Boolean addingAppointment;
     private static Patient _currentlySelected;
+    private static List<Drug> _allDrugs;
+    private static List<TestType> _allTestTypes;
+    private static TestBL _testBL;
+    private static PrescriptionBL _prescriptionsBL;
+    private static DrugPrescriptionBL _drugPrescriptionBL;
 
     public OutpatientModule() {
         _patientsBL = new PatientsBL();
@@ -81,6 +92,11 @@ public class OutpatientModule extends javax.swing.JFrame {
         _appointmentBL = new AppointmentBL();
         addingDoctor = false;
         addingAppointment = false;
+        _drugBL = new DrugBL();
+        _testTypeBL = new TestTypeBL();
+        _testBL = new TestBL();
+        _prescriptionsBL = new PrescriptionBL();
+        _drugPrescriptionBL = new DrugPrescriptionBL();
 
         initComponents();
 
@@ -348,7 +364,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDiagnosisByDoctor = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTableTests = new javax.swing.JTable();
@@ -360,16 +376,16 @@ public class OutpatientModule extends javax.swing.JFrame {
         jToggleButtonEditAppointmentByDoctor = new javax.swing.JToggleButton();
         jButtonSaveAppointmentByDoctor = new javax.swing.JButton();
         jButtonRefreshAppointmentsByDoc = new javax.swing.JButton();
-        jFormattedAppointmentDate1 = new javax.swing.JFormattedTextField();
+        jFormattedAppointmentDateByDoctor = new javax.swing.JFormattedTextField();
         jLabelBirthdate25 = new javax.swing.JLabel();
-        jFormattedAppointmentStart1 = new javax.swing.JFormattedTextField();
+        jFormattedAppointmentStartByDoctor = new javax.swing.JFormattedTextField();
         jLabelBirthdate26 = new javax.swing.JLabel();
         jLabelBirthdate27 = new javax.swing.JLabel();
-        jFormattedAppointmentEnd1 = new javax.swing.JFormattedTextField();
+        jFormattedAppointmentEndByDoctor = new javax.swing.JFormattedTextField();
         jButtonAddTestByDoctor = new javax.swing.JButton();
         jButtonRemoveTestByDoctor = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxListOfTestTypes = new javax.swing.JComboBox<>();
+        jComboBoxListOfDrugsForPrescription = new javax.swing.JComboBox<>();
         jButtonAddPrescriptionByDoctor = new javax.swing.JButton();
         jButtonRemovePrescriptionByDoctor = new javax.swing.JButton();
         jScrollPane20 = new javax.swing.JScrollPane();
@@ -2568,6 +2584,11 @@ public class OutpatientModule extends javax.swing.JFrame {
             }
         ));
         jTableAppointmentsByDoctor.getTableHeader().setReorderingAllowed(false);
+        jTableAppointmentsByDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAppointmentsByDoctorMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableAppointmentsByDoctor);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -2580,9 +2601,10 @@ public class OutpatientModule extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Appointment");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        jTextAreaDiagnosisByDoctor.setColumns(20);
+        jTextAreaDiagnosisByDoctor.setRows(5);
+        jTextAreaDiagnosisByDoctor.setEnabled(false);
+        jScrollPane4.setViewportView(jTextAreaDiagnosisByDoctor);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel8.setText("Diagnosis");
@@ -2617,8 +2639,14 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         jButtonReferToSpecialist.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonReferToSpecialist.setText("Refer to specialist");
+        jButtonReferToSpecialist.setEnabled(false);
 
         jToggleButtonEditAppointmentByDoctor.setText("Edit");
+        jToggleButtonEditAppointmentByDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButtonEditAppointmentByDoctorMouseClicked(evt);
+            }
+        });
 
         jButtonSaveAppointmentByDoctor.setText("Save");
 
@@ -2632,11 +2660,11 @@ public class OutpatientModule extends javax.swing.JFrame {
             }
         });
 
-        jFormattedAppointmentDate1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedAppointmentDate1.setEnabled(false);
-        jFormattedAppointmentDate1.addActionListener(new java.awt.event.ActionListener() {
+        jFormattedAppointmentDateByDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jFormattedAppointmentDateByDoctor.setEnabled(false);
+        jFormattedAppointmentDateByDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedAppointmentDate1ActionPerformed(evt);
+                jFormattedAppointmentDateByDoctorActionPerformed(evt);
             }
         });
 
@@ -2644,9 +2672,9 @@ public class OutpatientModule extends javax.swing.JFrame {
         jLabelBirthdate25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate25.setText("Date:");
 
-        jFormattedAppointmentStart1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
-        jFormattedAppointmentStart1.setToolTipText("");
-        jFormattedAppointmentStart1.setEnabled(false);
+        jFormattedAppointmentStartByDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
+        jFormattedAppointmentStartByDoctor.setToolTipText("");
+        jFormattedAppointmentStartByDoctor.setEnabled(false);
 
         jLabelBirthdate26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBirthdate26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -2656,23 +2684,34 @@ public class OutpatientModule extends javax.swing.JFrame {
         jLabelBirthdate27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelBirthdate27.setText("End time:");
 
-        jFormattedAppointmentEnd1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
-        jFormattedAppointmentEnd1.setEnabled(false);
+        jFormattedAppointmentEndByDoctor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
+        jFormattedAppointmentEndByDoctor.setEnabled(false);
 
         jButtonAddTestByDoctor.setText("Add");
+        jButtonAddTestByDoctor.setEnabled(false);
 
         jButtonRemoveTestByDoctor.setText("Remove");
+        jButtonRemoveTestByDoctor.setEnabled(false);
+
+        jComboBoxListOfTestTypes.setEnabled(false);
+
+        jComboBoxListOfDrugsForPrescription.setEnabled(false);
 
         jButtonAddPrescriptionByDoctor.setText("Add");
+        jButtonAddPrescriptionByDoctor.setEnabled(false);
 
         jButtonRemovePrescriptionByDoctor.setText("Remove");
+        jButtonRemovePrescriptionByDoctor.setEnabled(false);
 
         jTextAreaInstructions.setColumns(20);
         jTextAreaInstructions.setRows(5);
+        jTextAreaInstructions.setEnabled(false);
         jScrollPane20.setViewportView(jTextAreaInstructions);
 
         jLabel54.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel54.setText("Instructions");
+
+        jComboBoxSpecialistDoctorLists.setEnabled(false);
 
         javax.swing.GroupLayout jPanelDoctorsLayout = new javax.swing.GroupLayout(jPanelDoctors);
         jPanelDoctors.setLayout(jPanelDoctorsLayout);
@@ -2702,15 +2741,15 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jLabelBirthdate25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedAppointmentDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedAppointmentDateByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
                         .addComponent(jLabelBirthdate26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedAppointmentStart1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addComponent(jFormattedAppointmentStartByDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabelBirthdate27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedAppointmentEnd1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedAppointmentEndByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(257, 257, 257)
                         .addComponent(jButtonRemoveAppointmentByDoctor)
                         .addGap(39, 39, 39)
@@ -2739,20 +2778,20 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                            .addGroup(jPanelDoctorsLayout.createSequentialGroup()
-                                .addComponent(jButtonRemoveTestByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelDoctorsLayout.createSequentialGroup()
+                                .addComponent(jButtonRemoveTestByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonAddTestByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButtonAddTestByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxListOfTestTypes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanelDoctorsLayout.createSequentialGroup()
-                                    .addComponent(jButtonRemovePrescriptionByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonRemovePrescriptionByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonAddPrescriptionByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButtonAddPrescriptionByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboBoxListOfDrugsForPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2794,12 +2833,12 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jFormattedAppointmentEnd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedAppointmentEndByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelBirthdate27))
                             .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabelBirthdate25)
-                                .addComponent(jFormattedAppointmentDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFormattedAppointmentStart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedAppointmentDateByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedAppointmentStartByDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelBirthdate26)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2832,13 +2871,13 @@ public class OutpatientModule extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelDoctorsLayout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxListOfTestTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButtonAddTestByDoctor)
                                     .addComponent(jButtonRemoveTestByDoctor)))
                             .addGroup(jPanelDoctorsLayout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxListOfDrugsForPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelDoctorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButtonAddPrescriptionByDoctor)
@@ -3567,9 +3606,34 @@ public class OutpatientModule extends javax.swing.JFrame {
         this.FillAppointmentByDocTable();
     }//GEN-LAST:event_jButtonRefreshAppointmentsByDocMouseClicked
 
-    private void jFormattedAppointmentDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedAppointmentDate1ActionPerformed
+    private void jFormattedAppointmentDateByDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedAppointmentDateByDoctorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedAppointmentDate1ActionPerformed
+    }//GEN-LAST:event_jFormattedAppointmentDateByDoctorActionPerformed
+
+    private void jTableAppointmentsByDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAppointmentsByDoctorMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTableAppointmentsByDoctor.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableAppointmentsByDoctor.getSelectedRow());
+
+            GetSingleAppointmentResult appointmentRes = _appointmentBL.getById((Long) selectedRow.get(0));
+
+            if (appointmentRes.isOK) {
+                _currentAppointmentByDoctor = appointmentRes.appointment;
+
+                ClearInputFieldsAppointmentByDoctor();
+                SetEditValuesAppointmentByDoctor();
+            }
+        }
+    }//GEN-LAST:event_jTableAppointmentsByDoctorMouseClicked
+
+    private void jToggleButtonEditAppointmentByDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonEditAppointmentByDoctorMouseClicked
+        if ((String) jToggleButtonEditAppointmentByDoctor.getText() == "Edit") {
+            jToggleButtonEditAppointmentByDoctor.setText("Cancel");
+            ToggleEnabledAppointmentByDoctor(true);
+        } else {
+            jToggleButtonEditAppointmentByDoctor.setText("Edit");
+            ToggleEnabledAppointmentByDoctor(false);
+        }    }//GEN-LAST:event_jToggleButtonEditAppointmentByDoctorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3645,8 +3709,6 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxMarriedEdit;
     private javax.swing.JCheckBox jCheckBoxSmokerEdit;
     private javax.swing.JCheckBox jCheckBoxVegeterianEdit;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxAppointmentDoctor;
     private javax.swing.JComboBox<String> jComboBoxAppointmentPatient;
     private javax.swing.JComboBox<String> jComboBoxBloodTypeEdit;
@@ -3654,17 +3716,19 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxDoctorType;
     private javax.swing.JComboBox<String> jComboBoxDoctorsForPatient;
     private javax.swing.JComboBox<String> jComboBoxDoctorsList;
+    private javax.swing.JComboBox<String> jComboBoxListOfDrugsForPrescription;
+    private javax.swing.JComboBox<String> jComboBoxListOfTestTypes;
     private javax.swing.JComboBox<String> jComboBoxNbDependentsEdit;
     private javax.swing.JComboBox<String> jComboBoxPatientList;
     private javax.swing.JComboBox<String> jComboBoxSexEdit;
     private javax.swing.JComboBox<String> jComboBoxSoftDrinksEdit;
     private javax.swing.JComboBox<String> jComboBoxSpecialistDoctorLists;
     private javax.swing.JFormattedTextField jFormattedAppointmentDate;
-    private javax.swing.JFormattedTextField jFormattedAppointmentDate1;
+    private javax.swing.JFormattedTextField jFormattedAppointmentDateByDoctor;
     private javax.swing.JFormattedTextField jFormattedAppointmentEnd;
-    private javax.swing.JFormattedTextField jFormattedAppointmentEnd1;
+    private javax.swing.JFormattedTextField jFormattedAppointmentEndByDoctor;
     private javax.swing.JFormattedTextField jFormattedAppointmentStart;
-    private javax.swing.JFormattedTextField jFormattedAppointmentStart1;
+    private javax.swing.JFormattedTextField jFormattedAppointmentStartByDoctor;
     private javax.swing.JFormattedTextField jFormattedAreaNextOfKinEdit;
     private javax.swing.JFormattedTextField jFormattedHouseNbNextOfKinEdit;
     private javax.swing.JFormattedTextField jFormattedTelephoneHomeNextOfKinEdit;
@@ -3861,7 +3925,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JTable jTablePersonel;
     private javax.swing.JTable jTablePrescriptions;
     private javax.swing.JTable jTableTests;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaDiagnosisByDoctor;
     private javax.swing.JTextArea jTextAreaInstructions;
     private javax.swing.JTextArea jTextAreaStateOfComplainTreatmentHistoryEdit;
     private javax.swing.JTextArea jTextAreaStateOfComplaintAllergiesEdit;
@@ -5120,6 +5184,9 @@ public class OutpatientModule extends javax.swing.JFrame {
         jTableAppointments.getColumn(columnNames[1]).setPreferredWidth(160);
         jTableAppointments.getColumn(columnNames[2]).setPreferredWidth(160);
 
+        SetupTestTableByDoctor();
+        SetupPrescriptionTableByDoctor();
+
     }
 
     private void FillAppointmentByDocTable() {
@@ -5131,6 +5198,8 @@ public class OutpatientModule extends javax.swing.JFrame {
         GetAppointmentResult result = _appointmentBL.getAll();
         GetDoctorResult docRes = _doctorBL.getAll();
         GetPatientsResult patRes = _patientsBL.getAll();
+        GetTestTypeResult tests = _testTypeBL.getAll();
+        GetDrugResult drugs = _drugBL.getAll();
 
         if (docRes.isOK) {
             jComboBoxAppointmentDoctor.setModel(new DefaultComboBoxModel(docRes.doctors.toArray()));
@@ -5145,6 +5214,10 @@ public class OutpatientModule extends javax.swing.JFrame {
         _allAppointments = result.appointment;
         _allDoctors = docRes.doctors;
         _allPatients = patRes.patients;
+        _allTestTypes = tests.testType;
+        _allDrugs = drugs.drugs;
+        jComboBoxListOfTestTypes.setModel(new DefaultComboBoxModel(tests.testType.toArray()));
+        jComboBoxListOfDrugsForPrescription.setModel(new DefaultComboBoxModel(drugs.drugs.toArray()));
 
         Integer currentPatient = _currentlySelected.getId().intValue();
 
@@ -5167,5 +5240,129 @@ public class OutpatientModule extends javax.swing.JFrame {
 
             model.addRow(rowData);
         }
+    }
+
+    private void ClearInputFieldsAppointmentByDoctor() {
+        jFormattedAppointmentDateByDoctor.setText("");
+        jFormattedAppointmentStartByDoctor.setText("");
+        jFormattedAppointmentEndByDoctor.setText("");
+        jTextAreaDiagnosisByDoctor.setText("");
+        jTextAreaInstructions.setText("");
+
+        DefaultTableModel model1 = (DefaultTableModel) jTableTests.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTablePrescriptions.getModel();
+
+        model1.setRowCount(0);
+        model2.setRowCount(0);
+    }
+
+    private void SetEditValuesAppointmentByDoctor() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.UK);
+
+        if (_currentAppointmentByDoctor.getStartDateHour() != null) {
+            jFormattedAppointmentDateByDoctor.setText(dateFormatter.format(_currentAppointmentByDoctor.getStartDateHour()));
+        }
+
+        if (_currentAppointmentByDoctor.getStartDateHour() != null) {
+            jFormattedAppointmentStartByDoctor.setText(timeFormatter.format(_currentAppointmentByDoctor.getStartDateHour()));
+        }
+
+        if (_currentAppointmentByDoctor.getEndDateHour() != null) {
+            jFormattedAppointmentEndByDoctor.setText(timeFormatter.format(_currentAppointmentByDoctor.getEndDateHour()));
+        }
+
+        if (_currentAppointmentByDoctor.getDiagnosis() != null) {
+            jTextAreaDiagnosisByDoctor.setText(_currentAppointmentByDoctor.getDiagnosis());
+        }
+
+        FillTestTableByDoctor();
+        FillPrescriptionTableByDoctor();
+
+    }
+
+    private void SetupTestTableByDoctor() {
+        String[] columnNames = {"Id",
+            "Test name"
+
+        };
+
+        DefaultTableModel model = (DefaultTableModel) jTableTests.getModel();
+
+        model.setColumnIdentifiers(columnNames);
+        jTableTests.setRowSelectionAllowed(true);
+        jTableTests.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTableTests.getColumn(columnNames[0]).setPreferredWidth(30);
+
+    }
+
+    private void SetupPrescriptionTableByDoctor() {
+        String[] columnNames = {"Id",
+            "Drug name",};
+
+        DefaultTableModel model = (DefaultTableModel) jTablePrescriptions.getModel();
+
+        model.setColumnIdentifiers(columnNames);
+        jTablePrescriptions.setRowSelectionAllowed(true);
+        jTablePrescriptions.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jTablePrescriptions.getColumn(columnNames[0]).setPreferredWidth(30);
+
+    }
+
+    private void FillTestTableByDoctor() {
+        if (_currentAppointmentByDoctor == null) {
+            return;
+        }
+
+        if (_currentAppointmentByDoctor.getTests().isEmpty()) {
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jTableTests.getModel();
+
+        for (int i = 0; i < _currentAppointmentByDoctor.getTests().size(); i++) {
+
+            Object rowData[] = new Object[2];
+            rowData[0] = _currentAppointmentByDoctor.getTests().get(i).getTestType().getId();
+            rowData[1] = _currentAppointmentByDoctor.getTests().get(i).getTestType().getName();
+
+            model.addRow(rowData);
+        }
+    }
+
+    private void FillPrescriptionTableByDoctor() {
+        if (_currentAppointmentByDoctor == null) {
+            return;
+        }
+
+        if (_currentAppointmentByDoctor.getPrescriptions().isEmpty()) {
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) jTablePrescriptions.getModel();
+
+        List<DrugPrescriptions> drugs = _currentAppointmentByDoctor.getPrescriptions().get(0).getPhones();
+        for (int i = 0; i < drugs.size(); i++) {
+
+            Object rowData[] = new Object[2];
+            rowData[0] = drugs.get(i).getDrug().getId();
+            rowData[1] = drugs.get(i).getDrug().getName();
+
+            model.addRow(rowData);
+        }
+    }
+
+    private void ToggleEnabledAppointmentByDoctor(boolean val) {
+        jFormattedAppointmentDateByDoctor.setEnabled(val);
+        jFormattedAppointmentStartByDoctor.setEnabled(val);
+        jFormattedAppointmentEndByDoctor.setEnabled(val);
+        jTextAreaDiagnosisByDoctor.setEnabled(val);
+        jTextAreaInstructions.setEnabled(val);
+        jComboBoxListOfTestTypes.setEnabled(val);
+        jComboBoxListOfDrugsForPrescription.setEnabled(val);
+
+        jButtonRemoveTestByDoctor.setEnabled(val);
+        jButtonAddTestByDoctor.setEnabled(val);
+        jButtonRemovePrescriptionByDoctor.setEnabled(val);
+        jButtonAddPrescriptionByDoctor.setEnabled(val);
     }
 }

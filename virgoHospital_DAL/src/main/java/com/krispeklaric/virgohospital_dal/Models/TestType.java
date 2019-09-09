@@ -80,7 +80,7 @@ public class TestType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.krispeklaric.virgohospital_dal.Models.TestType[ id=" + id + " ]";
+        return this.name;
     }
 
 }

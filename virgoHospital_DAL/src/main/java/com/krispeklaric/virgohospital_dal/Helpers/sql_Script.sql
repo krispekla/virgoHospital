@@ -400,3 +400,31 @@ GO
   INSERT INTO Appointments(STARTDATEHOUR,ENDDATEHOUR, DIAGNOSIS,DOCTOR_ID,PATIENT_ID) VALUES ('20190916 16:45:12','20190916 17:45:12','',1, 1)
 GO
 --Appointment END
+--Test Types start
+  GO
+  INSERT INTO TestTypes(NAME,PRICE) VALUES('Papa', 568),
+											('Neurological',920),
+											('Cardiovascular',420),
+											('Allergy',220),
+											('Genetic',1540)
+										GO
+--End
+
+GO
+  INSERT INTO Prescriptions(NAME,PRESCRIPTIONDATE,APPOINTMENT_ID)VALUES('Take two times a day next three days, after that once a day.', '20190912 10:45:12',1)
+  INSERT INTO Prescriptions(NAME,PRESCRIPTIONDATE,APPOINTMENT_ID)VALUES('Take after meal once a day.', '20190912 10:45:12',2)
+  INSERT INTO Prescriptions(NAME,PRESCRIPTIONDATE,APPOINTMENT_ID)VALUES('Take in the morning.', '20190912 10:45:12',3)
+
+   INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(2,1)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(4,1)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(6,1)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(1,2)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(4,2)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(8,3)
+  INSERT INTO DrugPrescription(DRUG_ID,PRESCRIPTION_ID)VALUES(2,3)
+  GO
+
+  INSERT Tests(APPOINTMENT_ID,testType_ID)VALUES(1,3)
+  INSERT Tests(APPOINTMENT_ID,testType_ID)VALUES(1,2)
+  INSERT Tests(APPOINTMENT_ID,testType_ID)VALUES(2,1)
+  GO

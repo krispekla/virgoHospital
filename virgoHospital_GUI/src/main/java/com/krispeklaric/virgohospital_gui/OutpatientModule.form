@@ -3770,15 +3770,15 @@
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabelBirthdate25" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jFormattedAppointmentDate1" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="jFormattedAppointmentDateByDoctor" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               <Component id="jLabelBirthdate26" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jFormattedAppointmentStart1" pref="119" max="32767" attributes="0"/>
+                              <Component id="jFormattedAppointmentStartByDoctor" pref="119" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="jLabelBirthdate27" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jFormattedAppointmentEnd1" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="jFormattedAppointmentEndByDoctor" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
                               <Component id="jButtonRemoveAppointmentByDoctor" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -3813,24 +3813,24 @@
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jScrollPane5" pref="220" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jButtonRemoveTestByDoctor" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jButtonRemoveTestByDoctor" min="-2" pref="91" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButtonAddTestByDoctor" min="-2" pref="74" max="-2" attributes="0"/>
+                                      <Component id="jButtonAddTestByDoctor" min="-2" pref="90" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jComboBox1" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxListOfTestTypes" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jScrollPane6" min="-2" pref="216" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jButtonRemovePrescriptionByDoctor" min="-2" pref="74" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButtonRemovePrescriptionByDoctor" min="-2" pref="97" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButtonAddPrescriptionByDoctor" min="-2" pref="74" max="-2" attributes="0"/>
+                                          <Component id="jButtonAddPrescriptionByDoctor" min="-2" pref="86" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jComboBox2" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxListOfDrugsForPrescription" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane20" min="-2" max="-2" attributes="0"/>
@@ -3885,13 +3885,13 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="jFormattedAppointmentEnd1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jFormattedAppointmentEndByDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabelBirthdate27" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="jLabelBirthdate25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedAppointmentDate1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedAppointmentStart1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jFormattedAppointmentDateByDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jFormattedAppointmentStartByDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabelBirthdate26" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3934,7 +3934,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxListOfTestTypes" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jButtonAddTestByDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3942,7 +3942,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxListOfDrugsForPrescription" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jButtonAddPrescriptionByDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -4019,6 +4019,9 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableAppointmentsByDoctorMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -4057,10 +4060,11 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="jTextAreaDiagnosisByDoctor">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -4139,12 +4143,16 @@
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Refer to specialist"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButtonEditAppointmentByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButtonEditAppointmentByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSaveAppointmentByDoctor">
               <Properties>
@@ -4168,7 +4176,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRefreshAppointmentsByDocMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentDate1">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentDateByDoctor">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
@@ -4176,7 +4184,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedAppointmentDate1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedAppointmentDateByDoctorActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBirthdate25">
@@ -4188,7 +4196,7 @@
                 <Property name="text" type="java.lang.String" value="Date:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentStart1">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentStartByDoctor">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="HH:mm" subtype="-1" type="2"/>
@@ -4215,7 +4223,7 @@
                 <Property name="text" type="java.lang.String" value="End time:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentEnd1">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedAppointmentEndByDoctor">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="HH:mm" subtype="-1" type="2"/>
@@ -4226,28 +4234,32 @@
             <Component class="javax.swing.JButton" name="jButtonAddTestByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRemoveTestByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="jComboBoxListOfTestTypes">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="jComboBoxListOfDrugsForPrescription">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -4256,11 +4268,13 @@
             <Component class="javax.swing.JButton" name="jButtonAddPrescriptionByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRemovePrescriptionByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane20">
@@ -4274,6 +4288,7 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -4291,6 +4306,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
