@@ -27,5 +27,5 @@ public interface IDrugPrescriptionRepo {
 
     public DrugPrescriptions findDrugPrescriptions(Long id);
 
-    public int getDrugCount();
+    public int getDrugPrescriptionsCount();
 }

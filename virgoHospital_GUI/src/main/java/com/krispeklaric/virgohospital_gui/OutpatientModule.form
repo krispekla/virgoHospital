@@ -4042,6 +4042,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="New appointment"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddApointmentByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -4145,6 +4148,9 @@
                 <Property name="text" type="java.lang.String" value="Refer to specialist"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonReferToSpecialistMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButtonEditAppointmentByDoctor">
               <Properties>
@@ -4158,6 +4164,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSaveAppointmentByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRefreshAppointmentsByDoc">
               <Properties>
@@ -4236,12 +4245,18 @@
                 <Property name="text" type="java.lang.String" value="Add"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddTestByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRemoveTestByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRemoveTestByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxListOfTestTypes">
               <Properties>
@@ -4270,12 +4285,18 @@
                 <Property name="text" type="java.lang.String" value="Add"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddPrescriptionByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRemovePrescriptionByDoctor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRemovePrescriptionByDoctorMouseClicked"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane20">
               <AuxValues>
@@ -4306,7 +4327,6 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

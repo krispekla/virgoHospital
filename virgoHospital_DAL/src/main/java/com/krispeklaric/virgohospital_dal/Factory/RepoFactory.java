@@ -1,6 +1,7 @@
 package com.krispeklaric.virgohospital_dal.Factory;
 
 import com.krispeklaric.virgohospital_dal.Interfaces.*;
+import com.krispeklaric.virgohospital_dal.Models.DrugPrescriptions;
 import com.krispeklaric.virgohospital_dal.Repositories.*;
 
 /**
@@ -82,5 +83,9 @@ public class RepoFactory {
 
      public static IDrugRepo getDrugRepo() {
         return new DrugRepo();
+    }
+     
+     public static IDrugPrescriptionRepo getDrugPrscriptionRepo() {
+        return new DrugPrescriptionRepo();
     }
 }
