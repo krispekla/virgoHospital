@@ -12,17 +12,20 @@ import com.krispeklaric.virgohospital_bl.Messages.address.InsertAddressResult;
 import com.krispeklaric.virgohospital_bl.Messages.appointment.GetAppointmentResult;
 import com.krispeklaric.virgohospital_bl.Messages.appointment.GetSingleAppointmentResult;
 import com.krispeklaric.virgohospital_bl.Messages.appointment.InsertAppointmentResult;
+import com.krispeklaric.virgohospital_bl.Messages.bill.GetBillResult;
 import com.krispeklaric.virgohospital_bl.Messages.contact_detail.InsertContactDetailResult;
 import com.krispeklaric.virgohospital_bl.Messages.doctor.GetDoctorResult;
 import com.krispeklaric.virgohospital_bl.Messages.doctor.GetSingleDoctorResult;
 import com.krispeklaric.virgohospital_bl.Messages.drug.GetDrugResult;
 import com.krispeklaric.virgohospital_bl.Messages.drug_prescription.GetDrugPrescriptionResult;
 import com.krispeklaric.virgohospital_bl.Messages.patient.GetSinglePatientResult;
+import com.krispeklaric.virgohospital_bl.Messages.payment.InsertPaymentResult;
 import com.krispeklaric.virgohospital_bl.Messages.phone_number.InsertPhoneNumberResult;
 import com.krispeklaric.virgohospital_bl.Messages.prescription.InsertPrescriptionResult;
 import com.krispeklaric.virgohospital_bl.Messages.test_type.GetTestTypeResult;
 import com.krispeklaric.virgohospital_dal.Models.*;
 import com.sun.glass.events.KeyEvent;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,6 +40,7 @@ import java.util.Vector;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.util.converter.LocalDateTimeStringConverter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -79,6 +83,8 @@ public class OutpatientModule extends javax.swing.JFrame {
     private static TestBL _testBL;
     private static PrescriptionBL _prescriptionsBL;
     private static DrugPrescriptionBL _drugPrescriptionBL;
+    private static BillBL _billBL;
+    private static PaymentBL _paymentBL;
 
     public OutpatientModule() {
         _patientsBL = new PatientsBL();
@@ -100,6 +106,8 @@ public class OutpatientModule extends javax.swing.JFrame {
         _testBL = new TestBL();
         _prescriptionsBL = new PrescriptionBL();
         _drugPrescriptionBL = new DrugPrescriptionBL();
+        _billBL = new BillBL();
+        _paymentBL = new PaymentBL();
 
         initComponents();
 
@@ -107,12 +115,15 @@ public class OutpatientModule extends javax.swing.JFrame {
         SetupDoctorTable();
         SetupAppointmentTable();
         SetupAppointmentByDocTable();
+        SetupBillIssued();
+        SetupBillUnissued();
 
         FillPatientTable();
         FillDoctorTable();
         FillAppointmentTable();
         FillAppointmentByDocTable();
-
+        FillBillUnissued();
+        FillBillIssued();
     }
 
     /**
@@ -417,10 +428,16 @@ public class OutpatientModule extends javax.swing.JFrame {
         jFormattedAppointmentEnd = new javax.swing.JFormattedTextField();
         jPanelBills = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTableBills = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        jTableBillsIssued = new javax.swing.JTable();
+        jButtonIssueBill = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        jTableBillsUnissued = new javax.swing.JTable();
+        jLabel55 = new javax.swing.JLabel();
+        jButtonRefreshBills = new javax.swing.JButton();
+        jCheckBoxCreditCard = new javax.swing.JCheckBox();
+        jOutpatCreditCardNumber = new javax.swing.JFormattedTextField();
         jPanelReports = new javax.swing.JPanel();
         jPanelTitleBackground = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
@@ -3133,7 +3150,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         jTabbedPaneMain.addTab("Appointments", jPanelAppointments);
 
-        jTableBills.setModel(new javax.swing.table.DefaultTableModel(
+        jTableBillsIssued.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -3141,10 +3158,17 @@ public class OutpatientModule extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane7.setViewportView(jTableBills);
+        jTableBillsIssued.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(jTableBillsIssued);
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton8.setText("New Bill");
+        jButtonIssueBill.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonIssueBill.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonIssueBill.setText("Issue");
+        jButtonIssueBill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonIssueBillMouseClicked(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton9.setText("Print");
@@ -3152,25 +3176,56 @@ public class OutpatientModule extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("Bills issued");
 
+        jTableBillsUnissued.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTableBillsUnissued.getTableHeader().setReorderingAllowed(false);
+        jScrollPane21.setViewportView(jTableBillsUnissued);
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel55.setText("Bills unissued");
+
+        jButtonRefreshBills.setText("Refresh");
+        jButtonRefreshBills.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRefreshBillsMouseClicked(evt);
+            }
+        });
+
+        jCheckBoxCreditCard.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBoxCreditCard.setText("Credit card");
+
+        jOutpatCreditCardNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###########"))));
+
         javax.swing.GroupLayout jPanelBillsLayout = new javax.swing.GroupLayout(jPanelBills);
         jPanelBills.setLayout(jPanelBillsLayout);
         jPanelBillsLayout.setHorizontalGroup(
             jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBillsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(283, 283, 283))
             .addGroup(jPanelBillsLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBillsLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelBillsLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelBillsLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(383, Short.MAX_VALUE))
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGroup(jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonIssueBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jOutpatCreditCardNumber)
+                    .addComponent(jCheckBoxCreditCard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(jButtonRefreshBills, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         jPanelBillsLayout.setVerticalGroup(
             jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3178,12 +3233,23 @@ public class OutpatientModule extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(231, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRefreshBills, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelBillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelBillsLayout.createSequentialGroup()
+                        .addComponent(jCheckBoxCreditCard, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jOutpatCreditCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonIssueBill, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         jTabbedPaneMain.addTab("Bills", jPanelBills);
@@ -3763,6 +3829,58 @@ public class OutpatientModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReferToSpecialistMouseClicked
 
+    private void jButtonIssueBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIssueBillMouseClicked
+        if (jTableBillsUnissued.getSelectedRow() == -1) {
+            return;
+        }
+        Payment p = new Payment();
+
+        if (jCheckBoxCreditCard.isSelected()) {
+            p.setCardNumber(Integer.parseInt(jOutpatCreditCardNumber.getText()));
+            p.setPaymentType(PaymentType.CreditCard);
+        } else {
+            p.setPaymentType(PaymentType.Cash);
+        }
+        InsertPaymentResult payRes = _paymentBL.insertContactDetail(p);
+
+        Bill b = new Bill();
+        DefaultTableModel model = (DefaultTableModel) jTableBillsUnissued.getModel();
+        Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableBillsUnissued.getSelectedRow());
+        GetSingleAppointmentResult singlAppRes = _appointmentBL.getById((Long) selectedRow.get(0));
+        Appointment appoint = singlAppRes.appointment;
+        appoint.setPaid(true);
+        b.setAppointment(appoint);
+        b.setConsultationPrice(new BigDecimal(200));
+        b.setPayment(payRes.payment);
+        b.setPrescriptionQuantity(Integer.parseInt(model.getValueAt(((Long) selectedRow.get(0)).intValue(), 3).toString()));
+        b.setPrescriptionsPrice(new BigDecimal(model.getValueAt(((Long) selectedRow.get(0)).intValue(), 4).toString()));
+        b.setTestQuantity(Integer.parseInt(model.getValueAt(((Long) selectedRow.get(0)).intValue(), 5).toString()));
+        b.setTestsPrice(new BigDecimal(model.getValueAt(((Long) selectedRow.get(0)).intValue(), 6).toString()));
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.UK);
+
+        String date = model.getValueAt(((Long) selectedRow.get(0)).intValue(), 7).toString();
+
+        LocalDateTime dt = LocalDateTime.now();
+
+        dt.format(timeFormatter);
+
+        b.setTimeIssued(dt);
+        b.setTotalPrice(new BigDecimal(model.getValueAt(((Long) selectedRow.get(0)).intValue(), 8).toString()));
+
+        _billBL.insertContactDetail(b);
+        _appointmentBL.updateContactDetail(appoint);
+    }//GEN-LAST:event_jButtonIssueBillMouseClicked
+
+    private void jButtonRefreshBillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRefreshBillsMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTableBillsIssued.getModel();
+        model.setRowCount(0);
+        DefaultTableModel model2 = (DefaultTableModel) jTableBillsUnissued.getModel();
+        model2.setRowCount(0);
+        this.FillBillIssued();
+        this.FillBillUnissued();
+}//GEN-LAST:event_jButtonRefreshBillsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -3803,7 +3921,6 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAddApointmentByDoctor;
     private javax.swing.JButton jButtonAddAppointment;
@@ -3819,10 +3936,12 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditAppointment;
     private javax.swing.JButton jButtonEditPatients;
     private javax.swing.JButton jButtonEditPersonel;
+    private javax.swing.JButton jButtonIssueBill;
     private javax.swing.JButton jButtonPatientsRefresh;
     private javax.swing.JButton jButtonReferToSpecialist;
     private javax.swing.JButton jButtonRefreshAppointments;
     private javax.swing.JButton jButtonRefreshAppointmentsByDoc;
+    private javax.swing.JButton jButtonRefreshBills;
     private javax.swing.JButton jButtonRefreshPersonel;
     private javax.swing.JButton jButtonRemoveAppointmentByDoctor;
     private javax.swing.JButton jButtonRemovePrescriptionByDoctor;
@@ -3832,6 +3951,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSaveAppointmentByDoctor;
     private javax.swing.JButton jButtonSavePersonel;
     private javax.swing.JCheckBox jCheckBoxAlcoholEdit;
+    private javax.swing.JCheckBox jCheckBoxCreditCard;
     private javax.swing.JCheckBox jCheckBoxDocAvailable;
     private javax.swing.JCheckBox jCheckBoxEatingHomeEdit;
     private javax.swing.JCheckBox jCheckBoxMarriedEdit;
@@ -3930,6 +4050,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBirthdate;
@@ -4002,6 +4123,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSurname7;
     private javax.swing.JLabel jLabelSurname8;
     private javax.swing.JLabel jLabelSurname9;
+    private javax.swing.JFormattedTextField jOutpatCreditCardNumber;
     private javax.swing.JFormattedTextField jOutpatOPIDEdit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -4031,6 +4153,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -4048,7 +4171,8 @@ public class OutpatientModule extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPanePatientData;
     private javax.swing.JTable jTableAppointments;
     private javax.swing.JTable jTableAppointmentsByDoctor;
-    private javax.swing.JTable jTableBills;
+    private javax.swing.JTable jTableBillsIssued;
+    private javax.swing.JTable jTableBillsUnissued;
     private javax.swing.JTable jTablePatients;
     private javax.swing.JTable jTablePersonel;
     private javax.swing.JTable jTablePrescriptions;
@@ -4944,12 +5068,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                 PhoneNumber phoneNumberFax1 = new PhoneNumber();
                 PhoneNumber phoneNumberPager1 = new PhoneNumber();
 
-//                InsertPhoneNumberResult phoneNumberWorkResult = new InsertPhoneNumberResult();
-//                InsertPhoneNumberResult phoneNumberHomeResult = new InsertPhoneNumberResult();
-//                InsertPhoneNumberResult phoneNumberMobileResult = new InsertPhoneNumberResult();
-//                InsertPhoneNumberResult phoneNumberEmailResult = new InsertPhoneNumberResult();
-//                InsertPhoneNumberResult phoneNumberFaxResult = new InsertPhoneNumberResult();
-//                InsertPhoneNumberResult phoneNumberPagerResult = new InsertPhoneNumberResult();
+
                 phoneNumberWork1.setNumber(jFormattedTextFieldPhoneNumWorkDoctor.getText());
                 phoneNumberHome1.setNumber(jFormattedTextFieldPhoneNumHomeDoctor.getText());
                 phoneNumberMobile1.setNumber(jFormattedTextFieldPhoneNumMobileDoctor.getText());
@@ -4978,11 +5097,7 @@ public class OutpatientModule extends javax.swing.JFrame {
                 _phoneNumberBL.insertPhoneNumber(phoneNumberFax1);
                 _phoneNumberBL.insertPhoneNumber(phoneNumberPager1);
 
-////            List<InsertPhoneNumberResult> phoneNumsRes = new ArrayList<InsertPhoneNumberResult>();
-//                for (int i = 0; i < tempDocPhones.size(); i++) {
-//                    InsertPhoneNumberResult temp = _phoneNumberBL.insertPhoneNumber(tempDocPhones.get(i));
-////                phoneNumsRes.add(temp);
-//                }
+
                 _currentDoctor.setContactDetail(contactDetailDocRes.contactDetail);
                 _doctorBL.insertContactDetail(_currentDoctor);
             } catch (Exception e) {
@@ -5254,11 +5369,6 @@ public class OutpatientModule extends javax.swing.JFrame {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.UK);
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.UK);
 
-//        String startingDate = new SimpleDateFormat("dd/MM/yyyy",Locale.UK).format(jFormattedAppointmentDate.getText());
-//        String startingTime = new SimpleDateFormat("HH:mm", Locale.UK).format(jFormattedAppointmentStart.getText());
-//
-//         LocalDate datePart = LocalDate.parse("2013-01-02");
-//    LocalTime timePart = LocalTime.parse("04:05:06");
         LocalDate date = LocalDate.parse(jFormattedAppointmentDate.getText(), dateFormatter);
         LocalTime timeStart = LocalTime.parse(jFormattedAppointmentStart.getText(), timeFormatter);
         LocalTime timeEnd = LocalTime.parse(jFormattedAppointmentEnd.getText(), timeFormatter);
@@ -5658,6 +5768,161 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    private void SetupBillIssued() {
+        String[] columnNames = {"Id",
+            "Patient name",
+            "Consultation price",
+            "Prescription Quantity",
+            "Prescription price",
+            "Test Quantity",
+            "Test price",
+            "Time issued",
+            "Appointment ID",
+            "Payment type",
+            "Total price"
+        };
+
+        DefaultTableModel model = (DefaultTableModel) jTableBillsIssued.getModel();
+
+        model.setColumnIdentifiers(columnNames);
+        jTableBillsIssued.setRowSelectionAllowed(true);
+        jTableBillsIssued.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        jTableBillsIssued.getColumn(columnNames[0]).setPreferredWidth(25);
+    }
+
+    private void SetupBillUnissued() {
+        String[] columnNames = {"Id",
+            "Patient name",
+            "Consultation price",
+            "Prescription Quantity",
+            "Prescription price",
+            "Test Quantity",
+            "Test price",
+            "Time issued",
+            "Appointment ID",
+            "Payment type",
+            "Total price"
+        };
+
+        DefaultTableModel model = (DefaultTableModel) jTableBillsUnissued.getModel();
+
+        model.setColumnIdentifiers(columnNames);
+        jTableBillsUnissued.setRowSelectionAllowed(true);
+        jTableBillsUnissued.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        jTableBillsUnissued.getColumn(columnNames[0]).setPreferredWidth(25);
+    }
+
+    private void FillBillIssued() {
+        DefaultTableModel model = (DefaultTableModel) jTableBillsIssued.getModel();
+        GetBillResult billsRes = _billBL.getAll();
+        for (int i = 0; i < billsRes.bill.size(); i++) {
+
+            Object rowData[] = new Object[11];
+            rowData[0] = billsRes.bill.get(i).getId();
+            if (billsRes.bill.get(i).getAppointment() != null) {
+
+                rowData[1] = billsRes.bill.get(i).getAppointment().getPatient().toString();
+            } else {
+                rowData[1] = "";
+
+            }
+            rowData[2] = billsRes.bill.get(i).getConsultationPrice();
+
+            rowData[3] = billsRes.bill.get(i).getPrescriptionQuantity();
+            rowData[4] = billsRes.bill.get(i).getPrescriptionsPrice();
+            rowData[5] = billsRes.bill.get(i).getTestQuantity();
+            rowData[6] = billsRes.bill.get(i).getTestsPrice();
+            rowData[7] = billsRes.bill.get(i).getTimeIssued();
+            if (billsRes.bill.get(i).getAppointment() != null) {
+                rowData[8] = billsRes.bill.get(i).getAppointment().getId().intValue();
+            } else {
+                rowData[8] = "";
+            }
+            rowData[9] = billsRes.bill.get(i).getPayment().getPaymentType().toString();
+            rowData[10] = billsRes.bill.get(i).getTotalPrice();
+
+            model.addRow(rowData);
+        }
+    }
+
+    private void FillBillUnissued() {
+        DefaultTableModel model = (DefaultTableModel) jTableBillsUnissued.getModel();
+
+        GetAppointmentResult result = _appointmentBL.getAll();
+        GetDoctorResult docRes = _doctorBL.getAll();
+        GetPatientsResult patRes = _patientsBL.getAll();
+
+        if (!result.isOK) {
+            System.out.println(result.msg);
+        }
+        _allAppointments = result.appointment;
+        _allDoctors = docRes.doctors;
+        _allPatients = patRes.patients;
+
+        for (int i = 0; i < _allAppointments.size(); i++) {
+            if (_allAppointments.get(i).isPaid()) {
+                continue;
+            }
+            Object rowData[] = new Object[11];
+            rowData[0] = _allAppointments.get(i).getId();
+            rowData[1] = _allAppointments.get(i).getPatient().toString();
+            rowData[2] = "200";
+
+            if (_allAppointments.get(i).getPrescriptions() == null || _allAppointments.get(i).getPrescriptions().isEmpty()) {
+                rowData[3] = "0";
+            } else {
+                rowData[3] = _allAppointments.get(i).getPrescriptions().get(0).getPhones().size();
+            }
+
+            BigDecimal prescriptionPrices = new BigDecimal(0);
+            List<DrugPrescriptions> drugs = new ArrayList<DrugPrescriptions>();
+            if (!_allAppointments.get(i).getPrescriptions().isEmpty()) {
+
+                drugs = _allAppointments.get(i).getPrescriptions().get(0).getPhones();
+                for (int j = 0; j < drugs.size(); j++) {
+                    prescriptionPrices = prescriptionPrices.add(drugs.get(j).getDrug().getPrice());
+                }
+                rowData[4] = prescriptionPrices.intValue();
+            } else {
+                rowData[4] = 0;
+
+            }
+            if (_allAppointments.get(i).getTests().size() < 1) {
+                rowData[5] = "0";
+            } else {
+                rowData[5] = _allAppointments.get(i).getTests().size();
+            }
+
+            BigDecimal testPrices = new BigDecimal(0);
+            List<Test> tests = new ArrayList<Test>();
+            if (_allAppointments.get(i).getTests() != null) {
+
+                tests = _allAppointments.get(i).getTests();
+                for (int j = 0; j < tests.size(); j++) {
+                    if (tests.get(j).getTestType() != null) {
+                        testPrices = testPrices.add(tests.get(j).getTestType().getPrice());
+                    }
+                }
+                rowData[6] = testPrices.intValue();
+            } else {
+                rowData[6] = 0;
+
+            }
+            rowData[7] = _allAppointments.get(i).getStartDateHour().toLocalDate();
+
+            rowData[8] = _allAppointments.get(i).getId().intValue();
+            rowData[9] = jCheckBoxCreditCard.isSelected() ? PaymentType.CreditCard : PaymentType.Cash;
+            BigDecimal total = new BigDecimal(200);
+            total = total.add(testPrices);
+            total = total.add(prescriptionPrices);
+
+            rowData[10] = total.toBigInteger().toString();
+            model.addRow(rowData);
         }
     }
 }
