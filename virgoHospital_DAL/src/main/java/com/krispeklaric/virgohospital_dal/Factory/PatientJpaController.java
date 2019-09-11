@@ -1,43 +1,47 @@
-package com.krispeklaric.virgohospital_dal.Repositories;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.krispeklaric.virgohospital_dal.Factory;
 
-import com.krispeklaric.virgohospital_dal.Interfaces.IPatientRepo;
-import com.krispeklaric.virgohospital_dal.Models.Appointment;
-import com.krispeklaric.virgohospital_dal.Models.BasicComplaint;
-import com.krispeklaric.virgohospital_dal.Models.ContactDetail;
-import com.krispeklaric.virgohospital_dal.Models.Doctor;
-import com.krispeklaric.virgohospital_dal.Models.MedicalComplaint;
-import com.krispeklaric.virgohospital_dal.Models.NextOfKin;
-import com.krispeklaric.virgohospital_dal.Models.Patient;
-import com.krispeklaric.virgohospital_dal.Models.PatientLifestyle;
-import com.krispeklaric.virgohospital_dal.Models.PersonalDetail;
-import com.krispeklaric.virgohospital_dal.Repositories.exceptions.NonexistentEntityException;
+import com.krispeklaric.virgohospital_dal.Factory.exceptions.NonexistentEntityException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.krispeklaric.virgohospital_dal.Models.ContactDetail;
+import com.krispeklaric.virgohospital_dal.Models.NextOfKin;
+import com.krispeklaric.virgohospital_dal.Models.PersonalDetail;
+import com.krispeklaric.virgohospital_dal.Models.PatientLifestyle;
+import com.krispeklaric.virgohospital_dal.Models.BasicComplaint;
+import com.krispeklaric.virgohospital_dal.Models.MedicalComplaint;
+import com.krispeklaric.virgohospital_dal.Models.Doctor;
+import com.krispeklaric.virgohospital_dal.Models.Appointment;
+import com.krispeklaric.virgohospital_dal.Models.Patient;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author Kris
  */
-public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable {
+public class PatientJpaController implements Serializable {
 
-    public PatientRepo() {
-        super();
+    public PatientJpaController(EntityManagerFactory emf) {
+        this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public Patient create(Patient patient) {
-       if (patient.getAppointments() == null) {
+    public void create(Patient patient) {
+        if (patient.getAppointments() == null) {
             patient.setAppointments(new ArrayList<Appointment>());
         }
         EntityManager em = null;
@@ -154,7 +158,6 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
                 }
             }
             em.getTransaction().commit();
-            return patient;
         } finally {
             if (em != null) {
                 em.close();
@@ -162,8 +165,8 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
         }
     }
 
-    public Patient edit(Patient patient) throws NonexistentEntityException, Exception {
-      EntityManager em = null;
+    public void edit(Patient patient) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
@@ -324,7 +327,6 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
                 }
             }
             em.getTransaction().commit();
-            return patient;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
@@ -342,7 +344,7 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
     }
 
     public void destroy(Long id) throws NonexistentEntityException {
-          EntityManager em = null;
+        EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
@@ -385,7 +387,7 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
             }
             Doctor doctor = patient.getDoctor();
             if (doctor != null) {
-                doctor.setPatient(null);
+                doctor.getPatient().remove(patient);
                 doctor = em.merge(doctor);
             }
             List<Appointment> appointments = patient.getAppointments();
@@ -447,5 +449,5 @@ public class PatientRepo extends BaseRepo implements IPatientRepo, Serializable 
             em.close();
         }
     }
-
+    
 }

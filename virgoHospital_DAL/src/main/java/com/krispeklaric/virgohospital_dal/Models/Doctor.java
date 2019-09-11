@@ -35,8 +35,8 @@ public class Doctor implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
     private List<DoctorSchedule> schedule;
 
-    @OneToOne(mappedBy = "doctor")
-    private Patient patient;
+    @OneToMany(mappedBy = "doctor")
+    private List<Patient> patient;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
     private List<Appointment> appointments;
@@ -97,11 +97,11 @@ public class Doctor implements Serializable {
         this.schedule = schedule;
     }
 
-    public Patient getPatient() {
+    public List<Patient> getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(List<Patient> patient) {
         this.patient = patient;
     }
 
