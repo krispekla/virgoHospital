@@ -87,6 +87,9 @@ public class OutpatientModule extends javax.swing.JFrame {
     private static BillBL _billBL;
     private static PaymentBL _paymentBL;
     private static Boolean refferingToSpecialist = false;
+    private static final String EMAIL_REGEX
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public OutpatientModule() {
         _patientsBL = new PatientsBL();
@@ -2204,6 +2207,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     jButtonDeleteDoctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
     jButtonDeleteDoctor.setText("Delete");
     jButtonDeleteDoctor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    jButtonDeleteDoctor.setEnabled(false);
     jButtonDeleteDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             jButtonDeleteDoctorMouseClicked(evt);
@@ -2618,6 +2622,11 @@ public class OutpatientModule extends javax.swing.JFrame {
     jLabel4.setText("Appointments");
 
     jButtonRemoveAppointmentByDoctor.setText("Remove");
+    jButtonRemoveAppointmentByDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButtonRemoveAppointmentByDoctorMouseClicked(evt);
+        }
+    });
 
     jButtonAddApointmentByDoctor.setText("New appointment");
     jButtonAddApointmentByDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3685,7 +3694,17 @@ public class OutpatientModule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditAppointmentMouseClicked
 
     private void jButtonDeleteAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteAppointmentMouseClicked
-        // TODO add your handling code here:
+  DefaultTableModel model = (DefaultTableModel) jTableAppointments.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableAppointments.getSelectedRow());
+
+            GetSingleAppointmentResult appRes = _appointmentBL.getById((Long) selectedRow.get(0));
+
+            if (appRes.isOK) {
+                _appointmentBL.deleteContactDetail(appRes.appointment.getId());
+
+            }
+        }
     }//GEN-LAST:event_jButtonDeleteAppointmentMouseClicked
 
     private void jButtonAddAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAppointmentMouseClicked
@@ -3842,6 +3861,10 @@ public class OutpatientModule extends javax.swing.JFrame {
         if (jTableBillsUnissued.getSelectedRow() == -1) {
             return;
         }
+        if (!BillInputValidation()) {
+            return;
+        }
+
         Payment p = new Payment();
 
         if (jCheckBoxCreditCard.isSelected()) {
@@ -3891,6 +3914,20 @@ public class OutpatientModule extends javax.swing.JFrame {
         this.FillBillIssued();
         this.FillBillUnissued();
 }//GEN-LAST:event_jButtonRefreshBillsMouseClicked
+
+    private void jButtonRemoveAppointmentByDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveAppointmentByDoctorMouseClicked
+  DefaultTableModel model = (DefaultTableModel) jTableAppointmentsByDoctor.getModel();
+        if (model.getRowCount() > 0) {
+            Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableAppointmentsByDoctor.getSelectedRow());
+
+            GetSingleAppointmentResult appRes = _appointmentBL.getById((Long) selectedRow.get(0));
+
+            if (appRes.isOK) {
+                _appointmentBL.deleteContactDetail(appRes.appointment.getId());
+
+            }
+        }
+    }//GEN-LAST:event_jButtonRemoveAppointmentByDoctorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4744,9 +4781,106 @@ public class OutpatientModule extends javax.swing.JFrame {
 
     private boolean PatientInputValidation() {
         String validationStatusMessages = "";
+        if (jTextFieLDPatientFirstEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient first name is required";
+        }
+
+        if (jTextSurrnameEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient last name is required";
+        }
+
         if (jOutpatOPIDEdit.getText().length() != 11) {
             validationStatusMessages
                     += "\n Patient OID needs to have 11 numbers and is required";
+        }
+
+        if (!jTextFieldEmailEdit.getText().matches(EMAIL_REGEX) || jTextFieldEmailEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Email is not valid!";
+        }
+
+        //Address
+        if (jTextFieldStatePresentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address state is required";
+        }
+        if (jTextFieldCityPresentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address city is required";
+        }
+        if (jTextFieldStreetPresentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address street is required";
+        }
+        if (jFormattedTextFieldHouseNumberPresentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address house number is required";
+        }
+
+        //Permanent address
+        if (jTextFieldStatePermanentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address state is required";
+        }
+        if (jTextFieldCityPermanentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address city is required";
+        }
+        if (jTextFieldStreetPermanentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address street is required";
+        }
+        if (jFormattedTextFieldHousenumberPermanentEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address house number is required";
+        }
+
+        if (jFormattedTextFieldPhoneNumMobileEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Mobile phone contact number is required";
+        }
+
+        if (jTextFieldFirstNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin first name is required";
+        }
+        if (jTextFieldSurnameNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin last name is required";
+        }
+        if (jTextFieldNextOfKinRelatinshipEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin relationship is required";
+        }
+
+        //Address
+        if (jTextFieldStateNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address state is required";
+        }
+        if (jTextFieldCityNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address city is required";
+        }
+        if (jTextFieldStreetNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address street is required";
+        }
+        if (jFormattedHouseNbNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address house number is required";
+        }
+
+        if (!jTextFieldEmailNextOfKinEdit.getText().matches(EMAIL_REGEX) || jTextFieldEmailNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin email is not valid!";
+        }
+
+        if (jFormattedTelephoneMobileNextOfKinEdit.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin mobile is required";
         }
 
         if (validationStatusMessages.isEmpty()) {
@@ -5019,16 +5153,40 @@ public class OutpatientModule extends javax.swing.JFrame {
         String validationStatusMessages = "";
         if (jTextFieldFirstNameDoctor.getText().isEmpty()) {
             validationStatusMessages
-                    += "\n Doctor First name is required.";
+                    += "\n Doctor first name is required";
         }
 
         if (jTextFieldSurnameDoctor.getText().isEmpty()) {
             validationStatusMessages
-                    += "\n Doctor Last name is required.";
+                    += "\n Doctor last name is required";
         }
+
+        if (!jTextFieldEmailDoctor.getText().matches(EMAIL_REGEX) || jTextFieldEmailDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Email is not valid!";
+        }
+
+        //Address
+        if (jTextFieldStatePresentDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Address state is required";
+        }
+        if (jTextFieldCityPresentDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Address city is required";
+        }
+        if (jTextFieldStreetPresentDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Address street is required";
+        }
+        if (jFormattedTextFieldHouseNumberPresentDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Address house number is required";
+        }
+
         if (jFormattedTextFieldPhoneNumMobileDoctor.getText().isEmpty()) {
             validationStatusMessages
-                    += "\n Doctor mobile number is required.";
+                    += "\n Mobile number is required";
         }
 
         if (validationStatusMessages.isEmpty()) {
@@ -5370,6 +5528,20 @@ public class OutpatientModule extends javax.swing.JFrame {
                     += "\n End time needs to be after start time!";
         }
 
+        if (jFormattedAppointmentDate.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Date is required.";
+        }
+
+        if (jFormattedAppointmentStart.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Start time is required.";
+        }
+        if (jFormattedAppointmentEnd.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n End time is required.";
+        }
+
         if (validationStatusMessages.isEmpty()) {
             return true;
         } else {
@@ -5638,6 +5810,11 @@ public class OutpatientModule extends javax.swing.JFrame {
         if (jFormattedAppointmentEndByDoctor.getText().isEmpty()) {
             validationStatusMessages
                     += "\n End time is required.";
+        }
+
+        if (jTextAreaDiagnosisByDoctor.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Diagnosis is required.";
         }
 
         if (validationStatusMessages.isEmpty()) {
@@ -5952,5 +6129,22 @@ public class OutpatientModule extends javax.swing.JFrame {
         _allAppointments = appRes.appointment;
         _allDoctors = docRes.doctors;
         _allPatients = patRes.patients;
+    }
+
+    private boolean BillInputValidation() {
+        String validationStatusMessages = "";
+
+        if (jOutpatCreditCardNumber.getText().isEmpty() && jCheckBoxCreditCard.isSelected()) {
+            validationStatusMessages
+                    += "\n Enter credit card number";
+        }
+
+        if (validationStatusMessages.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, validationStatusMessages, "Validation check failed:", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
     }
 }

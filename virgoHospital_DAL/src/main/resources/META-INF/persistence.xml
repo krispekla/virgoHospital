@@ -24,10 +24,11 @@
     <class>com.krispeklaric.virgohospital_dal.Models.Payment</class>
     <class>com.krispeklaric.virgohospital_dal.Models.DrugPrescriptions</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:8088;databaseName=VirgoHospital"/>
-      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\localhost:1433;databaseName=test"/>
+      <property name="javax.persistence.jdbc.user" value="java"/>
       <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="javax.persistence.jdbc.password" value="SQL"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

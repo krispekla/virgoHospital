@@ -33,7 +33,9 @@ public class ExtensiveForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+private static final String EMAIL_REGEX = 
+    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -2382,11 +2384,108 @@ public class ExtensiveForm extends javax.swing.JDialog {
 
     private boolean CheckValidation() {
         String validationStatusMessages = "";
+         if (jTextFieldFirstNameExtensive.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient first name is required";
+        }
+
+          if (jTextFieldSurnameSurname.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient last name is required";
+        }
+          
         if (jFormattedTextFieldOutpatientID.getText().length() != 11) {
             validationStatusMessages
                     += "\n Patient OID needs to have 11 numbers and is required";
         }
 
+        if(!jTextFieldEmail.getText().matches(EMAIL_REGEX) || jTextFieldEmail.getText().isEmpty()) {
+         validationStatusMessages
+                    += "\n Email is not valid!";
+        }
+        
+          //Address
+        if (jTextFieldStatePresent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address state is required";
+        }
+         if (jTextFieldCityPresent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address city is required";
+        }
+         if (jTextFieldStreetPresent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address street is required";
+        }
+         if (jFormattedTextFieldHouseNumberPresent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Present address house number is required";
+        }
+      
+         //Permanent address
+           if (jTextFieldStatePermanent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address state is required";
+        }
+         if (jTextFieldCityPermanent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address city is required";
+        }
+         if (jTextFieldStreetPermanent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address street is required";
+        }
+         if (jFormattedTextFieldHousenumberPermanent.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Permanent address house number is required";
+        }
+        
+            if (jFormattedTextFieldPhoneNumMobile.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Mobile phone contact number is required";
+        }
+        
+            if (jTextFieldFirstNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin first name is required";
+        }
+        if (jTextFieldSurnameNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin last name is required";
+        }
+        if (jTextFieldNextOfKinRelatinship.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin relationship is required";
+        }
+
+                     //Address
+        if (jTextFieldStateNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address state is required";
+        }
+         if (jTextFieldCityNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address city is required";
+        }
+         if (jTextFieldStreetNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address street is required";
+        }
+         if (jFormattedHouseNbNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin Present address house number is required";
+        }
+            
+           if(!jTextFieldEmailNextOfKin.getText().matches(EMAIL_REGEX) || jTextFieldEmailNextOfKin.getText().isEmpty()) {
+         validationStatusMessages
+                    += "\n Next of kin email is not valid!";
+        }
+           
+               if (jFormattedTelephoneMobileNextOfKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin mobile is required";
+        }
+            
         if (validationStatusMessages.isEmpty()) {
             return true;
         } else {

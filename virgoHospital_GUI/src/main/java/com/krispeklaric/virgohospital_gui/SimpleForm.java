@@ -39,6 +39,7 @@ import com.krispeklaric.virgohospital_dal.Models.PhoneType;
 import com.sun.glass.events.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -405,6 +406,10 @@ public class SimpleForm extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldRelationshipOutpatientKeyTyped
 
     private void jButtonAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddMouseClicked
+        if (!CheckValidation()) {
+            return;
+        }
+
         PatientsBL patientBL = new PatientsBL();
         BasicComplaintBL basicComplaintBL = new BasicComplaintBL();
         NextOfKinBL nextOfKinBL = new NextOfKinBL();
@@ -594,4 +599,46 @@ public class SimpleForm extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldSurname;
     private javax.swing.JTextField jTextFieldSurnameKin;
     // End of variables declaration//GEN-END:variables
+
+    private boolean CheckValidation() {
+        String validationStatusMessages = "";
+        if (jTextFieldFirstName.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient first name is required";
+        }
+
+        if (jTextFieldSurname.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient last name is required";
+        }
+        if (jTextAreaStateOfComplaint.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient brief statement of complaint is required";
+        }
+        if (jFormattedTextFieldPhoneNum1.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Patient contact number is required";
+        }
+        if (jTextFieldFirstNameKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin first name is required";
+        }
+        if (jTextFieldSurnameKin.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin last name is required";
+        }
+        if (jTextFieldRelationshipOutpatient.getText().isEmpty()) {
+            validationStatusMessages
+                    += "\n Next of kin relationship is required";
+        }
+
+      
+
+        if (validationStatusMessages.isEmpty()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, validationStatusMessages, "Validation check failed:", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
 }
