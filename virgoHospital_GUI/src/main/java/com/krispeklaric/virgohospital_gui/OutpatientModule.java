@@ -3349,7 +3349,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     private void jButtonPatientsRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPatientsRefreshMouseClicked
         DefaultTableModel model = (DefaultTableModel) jTablePatients.getModel();
         model.setRowCount(0);
-        RefreshAll();
+//        RefreshAll();
 
         this.FillPatientTable();
     }//GEN-LAST:event_jButtonPatientsRefreshMouseClicked
@@ -3694,7 +3694,7 @@ public class OutpatientModule extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditAppointmentMouseClicked
 
     private void jButtonDeleteAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteAppointmentMouseClicked
-  DefaultTableModel model = (DefaultTableModel) jTableAppointments.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTableAppointments.getModel();
         if (model.getRowCount() > 0) {
             Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableAppointments.getSelectedRow());
 
@@ -3868,7 +3868,7 @@ public class OutpatientModule extends javax.swing.JFrame {
         Payment p = new Payment();
 
         if (jCheckBoxCreditCard.isSelected()) {
-            p.setCardNumber(Integer.parseInt(jOutpatCreditCardNumber.getText().toString()));
+            p.setCardNumber(Integer.parseInt(jOutpatCreditCardNumber.getText()));
             p.setPaymentType(PaymentType.CreditCard);
         } else {
             p.setPaymentType(PaymentType.Cash);
@@ -3916,7 +3916,7 @@ public class OutpatientModule extends javax.swing.JFrame {
 }//GEN-LAST:event_jButtonRefreshBillsMouseClicked
 
     private void jButtonRemoveAppointmentByDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveAppointmentByDoctorMouseClicked
-  DefaultTableModel model = (DefaultTableModel) jTableAppointmentsByDoctor.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTableAppointmentsByDoctor.getModel();
         if (model.getRowCount() > 0) {
             Vector selectedRow = (Vector) model.getDataVector().elementAt(jTableAppointmentsByDoctor.getSelectedRow());
 
@@ -5033,6 +5033,9 @@ public class OutpatientModule extends javax.swing.JFrame {
         LocalDate birthday = LocalDate.parse(jFormattedTextFieldBirthdateEdit.getText(), formatter);
         _currentPatient.setBirthdate(birthday);
 
+        if (jComboBoxDoctorsForPatient.getSelectedIndex() == -1) {
+            return;
+        }
         _currentPatient.setDoctor(_generalDoctors.get(jComboBoxDoctorsForPatient.getSelectedIndex()));
         //----------------------
         try {
@@ -5518,14 +5521,19 @@ public class OutpatientModule extends javax.swing.JFrame {
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.UK);
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.UK);
-
-        LocalDate date = LocalDate.parse(jFormattedAppointmentDate.getText(), dateFormatter);
-        LocalTime timeStart = LocalTime.parse(jFormattedAppointmentStart.getText(), timeFormatter);
-        LocalTime timeEnd = LocalTime.parse(jFormattedAppointmentEnd.getText(), timeFormatter);
-
-        if (!timeStart.isBefore(timeEnd)) {
+        if (jFormattedAppointmentDate.getText().isEmpty()) {
             validationStatusMessages
-                    += "\n End time needs to be after start time!";
+                    += "\n Date cannot be empty!";
+        } else {
+
+            LocalDate date = LocalDate.parse(jFormattedAppointmentDate.getText(), dateFormatter);
+            LocalTime timeStart = LocalTime.parse(jFormattedAppointmentStart.getText(), timeFormatter);
+            LocalTime timeEnd = LocalTime.parse(jFormattedAppointmentEnd.getText(), timeFormatter);
+
+            if (!timeStart.isBefore(timeEnd)) {
+                validationStatusMessages
+                        += "\n End time needs to be after start time!";
+            }
         }
 
         if (jFormattedAppointmentDate.getText().isEmpty()) {
